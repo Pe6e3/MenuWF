@@ -44,11 +44,13 @@
             // bottonux1
             // 
             bottonux1.BackColor = Color.Tomato;
-            bottonux1.Location = new Point(125, 114);
+            bottonux1.Font = new Font("Goudy Old Style", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            bottonux1.ForeColor = Color.White;
+            bottonux1.Location = new Point(53, 114);
             bottonux1.Name = "bottonux1";
-            bottonux1.Size = new Size(100, 30);
+            bottonux1.Size = new Size(210, 66);
             bottonux1.TabIndex = 1;
-            bottonux1.Text = "bottonux1";
+            bottonux1.Text = "Войти в систему";
             // 
             // MainForm
             // 
