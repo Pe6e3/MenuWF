@@ -1,17 +1,30 @@
+using MenuWF.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace MenuWF
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+
+            var appsettigsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
+            var configuration = new ConfigurationBuilder()
+                                    .AddJsonFile(appsettigsPath)
+                                    .Build();
+
+            var configurationString = configuration.GetConnectionString("AppDbContext");
+
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
+                                    .UseSqlServer(configurationString);
+
+            using (var dbContext = new AppDbContext(optionsBuilder.Options))
+            {
+                Application.Run(new MainForm());
+            }
         }
     }
 }
