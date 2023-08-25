@@ -9,7 +9,6 @@ namespace MenuWF
         {
             _db = db;
             InitializeComponent();
-            productTable.DataSource = _db.Products.ToList();
 
         }
     }

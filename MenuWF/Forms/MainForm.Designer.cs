@@ -28,34 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            productTable = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)productTable).BeginInit();
+            productsButton = new Button();
+            bottonux1 = new Forms.bottonUX();
             SuspendLayout();
             // 
-            // productTable
+            // productsButton
             // 
-            productTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productTable.Location = new Point(196, 79);
-            productTable.Name = "productTable";
-            productTable.RowTemplate.Height = 25;
-            productTable.Size = new Size(240, 150);
-            productTable.TabIndex = 0;
+            productsButton.Location = new Point(83, 337);
+            productsButton.Name = "productsButton";
+            productsButton.Size = new Size(111, 43);
+            productsButton.TabIndex = 0;
+            productsButton.Text = "Продукты";
+            productsButton.UseVisualStyleBackColor = true;
+            // 
+            // bottonux1
+            // 
+            bottonux1.BackColor = Color.Tomato;
+            bottonux1.Location = new Point(125, 114);
+            bottonux1.Name = "bottonux1";
+            bottonux1.Size = new Size(100, 30);
+            bottonux1.TabIndex = 1;
+            bottonux1.Text = "bottonux1";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(productTable);
+            Controls.Add(bottonux1);
+            Controls.Add(productsButton);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Стартовое окно";
-            ((System.ComponentModel.ISupportInitialize)productTable).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView productTable;
+        private Button productsButton;
+        private Forms.bottonUX bottonux1;
     }
 }
