@@ -1,5 +1,6 @@
 ﻿namespace MenuWF.Entities;
 
-public class Dish
+public class Dish : BaseEntity
 {
+    public string Name { get; set; } = null!;
 }

@@ -1,9 +1,13 @@
+using MenuWF.Data;
+
 namespace MenuWF
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        private readonly AppDbContext _db;
+        public MainForm(AppDbContext db)
         {
+            _db = db;
             InitializeComponent();
         }
     }

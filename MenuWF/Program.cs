@@ -23,7 +23,7 @@ namespace MenuWF
 
             using (var dbContext = new AppDbContext(optionsBuilder.Options))
             {
-                Application.Run(new MainForm());
+                Application.Run(new MainForm(dbContext));
             }
         }
     }
