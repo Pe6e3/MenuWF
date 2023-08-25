@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            productTable = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)productTable).BeginInit();
+            SuspendLayout();
+            // 
+            // productTable
+            // 
+            productTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            productTable.Location = new Point(196, 79);
+            productTable.Name = "productTable";
+            productTable.RowTemplate.Height = 25;
+            productTable.Size = new Size(240, 150);
+            productTable.TabIndex = 0;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Text = "Form1";
+            Controls.Add(productTable);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Стартовое окно";
+            ((System.ComponentModel.ISupportInitialize)productTable).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView productTable;
     }
 }
