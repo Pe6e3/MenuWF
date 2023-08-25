@@ -1,4 +1,6 @@
-﻿namespace MenuWF
+﻿using MenuWF.UXElements;
+
+namespace MenuWF
 {
     partial class MainForm
     {
@@ -29,7 +31,8 @@
         private void InitializeComponent()
         {
             productsButton = new Button();
-            bottonux1 = new Forms.bottonUX();
+            bottonux1 = new bottonUI();
+            egoldsCard1 = new cardUI();
             SuspendLayout();
             // 
             // productsButton
@@ -52,11 +55,22 @@
             bottonux1.TabIndex = 1;
             bottonux1.Text = "Войти в систему";
             // 
+            // egoldsCard1
+            // 
+            egoldsCard1.BackColor = Color.White;
+            egoldsCard1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            egoldsCard1.Location = new Point(213, 214);
+            egoldsCard1.Name = "egoldsCard1";
+            egoldsCard1.Size = new Size(250, 200);
+            egoldsCard1.TabIndex = 2;
+            egoldsCard1.Text = "egoldsCard1";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(egoldsCard1);
             Controls.Add(bottonux1);
             Controls.Add(productsButton);
             Name = "MainForm";
@@ -68,6 +82,7 @@
         #endregion
 
         private Button productsButton;
-        private Forms.bottonUX bottonux1;
+        private bottonUI bottonux1;
+        private cardUI egoldsCard1;
     }
 }
