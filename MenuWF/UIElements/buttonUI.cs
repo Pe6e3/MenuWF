@@ -1,29 +1,48 @@
 ﻿using MenuWF.UIElements;
+using System.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms.VisualStyles;
 
 namespace MenuWF.UXElements;
 
-public class bottonUI : Control
+public class buttonUI : Control
 {
+    #region -- Свойства --
+
+    [Description("Текст кнопки при наведении")]
+    public string TextHover { get; set; }
+
+    #endregion
+
+
+    #region -- Переменные --
+
     private StringFormat SF = new StringFormat();
     private bool MouseEntered = false;
     private bool MousePressed = false;
 
     Animation CurtainButtonAnim = new Animation();
     Animation RippleButtonAnim = new Animation();
+    Animation TextSlideAnim = new Animation();
+
     Point ClickLocation = new Point();
-    public bottonUI()
+    #endregion
+
+
+    #region -- Конструктор --
+    public buttonUI()
     {
         SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint, true);
         DoubleBuffered = true;
         Size = new Size(100, 30);
+        Font = new Font("Verdana", 9F, FontStyle.Bold);
         BackColor = Color.Tomato;
         ForeColor = Color.White;
 
         SF.Alignment = StringAlignment.Center;
         SF.LineAlignment = StringAlignment.Center;
     }
+    #endregion
 
     protected override void OnPaint(PaintEventArgs e)
     {
@@ -40,6 +59,9 @@ public class bottonUI : Control
             (int)RippleButtonAnim.Value,
             (int)RippleButtonAnim.Value
             );
+
+        Rectangle rectText = new Rectangle((int)TextSlideAnim.Value, rect.Y, rect.Width, rect.Height);
+        Rectangle rectTextHover = new Rectangle((int)TextSlideAnim.Value - rect.Width, rect.Y, rect.Width, rect.Height);
 
 
         // фон кнопки
@@ -62,7 +84,15 @@ public class bottonUI : Control
             RippleButtonAnim.Value = 0;
 
 
-        graph.DrawString(Text, Font, new SolidBrush(ForeColor), rect, SF);
+        // Рисуем текст
+        if (string.IsNullOrEmpty(TextHover))
+            graph.DrawString(Text, Font, new SolidBrush(ForeColor), rect, SF);
+        else
+        {
+            graph.DrawString(Text, Font, new SolidBrush(ForeColor), rectText, SF);
+            graph.DrawString(TextHover, new Font("Verdana", 8F, FontStyle.Bold), new SolidBrush(ForeColor), rectTextHover, SF);
+
+        }
     }
 
     protected override void OnMouseEnter(EventArgs e)
@@ -70,6 +100,7 @@ public class bottonUI : Control
         base.OnMouseEnter(e);
         MouseEntered = true;
         ButtonCurtainAction();
+        TextSlideAction();
     }
 
     protected override void OnMouseLeave(EventArgs e)
@@ -77,7 +108,18 @@ public class bottonUI : Control
         base.OnMouseLeave(e);
         MouseEntered = false;
         ButtonCurtainAction();
+        TextSlideAction();
+    }
 
+    private void TextSlideAction()
+    {
+        if (MouseEntered)
+            TextSlideAnim = new Animation("TextSlide_" + Handle, Invalidate, TextSlideAnim.Value, Width - 1);
+        else
+            TextSlideAnim = new Animation("TextSlide_" + Handle, Invalidate, TextSlideAnim.Value, 0);
+
+        TextSlideAnim.StepDivider = 8;
+        Animator.Request(TextSlideAnim, true);
     }
 
     private void ButtonCurtainAction()
@@ -87,6 +129,7 @@ public class bottonUI : Control
         else
             CurtainButtonAnim = new Animation("ButtonCurtain_" + Handle, Invalidate, CurtainButtonAnim.Value, 0);
 
+        TextSlideAnim.StepDivider = 14;
         Animator.Request(CurtainButtonAnim, true);
     }
 
