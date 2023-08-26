@@ -30,34 +30,12 @@ namespace MenuWF
         /// </summary>
         private void InitializeComponent()
         {
-            productsButton = new Button();
-            bottonux1 = new buttonUI();
             cardui1 = new cardUI();
-            bottonui1 = new buttonUI();
-            bottonui2 = new buttonUI();
+            buttonui1 = new buttonUI();
+            buttonui2 = new buttonUI();
+            buttonui3 = new buttonUI();
+            buttonui4 = new buttonUI();
             SuspendLayout();
-            // 
-            // productsButton
-            // 
-            productsButton.Location = new Point(83, 337);
-            productsButton.Name = "productsButton";
-            productsButton.Size = new Size(111, 43);
-            productsButton.TabIndex = 0;
-            productsButton.Text = "Продукты";
-            productsButton.UseVisualStyleBackColor = true;
-            // 
-            // bottonux1
-            // 
-            bottonux1.BackColor = Color.Tomato;
-            bottonux1.ButtonColor = Color.Tomato;
-            bottonux1.Font = new Font("Goudy Old Style", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            bottonux1.ForeColor = Color.White;
-            bottonux1.Location = new Point(350, 115);
-            bottonux1.Name = "bottonux1";
-            bottonux1.Size = new Size(210, 66);
-            bottonux1.TabIndex = 1;
-            bottonux1.Text = "Войти в систему";
-            bottonux1.TextHover = null;
             // 
             // cardui1
             // 
@@ -76,42 +54,72 @@ namespace MenuWF
             cardui1.TextDescrition = "Тут длинное описание карточки";
             cardui1.TextHeader = "Заголовок карточки";
             // 
-            // bottonui1
+            // buttonui1
             // 
-            bottonui1.BackColor = SystemColors.ActiveCaption;
-            bottonui1.ButtonColor = Color.Blue;
-            bottonui1.Font = new Font("Goudy Old Style", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            bottonui1.ForeColor = Color.White;
-            bottonui1.Location = new Point(350, 209);
-            bottonui1.Name = "bottonui1";
-            bottonui1.Size = new Size(210, 66);
-            bottonui1.TabIndex = 1;
-            bottonui1.Text = "Войти в систему";
-            bottonui1.TextHover = "На страницу Авторизации";
+            buttonui1.BackColor = Color.Tomato;
+            buttonui1.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonui1.ForeColor = Color.White;
+            buttonui1.Location = new Point(375, 64);
+            buttonui1.Name = "buttonui1";
+            buttonui1.Rounding = 50;
+            buttonui1.RoundingEnable = true;
+            buttonui1.Size = new Size(186, 101);
+            buttonui1.TabIndex = 3;
+            buttonui1.Text = "buttonui1";
+            buttonui1.TextHover = null;
             // 
-            // bottonui2
+            // buttonui2
             // 
-            bottonui2.BackColor = Color.Tomato;
-            bottonui2.ButtonColor = Color.Tomato;
-            bottonui2.Font = new Font("Goudy Old Style", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            bottonui2.ForeColor = Color.White;
-            bottonui2.Location = new Point(350, 300);
-            bottonui2.Name = "bottonui2";
-            bottonui2.Size = new Size(210, 66);
-            bottonui2.TabIndex = 1;
-            bottonui2.Text = "Войти в систему";
-            bottonui2.TextHover = null;
+            buttonui2.BackColor = Color.Tomato;
+            buttonui2.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonui2.ForeColor = Color.White;
+            buttonui2.Location = new Point(27, 218);
+            buttonui2.Name = "buttonui2";
+            buttonui2.Rounding = 80;
+            buttonui2.RoundingEnable = true;
+            buttonui2.Size = new Size(763, 455);
+            buttonui2.TabIndex = 3;
+            buttonui2.Text = "buttonui1";
+            buttonui2.TextHover = null;
+            // 
+            // buttonui3
+            // 
+            buttonui3.BackColor = Color.Tomato;
+            buttonui3.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonui3.ForeColor = Color.White;
+            buttonui3.Location = new Point(375, 12);
+            buttonui3.Name = "buttonui3";
+            buttonui3.Rounding = 30;
+            buttonui3.RoundingEnable = true;
+            buttonui3.Size = new Size(337, 43);
+            buttonui3.TabIndex = 3;
+            buttonui3.Text = "buttonui1";
+            buttonui3.TextHover = null;
+            // 
+            // buttonui4
+            // 
+            buttonui4.BackColor = Color.Tomato;
+            buttonui4.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonui4.ForeColor = Color.White;
+            buttonui4.Location = new Point(616, 61);
+            buttonui4.Name = "buttonui4";
+            buttonui4.Rounding = 10;
+            buttonui4.RoundingEnable = true;
+            buttonui4.Size = new Size(185, 129);
+            buttonui4.TabIndex = 3;
+            buttonui4.Text = "buttonui1";
+            buttonui4.TextHover = null;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(971, 685);
+            Controls.Add(buttonui4);
+            Controls.Add(buttonui3);
+            Controls.Add(buttonui2);
+            Controls.Add(buttonui1);
             Controls.Add(cardui1);
-            Controls.Add(bottonui2);
-            Controls.Add(bottonui1);
-            Controls.Add(bottonux1);
-            Controls.Add(productsButton);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Стартовое окно";
@@ -119,11 +127,10 @@ namespace MenuWF
         }
 
         #endregion
-
-        private Button productsButton;
-        private buttonUI bottonux1;
         private cardUI cardui1;
-        private buttonUI bottonui1;
-        private buttonUI bottonui2;
+        private buttonUI buttonui1;
+        private buttonUI buttonui2;
+        private buttonUI buttonui3;
+        private buttonUI buttonui4;
     }
 }

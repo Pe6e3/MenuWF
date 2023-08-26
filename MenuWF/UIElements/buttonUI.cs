@@ -12,6 +12,32 @@ public class buttonUI : Control
     [Description("Текст кнопки при наведении")]
     public string TextHover { get; set; }
 
+    [DisplayName("Rounding [%]")]
+    [DefaultValue(100)]
+    [Description("Вкл/выкл закругление углов")]
+    public bool RoundingEnable
+    {
+        get => roundingEnable;
+        set
+        {
+            roundingEnable = value;
+            Refresh();
+        }
+    }
+    [Description("Радиус загругления углов в процентах")]
+    public int Rounding
+    {
+        get => roundingPercent;
+        set
+        {
+            if (value >= 0 && value <= 100)
+            {
+                roundingPercent = value;
+                Refresh();
+            }
+        }
+    }
+
     #endregion
 
 
@@ -20,6 +46,9 @@ public class buttonUI : Control
     private StringFormat SF = new StringFormat();
     private bool MouseEntered = false;
     private bool MousePressed = false;
+
+    private bool roundingEnable = false;
+    private int roundingPercent = 100;
 
     Animation CurtainButtonAnim = new Animation();
     Animation RippleButtonAnim = new Animation();
@@ -51,8 +80,8 @@ public class buttonUI : Control
         graph.SmoothingMode = SmoothingMode.HighQuality;
         graph.Clear(Parent.BackColor);
 
-        Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
-        Rectangle rectCurtain = new Rectangle(0, 0, (int)CurtainButtonAnim.Value, Height - 1);
+        Rectangle rect = new Rectangle(0, 0, Width, Height);
+        Rectangle rectCurtain = new Rectangle(0, 0, (int)CurtainButtonAnim.Value, Height);
         Rectangle rectRipple = new Rectangle(
             ClickLocation.X - (int)RippleButtonAnim.Value / 2,
             ClickLocation.Y - (int)RippleButtonAnim.Value / 2,
@@ -63,10 +92,17 @@ public class buttonUI : Control
         Rectangle rectText = new Rectangle((int)TextSlideAnim.Value, rect.Y, rect.Width, rect.Height);
         Rectangle rectTextHover = new Rectangle((int)TextSlideAnim.Value - rect.Width, rect.Y, rect.Width, rect.Height);
 
+        // Закругление
+        float roundingValue = 0.1F;
+        if (RoundingEnable && roundingPercent > 0)
+            roundingValue = Height / 100F * roundingPercent;
+
+        GraphicsPath rectPath = Drawer.RoundedRectangle(rect, roundingValue);
 
         // фон кнопки
-        graph.DrawRectangle(new Pen(BackColor), rect);
-        graph.FillRectangle(new SolidBrush(BackColor), rect);
+        graph.DrawPath(new Pen(BackColor), rectPath);
+        graph.FillPath(new SolidBrush(BackColor), rectPath);
+        graph.SetClip(rectPath);
 
         // шторка кнопки при наведении
         graph.DrawRectangle(new Pen(Color.FromArgb(150, Color.White)), rectCurtain);
