@@ -88,9 +88,8 @@ public class buttonUI : Control
     {
         SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint, true);
         DoubleBuffered = true;
-        Size = new Size(100, 30);
-        Font = new Font("Verdana", 9F, FontStyle.Bold);
-        BackColor = Color.Tomato;
+        Size = new Size(170, 70);
+        Font = new Font("Verdana", 12F, FontStyle.Bold);
         ForeColor = Color.White;
 
         SF.Alignment = StringAlignment.Center;

@@ -13,6 +13,9 @@ namespace MenuWF
             Animator.Start();
         }
 
-
+        private void cardui1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Действие при нажатии на карточку");
+        }
     }
 }
