@@ -13,7 +13,7 @@ public class Animation
         {
             targetValue = value;
             Reverse = value < Value ? true : false;
-        };
+        }
     }
 
     public float Volume;
@@ -22,7 +22,7 @@ public class Animation
     {
         Requested,
         Active,
-        Complited
+        Completed
     }
     public AnimationStatus Status { get; set; }
     public float Step() => Math.Abs(Volume) / 11;
@@ -52,7 +52,7 @@ public class Animation
                 if (Value >= targetValue)
                 {
                     Value = targetValue;
-                    Status = AnimationStatus.Complited;
+                    Status = AnimationStatus.Completed;
                 }
             }
         }
@@ -65,10 +65,10 @@ public class Animation
                 if (Value <= targetValue)
                 {
                     Value = targetValue;
-                    Status = AnimationStatus.Complited;
+                    Status = AnimationStatus.Completed;
                 }
             }
         }
-        InvalidateControl.Invoke()
+        InvalidateControl.Invoke();
     }
 }
