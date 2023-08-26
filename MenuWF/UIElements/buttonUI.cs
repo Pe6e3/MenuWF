@@ -105,8 +105,15 @@ public class buttonUI : Control
         graph.SetClip(rectPath);
 
         // шторка кнопки при наведении
+
+        //Color startColorBorder = Color.FromArgb(50, 50, 50); 
+        //Color endColorBorder = Color.Black; 
         graph.DrawRectangle(new Pen(Color.FromArgb(150, Color.White)), rectCurtain);
+
+        //Color startColorBackground = Color.FromArgb(50, 50, 50); 
+        //Color endColorBackground = Color.FromArgb(200, 200, 200); 
         graph.FillRectangle(new SolidBrush(Color.FromArgb(80, Color.White)), rectCurtain);
+        //
 
 
         // Ripple-эффект при нажатии на кнопку
@@ -114,7 +121,6 @@ public class buttonUI : Control
         {
             graph.DrawEllipse(new Pen(Color.FromArgb(90, Color.Black)), rectRipple);
             graph.FillEllipse(new SolidBrush(Color.FromArgb(30, Color.Black)), rectRipple);
-
         }
         else if (RippleButtonAnim.Value >= RippleButtonAnim.TargetValue)
             RippleButtonAnim.Value = 0;
