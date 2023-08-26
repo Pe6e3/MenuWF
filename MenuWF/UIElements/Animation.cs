@@ -2,7 +2,7 @@
 
 public class Animation
 {
-    public int StepDivider = 15;  // Чем выше - тем ниже скорость анимации
+    public int StepDivider = 11;  // Чем выше - тем ниже скорость анимации
     public string ID { get; set; }
 
     public float Value;
