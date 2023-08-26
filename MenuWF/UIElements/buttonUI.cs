@@ -34,7 +34,7 @@ public class buttonUI : Control
     public string TextHover { get; set; }
 
     [DisplayName("Rounding [%]")]
-    [DefaultValue(100)]
+    [DefaultValue(33)]
     [Description("Вкл/выкл закругление углов")]
     public bool RoundingEnable
     {
@@ -69,7 +69,7 @@ public class buttonUI : Control
     private bool MousePressed = false;
 
     private bool roundingEnable = true;
-    private int roundingPercent = 80;
+    private int roundingPercent = 33;
 
     Animation CurtainButtonAnim = new Animation();
     Animation RippleButtonAnim = new Animation();
@@ -152,8 +152,15 @@ public class buttonUI : Control
         // шторка кнопки при наведении
         LinearGradientBrush buttonCurtainGradient = new LinearGradientBrush(startPoint, endPoint, Color.White, Color.Blue);
         ColorBlend colorCurtainBlend = new ColorBlend();
-        colorCurtainBlend.Colors = new Color[] { startColorBtn, middleColorBtn, endColorBorderBtn };
-        colorCurtainBlend.Positions = new float[] { 0.0f, 0.7f, 1.0f };
+       
+
+        colorCurtainBlend.Colors = new Color[] {
+                CurtainColor(startColorBtn,addBlue: 40),
+                CurtainColor(middleColorBtn,addBlue: 40),
+                CurtainColor(endColorBorderBtn,addBlue: 40)
+            };
+
+        colorCurtainBlend.Positions = new float[] { 0.0f, 0.45f, 1.0f };
         buttonCurtainGradient.InterpolationColors = colorCurtainBlend;
 
         graph.DrawRectangle(new Pen(Color.FromArgb(150, Color.White)), rectCurtain);
@@ -179,7 +186,11 @@ public class buttonUI : Control
             graph.DrawString(TextHover, new Font("Verdana", 8F, FontStyle.Bold), new SolidBrush(ForeColor), rectTextHover, SF);
         }
     }
-
+    private Color CurtainColor(Color color, int addBlue)
+    {
+        int B = Math.Min(color.B + addBlue, 255); // Ограничение до 255
+        return Color.FromArgb((int)(color.A * 0.9f), color.R, color.G, B);
+    }
     protected override void OnMouseEnter(EventArgs e)
     {
         base.OnMouseEnter(e);
