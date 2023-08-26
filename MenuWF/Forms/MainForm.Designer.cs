@@ -32,7 +32,8 @@ namespace MenuWF
         {
             productsButton = new Button();
             bottonux1 = new bottonUI();
-            egoldsCard1 = new cardUI();
+            cardui1 = new cardUI();
+            cardui2 = new cardUI();
             SuspendLayout();
             // 
             // productsButton
@@ -55,22 +56,47 @@ namespace MenuWF
             bottonux1.TabIndex = 1;
             bottonux1.Text = "Войти в систему";
             // 
-            // egoldsCard1
+            // cardui1
             // 
-            egoldsCard1.BackColor = Color.White;
-            egoldsCard1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            egoldsCard1.Location = new Point(213, 214);
-            egoldsCard1.Name = "egoldsCard1";
-            egoldsCard1.Size = new Size(250, 200);
-            egoldsCard1.TabIndex = 2;
-            egoldsCard1.Text = "egoldsCard1";
+            cardui1.BackColor = Color.White;
+            cardui1.BackColorCurtain = Color.FromArgb(231, 76, 60);
+            cardui1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cardui1.FontDescrition = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cardui1.FontHeader = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cardui1.ForeColorDescrition = Color.Black;
+            cardui1.ForeColorHeader = Color.White;
+            cardui1.Location = new Point(340, 59);
+            cardui1.Name = "cardui1";
+            cardui1.Size = new Size(250, 200);
+            cardui1.TabIndex = 2;
+            cardui1.Text = "Краткое описание";
+            cardui1.TextDescrition = "Тут длинное описание карточки";
+            cardui1.TextHeader = "Заголовок карточки";
+            // 
+            // cardui2
+            // 
+            cardui2.BackColor = Color.White;
+            cardui2.BackColorCurtain = Color.FromArgb(231, 76, 60);
+            cardui2.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cardui2.FontDescrition = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cardui2.FontHeader = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cardui2.ForeColorDescrition = Color.Black;
+            cardui2.ForeColorHeader = Color.White;
+            cardui2.Location = new Point(491, 194);
+            cardui2.Name = "cardui2";
+            cardui2.Size = new Size(250, 200);
+            cardui2.TabIndex = 3;
+            cardui2.Text = "cardui2";
+            cardui2.TextDescrition = "Your description text for this control";
+            cardui2.TextHeader = "Header";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(egoldsCard1);
+            Controls.Add(cardui2);
+            Controls.Add(cardui1);
             Controls.Add(bottonux1);
             Controls.Add(productsButton);
             Name = "MainForm";
@@ -83,6 +109,7 @@ namespace MenuWF
 
         private Button productsButton;
         private bottonUI bottonux1;
-        private cardUI egoldsCard1;
+        private cardUI cardui1;
+        private cardUI cardui2;
     }
 }

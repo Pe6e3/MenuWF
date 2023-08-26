@@ -1,4 +1,5 @@
 using MenuWF.Data;
+using MenuWF.UIElements;
 
 namespace MenuWF
 {
@@ -9,7 +10,7 @@ namespace MenuWF
         {
             _db = db;
             InitializeComponent();
-
+            Animator.Start();
         }
 
 

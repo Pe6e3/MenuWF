@@ -2,10 +2,14 @@
 
 public class Animation
 {
-    public string Id { get; set; }
-    public float Value { get; set; }
-    public float StartValue { get; set; }
-    private float targetValue { get; set; }
+    public int StepDivider = 15;  // Чем выше - тем ниже скорость анимации
+    public string ID { get; set; }
+
+    public float Value;
+
+    public float StartValue;
+
+    private float targetValue;
     public float TargetValue
     {
         get => targetValue;
@@ -17,28 +21,56 @@ public class Animation
     }
 
     public float Volume;
+
     public bool Reverse = false;
+
+    public AnimationStatus Status { get; set; }
     public enum AnimationStatus
     {
         Requested,
         Active,
         Completed
     }
-    public AnimationStatus Status { get; set; }
-    public float Step() => Math.Abs(Volume) / 11;
+
+    private float p15, p30, p70, p85;
+
+    private float Step()
+    {
+        float basicStep = Math.Abs(Volume) / StepDivider;
+        float resultStep = 0;
+
+        if (!Reverse)
+        {
+            if (Value <= p15 || Value >= p85)
+                resultStep = basicStep / 3.5f;
+            else if (Value <= p30 || Value >= p70)
+                resultStep = basicStep / 2f;
+            else if (Value > p30 && Value < p70)
+                resultStep = basicStep;
+        }
+        if (Reverse)
+        {
+            if (Value >= p15 || Value <= p85)
+                resultStep = basicStep / 3.5f;
+            else if (Value >= p30 || Value <= p70)
+                resultStep = basicStep / 2f;
+            else if (Value < p30 && Value > p70)
+                resultStep = basicStep;
+        }
+        return Math.Abs(resultStep);
+    }
+
+    private float ValueByPercent(float Percent)
+    {
+        float COEFF = Percent / 100;
+        float VolumeInPercent = Volume * COEFF;
+        float ValueInPercent = StartValue + VolumeInPercent;
+
+        return ValueInPercent;
+    }
 
     public delegate void ControlMethod();
     private ControlMethod InvalidateControl;
-
-    public Animation(string Id, ControlMethod InvalidateControl, float Value, float TargetValue)
-    {
-        this.Id = Id;
-        this.InvalidateControl = InvalidateControl;
-        this.Value = Value;
-        this.TargetValue = TargetValue;
-        StartValue = Value;
-        Volume = TargetValue - Value;
-    }
 
     public void UpdateFrame()
     {
@@ -56,7 +88,6 @@ public class Animation
                 }
             }
         }
-
         if (Reverse)
         {
             if (Value >= targetValue)
@@ -69,6 +100,25 @@ public class Animation
                 }
             }
         }
+
         InvalidateControl.Invoke();
+    }
+
+    public Animation() { }
+
+    public Animation(string ID, ControlMethod InvalidateControl, float Value, float TargetValue)
+    {
+        this.ID = ID;
+        this.InvalidateControl = InvalidateControl;
+        this.Value = Value;
+        this.TargetValue = TargetValue;
+
+        StartValue = Value;
+        Volume = TargetValue - Value;
+
+        p15 = ValueByPercent(15);
+        p30 = ValueByPercent(30);
+        p70 = ValueByPercent(70);
+        p85 = ValueByPercent(85);
     }
 }
