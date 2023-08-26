@@ -11,6 +11,8 @@ public class bottonUI : Control
     private bool MousePressed = false;
 
     Animation CurtainButtonAnim = new Animation();
+    Animation RippleButtonAnim = new Animation();
+    Point ClickLocation = new Point();
     public bottonUI()
     {
         SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint, true);
@@ -29,10 +31,17 @@ public class bottonUI : Control
         Graphics graph = e.Graphics;
         graph.SmoothingMode = SmoothingMode.HighQuality;
         graph.Clear(Parent.BackColor);
-       
+
         Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
         Rectangle rectCurtain = new Rectangle(0, 0, (int)CurtainButtonAnim.Value, Height - 1);
-        
+        Rectangle rectRipple = new Rectangle(
+            ClickLocation.X - (int)RippleButtonAnim.Value / 2,
+            ClickLocation.Y - (int)RippleButtonAnim.Value / 2,
+            (int)RippleButtonAnim.Value,
+            (int)RippleButtonAnim.Value
+            );
+
+
         // фон кнопки
         graph.DrawRectangle(new Pen(BackColor), rect);
         graph.FillRectangle(new SolidBrush(BackColor), rect);
@@ -41,11 +50,18 @@ public class bottonUI : Control
         graph.DrawRectangle(new Pen(Color.FromArgb(150, Color.White)), rectCurtain);
         graph.FillRectangle(new SolidBrush(Color.FromArgb(80, Color.White)), rectCurtain);
 
-        if (MousePressed)
+
+        // Ripple-эффект при нажатии на кнопку
+        if (RippleButtonAnim.Value > 0 && RippleButtonAnim.Value < RippleButtonAnim.TargetValue)
         {
-            graph.DrawRectangle(new Pen(Color.FromArgb(90, Color.Black)), rect);
-            graph.FillRectangle(new SolidBrush(Color.FromArgb(30, Color.Black)), rect);
+            graph.DrawEllipse(new Pen(Color.FromArgb(90, Color.Black)), rectRipple);
+            graph.FillEllipse(new SolidBrush(Color.FromArgb(30, Color.Black)), rectRipple);
+
         }
+        else if (RippleButtonAnim.Value >= RippleButtonAnim.TargetValue)
+            RippleButtonAnim.Value = 0;
+
+
         graph.DrawString(Text, Font, new SolidBrush(ForeColor), rect, SF);
     }
 
@@ -66,7 +82,7 @@ public class bottonUI : Control
 
     private void ButtonCurtainAction()
     {
-        if(MouseEntered)
+        if (MouseEntered)
             CurtainButtonAnim = new Animation("ButtonCurtain_" + Handle, Invalidate, CurtainButtonAnim.Value, Width - 1);
         else
             CurtainButtonAnim = new Animation("ButtonCurtain_" + Handle, Invalidate, CurtainButtonAnim.Value, 0);
@@ -78,14 +94,21 @@ public class bottonUI : Control
     {
         base.OnMouseDown(e);
         MousePressed = true;
-        Invalidate();
+        CurtainButtonAnim.Value = CurtainButtonAnim.TargetValue;
+        ClickLocation = e.Location;
+        ButtonRippleAction();
+    }
+
+    private void ButtonRippleAction()
+    {
+        RippleButtonAnim = new Animation("ButtonRipple_" + Handle, Invalidate, 0, Width);
+        Animator.Request(RippleButtonAnim, true);
     }
 
     protected override void OnMouseUp(MouseEventArgs e)
     {
         base.OnMouseUp(e);
         MousePressed = false;
-        Invalidate();
     }
 
 }
