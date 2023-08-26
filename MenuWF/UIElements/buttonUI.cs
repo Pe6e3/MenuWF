@@ -100,19 +100,19 @@ public class buttonUI : Control
         GraphicsPath rectPath = Drawer.RoundedRectangle(rect, roundingValue);
 
         // фон кнопки
-        graph.DrawPath(new Pen(BackColor), rectPath);
-        graph.FillPath(new SolidBrush(BackColor), rectPath);
+        Color startColorBorder = Color.FromArgb(70, 50, 50, 50);
+        Color endColorBorder = Color.FromArgb(70, 200, 200, 200);
+        LinearGradientBrush buttonGradient = new LinearGradientBrush(rect, startColorBorder, endColorBorder, 360);
+        graph.DrawPath(new Pen(Color.LightGray), rectPath);
+        graph.FillPath(buttonGradient, rectPath);
+
         graph.SetClip(rectPath);
 
         // шторка кнопки при наведении
 
-        //Color startColorBorder = Color.FromArgb(50, 50, 50); 
-        //Color endColorBorder = Color.Black; 
+        LinearGradientBrush buttonCurtainGradient = new LinearGradientBrush(rect, startColorBorder, endColorBorder, 320);
         graph.DrawRectangle(new Pen(Color.FromArgb(150, Color.White)), rectCurtain);
-
-        //Color startColorBackground = Color.FromArgb(50, 50, 50); 
-        //Color endColorBackground = Color.FromArgb(200, 200, 200); 
-        graph.FillRectangle(new SolidBrush(Color.FromArgb(80, Color.White)), rectCurtain);
+        graph.FillRectangle(buttonCurtainGradient, rectCurtain);
         //
 
 
