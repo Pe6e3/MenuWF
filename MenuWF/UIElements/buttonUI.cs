@@ -100,20 +100,35 @@ public class buttonUI : Control
         GraphicsPath rectPath = Drawer.RoundedRectangle(rect, roundingValue);
 
         // фон кнопки
-        Color startColorBorder = Color.FromArgb(70, 50, 50, 50);
-        Color endColorBorder = Color.FromArgb(70, 200, 200, 200);
-        LinearGradientBrush buttonGradient = new LinearGradientBrush(rect, startColorBorder, endColorBorder, 360);
+        Color startColorBorder = Color.FromArgb(85, 90, 90, 90);
+        Color middleColor = Color.FromArgb(85, 130, 130, 130);
+        Color endColorBorder = Color.FromArgb(85, 70, 70, 70);
+
+        // Определение точек и позиций для градиента
+        Point startPoint = new Point(0, 0); // Левый край
+        Point endPoint = new Point(Width, 0); //Правый край
+
+        LinearGradientBrush buttonGradient = new LinearGradientBrush(startPoint, endPoint, Color.Black, Color.Black);
+        ColorBlend colorBlend = new ColorBlend();
+        colorBlend.Colors = new Color[] { startColorBorder, middleColor, endColorBorder };
+        colorBlend.Positions = new float[] { 0.0f, 0.4f, 1.0f };
+        buttonGradient.InterpolationColors = colorBlend;
+
         graph.DrawPath(new Pen(Color.LightGray), rectPath);
         graph.FillPath(buttonGradient, rectPath);
+
 
         graph.SetClip(rectPath);
 
         // шторка кнопки при наведении
+        LinearGradientBrush buttonCurtainGradient = new LinearGradientBrush(startPoint, endPoint, Color.White, Color.Blue);
+        ColorBlend colorCurtainBlend = new ColorBlend();
+        colorCurtainBlend.Colors = new Color[] { startColorBorder, middleColor, endColorBorder };
+        colorCurtainBlend.Positions = new float[] { 0.0f, 0.7f, 1.0f };
+        buttonCurtainGradient.InterpolationColors = colorCurtainBlend;
 
-        LinearGradientBrush buttonCurtainGradient = new LinearGradientBrush(rect, startColorBorder, endColorBorder, 320);
         graph.DrawRectangle(new Pen(Color.FromArgb(150, Color.White)), rectCurtain);
         graph.FillRectangle(buttonCurtainGradient, rectCurtain);
-        //
 
 
         // Ripple-эффект при нажатии на кнопку
