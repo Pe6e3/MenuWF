@@ -83,10 +83,10 @@ public class buttonUI : Control
         Rectangle rect = new Rectangle(0, 0, Width, Height);
         Rectangle rectCurtain = new Rectangle(0, 0, (int)CurtainButtonAnim.Value, Height);
         Rectangle rectRipple = new Rectangle(
-            ClickLocation.X - (int)RippleButtonAnim.Value / 2,
-            ClickLocation.Y - (int)RippleButtonAnim.Value / 2,
-            (int)RippleButtonAnim.Value,
-            (int)RippleButtonAnim.Value
+            ClickLocation.X - (int)RippleButtonAnim.Value,
+            ClickLocation.Y - (int)RippleButtonAnim.Value,
+            (int)RippleButtonAnim.Value * 2,
+            (int)RippleButtonAnim.Value * 2
             );
 
         Rectangle rectText = new Rectangle((int)TextSlideAnim.Value, rect.Y, rect.Width, rect.Height);
