@@ -15,7 +15,7 @@ public static class Animator
 
     public static void Start()
     {
-        Interval = 15; // FPS ~65
+        Interval = 3; // 
 
         AnimatorThread = new Thread(AnimationInvoker)
         {

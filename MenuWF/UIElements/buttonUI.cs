@@ -9,6 +9,27 @@ public class buttonUI : Control
 {
     #region -- Свойства --
 
+    [DisplayName("Цвет левого края")]
+    public Color startColorBtn
+    {
+        get => _startColorBorder;
+        set => _startColorBorder = value.IsEmpty ? FlatColors.GrayDark : value;
+    }
+
+    [DisplayName("Цвет середины")]
+    public Color middleColorBtn
+    {
+        get => _middleColorBtn;
+        set => _middleColorBtn = value.IsEmpty ? FlatColors.Gray : value;
+    }
+
+    [DisplayName("Цвет правого края")]
+    public Color endColorBorderBtn
+    {
+        get => _endColorBorderBtn;
+        set => _endColorBorderBtn = value.IsEmpty ? FlatColors.GreenSea : value;
+    }
+
     [Description("Текст кнопки при наведении")]
     public string TextHover { get; set; }
 
@@ -47,14 +68,18 @@ public class buttonUI : Control
     private bool MouseEntered = false;
     private bool MousePressed = false;
 
-    private bool roundingEnable = false;
-    private int roundingPercent = 100;
+    private bool roundingEnable = true;
+    private int roundingPercent = 80;
 
     Animation CurtainButtonAnim = new Animation();
     Animation RippleButtonAnim = new Animation();
     Animation TextSlideAnim = new Animation();
 
+
     Point ClickLocation = new Point();
+    private Color _startColorBorder;
+    private Color _middleColorBtn;
+    private Color _endColorBorderBtn;
     #endregion
 
 
@@ -92,6 +117,13 @@ public class buttonUI : Control
         Rectangle rectText = new Rectangle((int)TextSlideAnim.Value, rect.Y, rect.Width, rect.Height);
         Rectangle rectTextHover = new Rectangle((int)TextSlideAnim.Value - rect.Width, rect.Y, rect.Width, rect.Height);
 
+
+        // Скорость анимаций
+        CurtainButtonAnim.StepDivider = TextSlideAnim.StepDivider = 14;
+        RippleButtonAnim.StepDivider = 20;
+
+
+
         // Закругление
         float roundingValue = 0.1F;
         if (RoundingEnable && roundingPercent > 0)
@@ -100,9 +132,6 @@ public class buttonUI : Control
         GraphicsPath rectPath = Drawer.RoundedRectangle(rect, roundingValue);
 
         // фон кнопки
-        Color startColorBorder = Color.FromArgb(85, 90, 90, 90);
-        Color middleColor = Color.FromArgb(85, 130, 130, 130);
-        Color endColorBorder = Color.FromArgb(85, 70, 70, 70);
 
         // Определение точек и позиций для градиента
         Point startPoint = new Point(0, 0); // Левый край
@@ -110,7 +139,7 @@ public class buttonUI : Control
 
         LinearGradientBrush buttonGradient = new LinearGradientBrush(startPoint, endPoint, Color.Black, Color.Black);
         ColorBlend colorBlend = new ColorBlend();
-        colorBlend.Colors = new Color[] { startColorBorder, middleColor, endColorBorder };
+        colorBlend.Colors = new Color[] { startColorBtn, middleColorBtn, endColorBorderBtn };
         colorBlend.Positions = new float[] { 0.0f, 0.4f, 1.0f };
         buttonGradient.InterpolationColors = colorBlend;
 
@@ -123,7 +152,7 @@ public class buttonUI : Control
         // шторка кнопки при наведении
         LinearGradientBrush buttonCurtainGradient = new LinearGradientBrush(startPoint, endPoint, Color.White, Color.Blue);
         ColorBlend colorCurtainBlend = new ColorBlend();
-        colorCurtainBlend.Colors = new Color[] { startColorBorder, middleColor, endColorBorder };
+        colorCurtainBlend.Colors = new Color[] { startColorBtn, middleColorBtn, endColorBorderBtn };
         colorCurtainBlend.Positions = new float[] { 0.0f, 0.7f, 1.0f };
         buttonCurtainGradient.InterpolationColors = colorCurtainBlend;
 
@@ -148,7 +177,6 @@ public class buttonUI : Control
         {
             graph.DrawString(Text, Font, new SolidBrush(ForeColor), rectText, SF);
             graph.DrawString(TextHover, new Font("Verdana", 8F, FontStyle.Bold), new SolidBrush(ForeColor), rectTextHover, SF);
-
         }
     }
 
@@ -175,7 +203,7 @@ public class buttonUI : Control
         else
             TextSlideAnim = new Animation("TextSlide_" + Handle, Invalidate, TextSlideAnim.Value, 0);
 
-        TextSlideAnim.StepDivider = 8;
+
         Animator.Request(TextSlideAnim, true);
     }
 
