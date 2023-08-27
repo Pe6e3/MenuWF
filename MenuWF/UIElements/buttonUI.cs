@@ -176,7 +176,7 @@ public class buttonUI : Control
             RippleButtonAnim.Value = 0;
 
 
-        Font FontHover = new Font(Font.FontFamily, 9F, Font.Style);
+        Font FontHover = new Font(Font.FontFamily, 9F, Font.Style);  // Задаем шрифт текста на шторке такой же, как основной, только с размером 9f
 
 
         // Рисуем текст
