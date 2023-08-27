@@ -176,13 +176,16 @@ public class buttonUI : Control
             RippleButtonAnim.Value = 0;
 
 
+        Font FontHover = new Font(Font.FontFamily, 9F, Font.Style);
+
+
         // Рисуем текст
         if (string.IsNullOrEmpty(TextHover))
             graph.DrawString(Text, Font, new SolidBrush(ForeColor), rect, SF);
         else
         {
             graph.DrawString(Text, Font, new SolidBrush(ForeColor), rectText, SF);
-            graph.DrawString(TextHover, new Font("Verdana", 8F, FontStyle.Bold), new SolidBrush(ForeColor), rectTextHover, SF);
+            graph.DrawString(TextHover, FontHover, new SolidBrush(ForeColor), rectTextHover, SF);
         }
     }
     private Color CurtainColor(Color color, int addBlue)
