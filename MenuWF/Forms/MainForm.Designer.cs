@@ -30,9 +30,12 @@ namespace MenuWF
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             addProductBtn = new buttonUI();
             addDishBtn = new buttonUI();
             addMenuBtn = new buttonUI();
+            egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
+            cardui1 = new cardUI();
             SuspendLayout();
             // 
             // addProductBtn
@@ -41,7 +44,7 @@ namespace MenuWF
             addProductBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProductBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addProductBtn.ForeColor = Color.White;
-            addProductBtn.Location = new Point(400, 170);
+            addProductBtn.Location = new Point(401, 170);
             addProductBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addProductBtn.Name = "addProductBtn";
             addProductBtn.Rounding = 33;
@@ -85,11 +88,34 @@ namespace MenuWF
             addMenuBtn.Text = "Составить меню";
             addMenuBtn.TextHover = "Сформировать Завтрак, Обед и Ужин из блюд";
             // 
+            // egoldsFormStyle1
+            // 
+            egoldsFormStyle1.Form = this;
+            egoldsFormStyle1.FormStyle = UIElements.EgoldsFormStyle.fStyle.SimpleDark;
+            // 
+            // cardui1
+            // 
+            cardui1.BackColor = Color.White;
+            cardui1.BackColorCurtain = Color.FromArgb(231, 76, 60);
+            cardui1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cardui1.FontDescrition = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            cardui1.FontHeader = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            cardui1.ForeColorDescrition = Color.Black;
+            cardui1.ForeColorHeader = Color.White;
+            cardui1.Location = new Point(12, 12);
+            cardui1.Name = "cardui1";
+            cardui1.Size = new Size(250, 200);
+            cardui1.TabIndex = 3;
+            cardui1.Text = "cardui1";
+            cardui1.TextDescrition = "Your description text for this control";
+            cardui1.TextHeader = "Header";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(971, 685);
+            Controls.Add(cardui1);
             Controls.Add(addMenuBtn);
             Controls.Add(addDishBtn);
             Controls.Add(addProductBtn);
@@ -103,5 +129,7 @@ namespace MenuWF
         private buttonUI addProductBtn;
         private buttonUI addDishBtn;
         private buttonUI addMenuBtn;
+        private UIElements.EgoldsFormStyle egoldsFormStyle1;
+        private cardUI cardui1;
     }
 }
