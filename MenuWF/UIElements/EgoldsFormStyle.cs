@@ -35,9 +35,7 @@ namespace MenuWF.UIElements
         public enum fStyle // Набор стилей
         {
             None,
-
             UserStyle,
-
             SimpleDark,
             TelegramStyle
         }
@@ -48,9 +46,8 @@ namespace MenuWF.UIElements
         [Description("Указывает, включен ли эффект свечения от курсора при наведении на значки меню окна")]
         public bool EnableControlBoxMouseLight { get; set; }
 
-        /// <summary>
+
         /// Указывает, включен ли эффект свечения от значков меню окна
-        /// </summary>
         [Description("Указывает, включен ли эффект свечения от значков меню окна")]
         public bool EnableControlBoxIconsLight { get; set; }
 
@@ -160,9 +157,7 @@ namespace MenuWF.UIElements
             InitializeComponent();
         }
 
-        /// <summary>
         /// Определение стилей (тем)
-        /// </summary>
         private void DefineStyles()
         {
             StylesDictionary = new Dictionary<fStyle, EgoldsStyle>();
@@ -215,9 +210,7 @@ namespace MenuWF.UIElements
                 });
         }
 
-        /// <summary>
         /// Сохранение значения свойста FormBorderStyle стандартной формы в стиль "NoneStyle", выполняется только один раз
-        /// </summary>
         private void SaveNoneStyleConfig()
         {
             if (StylesDictionary.ContainsKey(fStyle.None) && StyleUsed == false)
@@ -247,9 +240,8 @@ namespace MenuWF.UIElements
             }
         }
 
-        /// <summary>
+
         /// Подписываем форме новое событие, для применения стилей
-        /// </summary>
         private void Sign()
         {
             if (Form != null)
@@ -266,9 +258,8 @@ namespace MenuWF.UIElements
             }
         }
 
-        /// <summary>
+
         /// Первоначальная настройка формы
-        /// </summary>
         private void Apply()
         {
             SaveNoneStyleConfig();
@@ -300,10 +291,8 @@ namespace MenuWF.UIElements
 
         }
 
-        /// <summary>
+
         /// Изменение стиля
-        /// </summary>
-        /// <param name="Style">Стиль из набора fStyle</param>
         private void SetStyle(fStyle Style)
         {
             FormWindowState formWindowStateTEMP = Form.WindowState;
@@ -340,10 +329,8 @@ namespace MenuWF.UIElements
             Form.WindowState = formWindowStateTEMP;
         }
 
-        /// <summary>
+
         /// Смещение контролов
-        /// </summary>
-        /// <param name="offsett"></param>
         private void OffsetControls(int offsett)
         {
             foreach (Control ctrl in Form.Controls)
@@ -803,10 +790,8 @@ namespace MenuWF.UIElements
 
         #endregion
 
-        /// <summary>
+
         /// Рисование стиля
-        /// </summary>
-        /// <param name="graph"></param>
         private void DrawStyle(Graphics graph)
         {
             graph.SmoothingMode = SmoothingMode.HighQuality;
@@ -952,10 +937,8 @@ namespace MenuWF.UIElements
                 if (EnableControlBoxIconsLight)
                 {
                     if (Form.WindowState == FormWindowState.Maximized)
-                    {
-                        Drawer.DrawBlurredRectangle(graph, Color.White, rectMaxButtonIconSecond, 8, 20);
-                    }
-                    Drawer.DrawBlurredRectangle(graph, Color.White, rectMaxButtonIcon, 8, 20);
+                        Drawer.DrawBlurredRectangle(graph, Color.White, rectMaxButtonIconSecond, 8,14);
+                    Drawer.DrawBlurredRectangle(graph, Color.White, rectMaxButtonIcon, 8,14);
                 }
 
                 // Draw icon
@@ -977,9 +960,7 @@ namespace MenuWF.UIElements
 
                 // Draw icon
                 if (EnableControlBoxIconsLight)
-                {
-                    Drawer.DrawBlurredLine(graph, Color.White, point1BtnMin, point2BtnMin, 8, 20);
-                }
+                    Drawer.DrawBlurredLine(graph, Color.White, point1BtnMin, point2BtnMin, 8, 16);
                 graph.DrawLine(penBtnMinimize, point1BtnMin, point2BtnMin);
 
                 #endregion
@@ -991,7 +972,7 @@ namespace MenuWF.UIElements
                 {
                     Point cursorPoint1 = Form.PointToClient(Cursor.Position);
                     Point cursorPoint2 = new Point(cursorPoint1.X, cursorPoint1.Y + 1);
-                    Drawer.DrawBlurredLine(graph, Color.White, cursorPoint1, cursorPoint2, 7, 70);
+                    Drawer.DrawBlurredLine(graph, Color.White, cursorPoint1, cursorPoint2, 7, 50);
                 }
 
                 #endregion
@@ -1003,12 +984,8 @@ namespace MenuWF.UIElements
             #endregion
         }
 
-        /// <summary>
+
         /// Рисование крестика
-        /// </summary>
-        /// <param name="graph"></param>
-        /// <param name="rect"></param>
-        /// <param name="pen"></param>
         private void DrawCrosshair(Graphics graph, Rectangle rect, Pen pen)
         {
             if (EnableControlBoxIconsLight)
@@ -1019,14 +996,14 @@ namespace MenuWF.UIElements
                     new Point(rect.X, rect.Y),
                     new Point(rect.X + rect.Width, rect.Y + rect.Height),
                     8,
-                    20);
+                    16);
 
                 Drawer.DrawBlurredLine(graph,
                     Color.White,
                     new Point(rect.X + rect.Width, rect.Y),
                     new Point(rect.X, rect.Y + rect.Height),
                     8,
-                    20);
+                    16);
             }
 
             graph.DrawLine(
@@ -1044,10 +1021,8 @@ namespace MenuWF.UIElements
                 rect.Y + rect.Height);
         }
 
-        /// <summary>
+
         /// Включение DoubleBuffered, для предотвращения мерцания
-        /// </summary>
-        /// <param name="c"></param>
         public static void SetDoubleBuffered(Control c)
         {
             if (SystemInformation.TerminalServerSession)

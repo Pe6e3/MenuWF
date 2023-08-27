@@ -90,8 +90,22 @@ namespace MenuWF
             // 
             // egoldsFormStyle1
             // 
+            egoldsFormStyle1.AllowUserResize = false;
+            egoldsFormStyle1.BackColor = Color.White;
+            egoldsFormStyle1.ContextMenuForm = null;
+            egoldsFormStyle1.ControlBoxButtonsWidth = 20;
+            egoldsFormStyle1.EnableControlBoxIconsLight = true;
+            egoldsFormStyle1.EnableControlBoxMouseLight = true;
             egoldsFormStyle1.Form = this;
             egoldsFormStyle1.FormStyle = UIElements.EgoldsFormStyle.fStyle.SimpleDark;
+            egoldsFormStyle1.HeaderColor = Color.DimGray;
+            egoldsFormStyle1.HeaderColorAdditional = Color.White;
+            egoldsFormStyle1.HeaderColorGradientEnable = false;
+            egoldsFormStyle1.HeaderColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            egoldsFormStyle1.HeaderHeight = 38;
+            egoldsFormStyle1.HeaderImage = null;
+            egoldsFormStyle1.HeaderTextColor = Color.White;
+            egoldsFormStyle1.HeaderTextFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             // 
             // cardui1
             // 
