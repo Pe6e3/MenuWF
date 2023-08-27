@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using MenuWF.UXElements;
+using System.ComponentModel;
 using System.Drawing.Drawing2D;
 
 namespace MenuWF.UIElements
@@ -39,6 +40,10 @@ namespace MenuWF.UIElements
         private bool MousePressed = false;
         private Point clickPosition;     // позиция курсора в момент клика
         private Point moveStartPosition; // позция формы в момент клика
+        private Pen WhitePen = new Pen(Color.White) { Width = 1.7F };
+
+        private Rectangle rectBtnClose = new Rectangle();
+        private bool btnCloseHovered = false;
 
         #endregion
 
@@ -56,6 +61,7 @@ namespace MenuWF.UIElements
         }
         #endregion
 
+
         private void Sign()
         {
             if (Form != null)
@@ -67,18 +73,28 @@ namespace MenuWF.UIElements
             SF.Alignment = StringAlignment.Near;
             SF.LineAlignment = StringAlignment.Center;
             Form.FormBorderStyle = FormBorderStyle.None;
+            SetDoubleBuffered(Form);
             OffSetControls();
             Form.Paint += FormPaint;
 
             Form.MouseDown += Form_MouseDown;
             Form.MouseUp += Form_MouseUp;
             Form.MouseMove += Form_MouseMove;
+            Form.MouseLeave += Form_MouseLeave;
+        }
+
+        private void Form_MouseLeave(object? sender, EventArgs e)
+        {
+            btnCloseHovered = false;
+            Form.Invalidate();
         }
 
         private void Form_MouseUp(object? sender, MouseEventArgs e)
         {
             MousePressed = false;
-
+            if (e.Button == MouseButtons.Left)
+                if (rectBtnClose.Contains(e.Location))
+                    Form.Close();
         }
         private void Form_MouseDown(object? sender, MouseEventArgs e)
         {
@@ -97,7 +113,27 @@ namespace MenuWF.UIElements
                 Size frmOffset = new Size(Point.Subtract(Cursor.Position, new Size(clickPosition)));
                 Form.Location = Point.Add(moveStartPosition, frmOffset);
             }
+            else
+            {
+                if (rectBtnClose.Contains(e.Location))// Если мышь не нажата, проверяем, находится ли курсор над кнопкой закрытия
+                {
+                    if (!btnCloseHovered) // Если кнопка закрытия не была выделена ранее
+                    {
+                        btnCloseHovered = true;// Отмечаем, что кнопка закрытия теперь выделена
+                        Form.Invalidate(); // Обновляем вид формы, чтобы отобразить выделение кнопки
+                    }
+                }
+                else
+                {
+                    if (btnCloseHovered)// Если курсор не на кнопке закрытия, и кнопка была выделена ранее
+                    {
+                        btnCloseHovered = false;// Отмечаем, что кнопка закрытия теперь не выделена
+                        Form.Invalidate(); // Обновляем вид формы, чтобы снять выделение с кнопки
+                    }
+                }
+            }
         }
+
 
 
         private void FormPaint(object? sender, PaintEventArgs e)
@@ -116,6 +152,11 @@ namespace MenuWF.UIElements
                 rectHeader.Height / 2 - IconSize.Height / 2,
                 IconSize.Width, IconSize.Height
                 );
+            rectBtnClose = new Rectangle(rectHeader.Width - rectHeader.Height, rectHeader.Y, rectHeader.Height, rectHeader.Height);
+            Rectangle rectCrosshair = new Rectangle(
+                rectBtnClose.X + rectBtnClose.Width / 2 - 5,
+                rectBtnClose.Height / 2 - 5,
+                10, 10);
 
             // Шапка
             graph.DrawRectangle(new Pen(HeaderColor), rectHeader);
@@ -129,6 +170,19 @@ namespace MenuWF.UIElements
 
             // Иконка
             graph.DrawImage(Form.Icon.ToBitmap(), rectIcon);
+
+            // Кнопка Х
+            graph.DrawRectangle(new Pen(btnCloseHovered ? FlatColors.Red : HeaderColor), rectBtnClose);
+            graph.FillRectangle(new SolidBrush(btnCloseHovered ? FlatColors.Red : HeaderColor), rectBtnClose);
+
+            DrawCrosshair(graph, rectCrosshair, (btnCloseHovered ? WhitePen : new Pen(FlatColors.Gray)));
+
+        }
+
+        private void DrawCrosshair(Graphics graph, Rectangle rect, Pen pen)
+        {
+            graph.DrawLine(pen, rect.X, rect.Y, rect.X + rect.Width, rect.Y + rect.Height);
+            graph.DrawLine(pen, rect.X + rect.Width, rect.Y, rect.X, rect.Y + rect.Height);
 
         }
 
@@ -147,6 +201,19 @@ namespace MenuWF.UIElements
         {
             Apply();
         }
+
+        public static void SetDoubleBuffered(Control c)
+        {
+            if (SystemInformation.TerminalServerSession) return;
+
+            System.Reflection.PropertyInfo pDoubleBuffered =
+                typeof(Control).GetProperty(
+                    "DoubleBuffered",
+                    System.Reflection.BindingFlags.NonPublic |
+                    System.Reflection.BindingFlags.Instance);
+            pDoubleBuffered.SetValue(c, true, null);
+        }
+
 
     }
 }

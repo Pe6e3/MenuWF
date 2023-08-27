@@ -3,7 +3,7 @@ using MenuWF.UIElements;
 
 namespace MenuWF
 {
-    public partial class MainForm : Form
+    public partial class MainForm : ShadowedForm
     {
         private readonly AppDbContext _db;
         public MainForm(AppDbContext db)
