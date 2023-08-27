@@ -31,6 +31,7 @@ namespace MenuWF
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             addProductBtn = new buttonUI();
             addDishBtn = new buttonUI();
             addMenuBtn = new buttonUI();
@@ -97,13 +98,13 @@ namespace MenuWF
             egoldsFormStyle1.EnableControlBoxIconsLight = true;
             egoldsFormStyle1.EnableControlBoxMouseLight = true;
             egoldsFormStyle1.Form = this;
-            egoldsFormStyle1.FormStyle = UIElements.EgoldsFormStyle.fStyle.SimpleDark;
-            egoldsFormStyle1.HeaderColor = Color.DimGray;
-            egoldsFormStyle1.HeaderColorAdditional = Color.White;
-            egoldsFormStyle1.HeaderColorGradientEnable = false;
-            egoldsFormStyle1.HeaderColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            egoldsFormStyle1.FormStyle = UIElements.EgoldsFormStyle.fStyle.UserStyle;
+            egoldsFormStyle1.HeaderColor = Color.DarkSlateGray;
+            egoldsFormStyle1.HeaderColorAdditional = Color.FromArgb(140, 100, 100);
+            egoldsFormStyle1.HeaderColorGradientEnable = true;
+            egoldsFormStyle1.HeaderColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             egoldsFormStyle1.HeaderHeight = 38;
-            egoldsFormStyle1.HeaderImage = null;
+            egoldsFormStyle1.HeaderImage = (Image)resources.GetObject("egoldsFormStyle1.HeaderImage");
             egoldsFormStyle1.HeaderTextColor = Color.White;
             egoldsFormStyle1.HeaderTextFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             // 
