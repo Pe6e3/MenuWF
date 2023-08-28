@@ -36,6 +36,7 @@
             fatsField = new TextBox();
             carbsField = new TextBox();
             caloriesField = new TextBox();
+            addProductBtn = new UXElements.buttonUI();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -61,10 +62,10 @@
             // 
             allProductsListbox.FormattingEnabled = true;
             allProductsListbox.ItemHeight = 15;
-            allProductsListbox.Location = new Point(543, 34);
+            allProductsListbox.Location = new Point(541, 34);
             allProductsListbox.Name = "allProductsListbox";
             allProductsListbox.Size = new Size(120, 274);
-            allProductsListbox.TabIndex = 0;
+            allProductsListbox.TabIndex = 7;
             // 
             // productNameField
             // 
@@ -73,7 +74,7 @@
             productNameField.Name = "productNameField";
             productNameField.PlaceholderText = "Название продукта";
             productNameField.Size = new Size(141, 23);
-            productNameField.TabIndex = 2;
+            productNameField.TabIndex = 1;
             // 
             // protsField
             // 
@@ -92,7 +93,7 @@
             fatsField.Name = "fatsField";
             fatsField.PlaceholderText = "Жиры";
             fatsField.Size = new Size(141, 23);
-            fatsField.TabIndex = 2;
+            fatsField.TabIndex = 3;
             fatsField.TextChanged += fatsField_TextChanged;
             // 
             // carbsField
@@ -102,7 +103,7 @@
             carbsField.Name = "carbsField";
             carbsField.PlaceholderText = "Углеводы";
             carbsField.Size = new Size(141, 23);
-            carbsField.TabIndex = 2;
+            carbsField.TabIndex = 4;
             carbsField.TextChanged += carbsField_TextChanged;
             // 
             // caloriesField
@@ -112,14 +113,32 @@
             caloriesField.Name = "caloriesField";
             caloriesField.PlaceholderText = "Калории";
             caloriesField.Size = new Size(141, 23);
-            caloriesField.TabIndex = 2;
+            caloriesField.TabIndex = 5;
             caloriesField.TextChanged += caloriesField_TextChanged;
+            // 
+            // addProductBtn
+            // 
+            addProductBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            addProductBtn.Font = new Font("W3$iP", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            addProductBtn.ForeColor = Color.White;
+            addProductBtn.Location = new Point(89, 244);
+            addProductBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            addProductBtn.Name = "addProductBtn";
+            addProductBtn.Rounding = 33;
+            addProductBtn.RoundingEnable = true;
+            addProductBtn.Size = new Size(165, 32);
+            addProductBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            addProductBtn.TabIndex = 6;
+            addProductBtn.Text = "Добавить продукт";
+            addProductBtn.TextHover = null;
+            addProductBtn.Click += addProductBtn_Click;
             // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(addProductBtn);
             Controls.Add(caloriesField);
             Controls.Add(carbsField);
             Controls.Add(fatsField);
@@ -142,5 +161,6 @@
         private TextBox caloriesField;
         private TextBox carbsField;
         private TextBox fatsField;
+        private UXElements.buttonUI addProductBtn;
     }
 }

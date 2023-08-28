@@ -52,5 +52,38 @@ namespace MenuWF.Forms
         {
             FormHelper.ValidateDecimal(caloriesField, maxValue: 900);
         }
+
+        private void addProductBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Product product = new Product();
+                product.Name = productNameField.Text;
+                product.Prots = string.IsNullOrWhiteSpace(protsField.Text) ? 0 : Convert.ToDecimal(protsField.Text);
+                product.Fats = string.IsNullOrWhiteSpace(fatsField.Text) ? 0 : Convert.ToDecimal(fatsField.Text);
+                product.Carbs = string.IsNullOrWhiteSpace(carbsField.Text) ? 0 : Convert.ToDecimal(carbsField.Text);
+                product.Calories = string.IsNullOrWhiteSpace(caloriesField.Text) ? 0 : Convert.ToDecimal(caloriesField.Text);
+
+                if (productNameField.Text.Length > 0)
+                    AddProduct(product);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при попытке добавить продукт: " + ex);
+            }
+
+        }
+
+        private void AddProduct(Product product)
+        {
+            _db.Products.Add(product);
+            _db.SaveChanges();
+            RefreshProducts();
+            FormHelper.ClearFields(this);
+            this.ActiveControl = null;
+        }
+
+
+
     }
 }

@@ -32,7 +32,7 @@ public static class FormHelper
             if (textField.Text.Length > 1)
             {
                 textField.Text = textField.Text.Substring(0, textField.Text.Length - 1);
-                textField.SelectionStart = textField.Text.Length; 
+                textField.SelectionStart = textField.Text.Length;
             }
             else
             {
@@ -45,6 +45,16 @@ public static class FormHelper
             textField.SelectionStart = textField.Text.Length;
         }
     }
+
+    public static void ClearFields(Control control)
+    {
+        foreach (Control c in control.Controls)
+            if (c is TextBox textBox)
+                textBox.Text = "";
+            else if (c.Controls.Count > 0)
+                ClearFields(c); // Рекурсивный вызов для вложенных контролов
+    }
+
 
 
 }

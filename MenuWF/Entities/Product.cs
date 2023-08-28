@@ -3,8 +3,8 @@
 public class Product : BaseEntity
 {
     public string Name { get; set; }
-    public int Prots { get; set; }
-    public int Carbs { get; set; }
-    public int Fats { get; set; }
-    public int Calories { get; set; }
+    public decimal Prots { get; set; }
+    public decimal Carbs { get; set; }
+    public decimal Fats { get; set; }
+    public decimal Calories { get; set; }
 }
