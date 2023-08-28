@@ -11,15 +11,16 @@ namespace MenuWF.Forms
         {
             _db = db;
             InitializeComponent();
+            Load += ProductsForm_Load;
             Animator.Start();
         }
 
-        public void ProductsForm_Load()
+        private void ProductsForm_Load(object? sender, EventArgs e)
         {
             RefreshProducts();
 
-
         }
+
 
         private void RefreshProducts()
         {

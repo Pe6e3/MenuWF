@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
             allProductsListbox = new ListBox();
-            listView1 = new ListView();
+            comboBox1 = new ComboBox();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -62,20 +62,20 @@
             allProductsListbox.Size = new Size(120, 94);
             allProductsListbox.TabIndex = 0;
             // 
-            // listView1
+            // comboBox1
             // 
-            listView1.Location = new Point(361, 87);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(121, 97);
-            listView1.TabIndex = 1;
-            listView1.UseCompatibleStateImageBehavior = false;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(292, 74);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 1;
             // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            Controls.Add(comboBox1);
             Controls.Add(allProductsListbox);
             Name = "ProductsForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -87,6 +87,6 @@
 
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
         private ListBox allProductsListbox;
-        private ListView listView1;
+        private ComboBox comboBox1;
     }
 }
