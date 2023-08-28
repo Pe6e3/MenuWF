@@ -300,7 +300,7 @@ namespace MenuWF.UIElements
 
             if (StyleUsed)
             {
-                //OffsetControls(-HeaderHeight);
+                //OffsetControls(HeaderHeight);
                 OffsetMainContrainer(-HeaderHeight);
                 Form.Height -= HeaderHeight;
             }
@@ -318,7 +318,7 @@ namespace MenuWF.UIElements
 
             Form.BackColor = BackColor;
 
-            //OffsetControls(HeaderHeight);
+            OffsetControls(-HeaderHeight);
             OffsetMainContrainer(HeaderHeight);
 
             Form.Height += HeaderHeight;
@@ -697,7 +697,8 @@ namespace MenuWF.UIElements
             {
                 // Close Button Click
                 if (rectBtnClose.Contains(e.Location))
-                    Form.Close();
+                    Application.Exit();
+
 
                 // Max Button Click
                 if (rectBtnMax.Contains(e.Location) && Form.MaximizeBox == true)
@@ -822,7 +823,7 @@ namespace MenuWF.UIElements
             if (HeaderImage != null)
             {
                 int imageHeight = (int)(HeaderHeight * 0.9f); // Высота картинки = 90% от высоты шапки
-                int imageWidth = HeaderImage.Width / (HeaderImage.Height / imageHeight); // Получаем ширину с сохранением пропорций
+                int imageWidth = HeaderImage.Height / HeaderImage.Width * imageHeight; // Получаем ширину с сохранением пропорций
                 rectHeaderImage = new Rectangle(rectIcon.Left, HeaderHeight / 2 - imageHeight / 2, imageWidth, imageHeight);
             }
 

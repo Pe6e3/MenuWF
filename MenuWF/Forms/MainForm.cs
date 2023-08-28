@@ -1,4 +1,5 @@
 using MenuWF.Data;
+using MenuWF.Forms;
 using MenuWF.UIElements;
 
 namespace MenuWF
@@ -16,6 +17,11 @@ namespace MenuWF
         private void cardui1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Действие при нажатии на карточку");
+        }
+
+        private void addProductBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.RedirectToForm(this, new ProductsForm(_db));
         }
     }
 }

@@ -42,10 +42,11 @@ namespace MenuWF
             // addProductBtn
             // 
             addProductBtn.BackColor = Color.Tomato;
+            addProductBtn.Cursor = Cursors.Hand;
             addProductBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProductBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addProductBtn.ForeColor = Color.White;
-            addProductBtn.Location = new Point(401, 170);
+            addProductBtn.Location = new Point(145, 421);
             addProductBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addProductBtn.Name = "addProductBtn";
             addProductBtn.Rounding = 33;
@@ -55,13 +56,14 @@ namespace MenuWF
             addProductBtn.TabIndex = 1;
             addProductBtn.Text = "Добавить продукт";
             addProductBtn.TextHover = "Страница добавления продукта";
+            addProductBtn.Click += addProductBtn_Click;
             // 
             // addDishBtn
             // 
             addDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addDishBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addDishBtn.ForeColor = Color.White;
-            addDishBtn.Location = new Point(400, 265);
+            addDishBtn.Location = new Point(381, 421);
             addDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addDishBtn.Name = "addDishBtn";
             addDishBtn.Rounding = 33;
@@ -77,7 +79,7 @@ namespace MenuWF
             addMenuBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addMenuBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addMenuBtn.ForeColor = Color.White;
-            addMenuBtn.Location = new Point(400, 359);
+            addMenuBtn.Location = new Point(617, 421);
             addMenuBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addMenuBtn.Name = "addMenuBtn";
             addMenuBtn.Rounding = 33;
@@ -117,7 +119,7 @@ namespace MenuWF
             cardui1.FontHeader = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             cardui1.ForeColorDescrition = Color.Black;
             cardui1.ForeColorHeader = Color.White;
-            cardui1.Location = new Point(12, 12);
+            cardui1.Location = new Point(334, 107);
             cardui1.Name = "cardui1";
             cardui1.Size = new Size(250, 200);
             cardui1.TabIndex = 3;

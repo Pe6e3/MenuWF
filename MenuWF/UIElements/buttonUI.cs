@@ -91,6 +91,7 @@ public class buttonUI : Control
         Size = new Size(170, 70);
         Font = new Font("Verdana", 12F, FontStyle.Bold);
         ForeColor = Color.White;
+        Cursor = Cursors.Hand;
 
         SF.Alignment = StringAlignment.Center;
         SF.LineAlignment = StringAlignment.Center;
