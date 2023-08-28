@@ -31,7 +31,8 @@
             components = new System.ComponentModel.Container();
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
             allProductsListbox = new ListBox();
-            comboBox1 = new ComboBox();
+            productNameField = new TextBox();
+            protsField = new TextBox();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -57,36 +58,50 @@
             // 
             allProductsListbox.FormattingEnabled = true;
             allProductsListbox.ItemHeight = 15;
-            allProductsListbox.Location = new Point(106, 74);
+            allProductsListbox.Location = new Point(543, 34);
             allProductsListbox.Name = "allProductsListbox";
-            allProductsListbox.Size = new Size(120, 94);
+            allProductsListbox.Size = new Size(120, 274);
             allProductsListbox.TabIndex = 0;
             // 
-            // comboBox1
+            // productNameField
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(292, 74);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 1;
+            productNameField.AccessibleRole = AccessibleRole.Text;
+            productNameField.Location = new Point(99, 34);
+            productNameField.Name = "productNameField";
+            productNameField.PlaceholderText = "Название продукта";
+            productNameField.Size = new Size(141, 23);
+            productNameField.TabIndex = 2;
+            // 
+            // protsField
+            // 
+            protsField.AccessibleRole = AccessibleRole.Text;
+            protsField.Location = new Point(99, 77);
+            protsField.Name = "protsField";
+            protsField.PlaceholderText = "Белки";
+            protsField.Size = new Size(141, 23);
+            protsField.TabIndex = 2;
+            protsField.TextChanged += protsField_TextChanged;
             // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(comboBox1);
+            Controls.Add(protsField);
+            Controls.Add(productNameField);
             Controls.Add(allProductsListbox);
             Name = "ProductsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ProductsForm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
         private ListBox allProductsListbox;
-        private ComboBox comboBox1;
+        private TextBox productNameField;
+        private TextBox protsField;
     }
 }
