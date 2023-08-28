@@ -21,9 +21,29 @@ public static class FormHelper
         if (textBox.Text.Length > maxLength)
             MessageBox.Show($"Длина поля не должна превышать {maxLength} символов");
     }
-    public static void ExitProgramm( )
+    public static void ExitProgramm()
     {
         Application.Exit();
+    }
+    public static void ValidateDecimal(TextBox textField, decimal maxValue = 10000)
+    {
+        if (!decimal.TryParse(textField.Text, out _))
+        {
+            if (textField.Text.Length > 1)
+            {
+                textField.Text = textField.Text.Substring(0, textField.Text.Length - 1);
+                textField.SelectionStart = textField.Text.Length; 
+            }
+            else
+            {
+                textField.Text = "";
+            }
+        }
+        if (textField.Text.Length > 1 && Convert.ToDecimal(textField.Text) > maxValue)
+        {
+            textField.Text = textField.Text.Substring(0, textField.Text.Length - 1);
+            textField.SelectionStart = textField.Text.Length;
+        }
     }
 
 

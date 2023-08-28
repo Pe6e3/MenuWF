@@ -33,6 +33,9 @@
             allProductsListbox = new ListBox();
             productNameField = new TextBox();
             protsField = new TextBox();
+            fatsField = new TextBox();
+            carbsField = new TextBox();
+            caloriesField = new TextBox();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -82,11 +85,44 @@
             protsField.TabIndex = 2;
             protsField.TextChanged += protsField_TextChanged;
             // 
+            // fatsField
+            // 
+            fatsField.AccessibleRole = AccessibleRole.Text;
+            fatsField.Location = new Point(99, 118);
+            fatsField.Name = "fatsField";
+            fatsField.PlaceholderText = "Жиры";
+            fatsField.Size = new Size(141, 23);
+            fatsField.TabIndex = 2;
+            fatsField.TextChanged += fatsField_TextChanged;
+            // 
+            // carbsField
+            // 
+            carbsField.AccessibleRole = AccessibleRole.Text;
+            carbsField.Location = new Point(99, 156);
+            carbsField.Name = "carbsField";
+            carbsField.PlaceholderText = "Углеводы";
+            carbsField.Size = new Size(141, 23);
+            carbsField.TabIndex = 2;
+            carbsField.TextChanged += carbsField_TextChanged;
+            // 
+            // caloriesField
+            // 
+            caloriesField.AccessibleRole = AccessibleRole.Text;
+            caloriesField.Location = new Point(99, 196);
+            caloriesField.Name = "caloriesField";
+            caloriesField.PlaceholderText = "Калории";
+            caloriesField.Size = new Size(141, 23);
+            caloriesField.TabIndex = 2;
+            caloriesField.TextChanged += caloriesField_TextChanged;
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(caloriesField);
+            Controls.Add(carbsField);
+            Controls.Add(fatsField);
             Controls.Add(protsField);
             Controls.Add(productNameField);
             Controls.Add(allProductsListbox);
@@ -103,5 +139,8 @@
         private ListBox allProductsListbox;
         private TextBox productNameField;
         private TextBox protsField;
+        private TextBox caloriesField;
+        private TextBox carbsField;
+        private TextBox fatsField;
     }
 }

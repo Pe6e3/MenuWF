@@ -33,21 +33,24 @@ namespace MenuWF.Forms
 
         private void protsField_TextChanged(object sender, EventArgs e)
         {
-            if (protsField.Text.Count(c => c == ',') == 1 && protsField.Text.EndsWith(','))
-            { }// Ничего не делаем, если уже есть запятая и пытаемся ввести еще одну
-
-            else if (!decimal.TryParse(protsField.Text, out _))
-            {
-                if (protsField.Text.Length > 1)// Если введенный текст не является десятичным числом
-                {
-                    protsField.Text = protsField.Text.Substring(0, protsField.Text.Length - 1);
-                    protsField.SelectionStart = protsField.Text.Length; // Перемещение курсора в конец текста
-                }
-                else
-                    protsField.Text = "";
-            }
+            FormHelper.ValidateDecimal(protsField, maxValue: 50);
         }
 
+        private void fatsField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(fatsField, maxValue: 100);
 
+        }
+
+        private void carbsField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(carbsField, maxValue: 80);
+
+        }
+
+        private void caloriesField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(caloriesField, maxValue: 900);
+        }
     }
 }
