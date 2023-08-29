@@ -1,15 +1,16 @@
 using MenuWF.Data;
 using MenuWF.Forms;
+using MenuWF.Repository;
 using MenuWF.UIElements;
 
 namespace MenuWF
 {
     public partial class MainForm : ShadowedForm
     {
-        private readonly AppDbContext _db;
-        public MainForm(AppDbContext db)
+        private readonly UnitOfWork _uow;
+        public MainForm(UnitOfWork uow)
         {
-            _db = db;
+            _uow = uow;
             InitializeComponent();
             Animator.Start();
         }
@@ -21,12 +22,12 @@ namespace MenuWF
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.RedirectToForm(this, new ProductsForm(_db));
+            FormHelper.RedirectToForm(this, new ProductsForm(_uow));
         }
 
         private void DishesBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.RedirectToForm(this, new DishesForm(_db));
+            FormHelper.RedirectToForm(this, new DishesForm(_uow));
 
         }
     }

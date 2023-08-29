@@ -1,11 +1,14 @@
-﻿namespace MenuWF.Interfaces
+﻿using System.Collections.Generic;
+
+namespace MenuWF.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> GetAll();
+        Task<IReadOnlyList<T>> GetAll();
+        Task<IReadOnlyList<T>> GetAllDesc();
         Task<T> GetById(int id);
-        Task<T> InsertAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task<T> Insert(T entity);
+        Task Update(T entity);
+        Task Delete(T entity);
     }
 }

@@ -1,4 +1,5 @@
 using MenuWF.Data;
+using MenuWF.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -26,7 +27,8 @@ namespace MenuWF
 
             using (var dbContext = new AppDbContext(optionsBuilder.Options))
             {
-                Application.Run(new MainForm(dbContext));
+                UnitOfWork uow = new UnitOfWork(dbContext);
+                Application.Run(new MainForm(uow));
             }
  
         }

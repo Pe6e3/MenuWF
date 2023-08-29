@@ -1,15 +1,16 @@
 ﻿using MenuWF.Data;
 using MenuWF.Entities;
+using MenuWF.Repository;
 using MenuWF.UIElements;
 
 namespace MenuWF.Forms
 {
     public partial class ProductsForm : ShadowedForm
     {
-        private readonly AppDbContext _db;
-        public ProductsForm(AppDbContext db)
+        private readonly UnitOfWork _uow;
+        public ProductsForm(UnitOfWork uow)
         {
-            _db = db;
+            _uow = uow;
             InitializeComponent();
             Load += ProductsForm_Load;
             Animator.Start();
@@ -21,11 +22,11 @@ namespace MenuWF.Forms
         }
 
 
-        private void RefreshProducts()
+        private async void RefreshProducts()
         {
             allProductsListbox.Items.Clear();
             allProductsListbox.DisplayMember = "Name";
-            List<Product> products = _db.Products.ToList();
+            IEnumerable<Product> products = await _uow.ProductsRepository.GetAll();
 
             foreach (Product product in products)
                 allProductsListbox.Items.Add(product);
@@ -74,10 +75,9 @@ namespace MenuWF.Forms
 
         }
 
-        private void AddProduct(Product product)
+        private async void AddProduct(Product product)
         {
-            _db.Products.Add(product);
-            _db.SaveChanges();
+            await _uow.ProductsRepository.Insert(product);
             RefreshProducts();
             FormHelper.ClearFields(this);
             this.ActiveControl = null;
@@ -87,7 +87,10 @@ namespace MenuWF.Forms
         {
             delProdBtn.Enabled = true;
             Product? product = (Product?)allProductsListbox.SelectedItem;
-            RefreshProductCard(product);
+            if (product != null)
+                RefreshProductCard(product);
+            else
+                FormHelper.ClearFields(this);
         }
 
         private void RefreshProductCard(Product? product)
@@ -100,13 +103,12 @@ namespace MenuWF.Forms
 
         }
 
-        private void delProdBtn_Click(object sender, EventArgs e)
+        private async void delProdBtn_Click(object sender, EventArgs e)
         {
             Product? product = (Product?)allProductsListbox.SelectedItem;
             if (product != null)
             {
-                _db.Remove(product);
-                _db.SaveChanges();
+                await _uow.ProductsRepository.Delete(product);
                 RefreshProducts();
                 FormHelper.ClearFields(this);
                 this.ActiveControl = null;
@@ -117,7 +119,7 @@ namespace MenuWF.Forms
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.OpenMainForm(this, _db);
+            FormHelper.OpenMainForm(this, _uow);
         }
     }
 }

@@ -14,10 +14,7 @@ namespace MenuWF.MenuWF.Repository.Repositories
         }
 
 
-        public Task<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public async Task<T?> GetById(int id) => await
        _db.Set<T>().FindAsync(id);
@@ -32,23 +29,67 @@ namespace MenuWF.MenuWF.Repository.Repositories
             .FirstOrDefaultAsync(x => x.Id == id);
 
 
-        public async Task<T> InsertAsync(T entity)
+        public async Task<T> Insert(T entity)
         {
             await _db.Set<T>().AddAsync(entity);
             await _db.SaveChangesAsync();
             return entity;
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task Update(T entity)
         {
             _db.Entry(entity).State = EntityState.Modified;
             await _db.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task Delete(T entity)
         {
             _db.Set<T>().Remove(entity);
             await _db.SaveChangesAsync();
         }
+
+
+
+        public async Task<IReadOnlyList<T>> GetAll() => await
+        _db.Set<T>()
+        .ToListAsync();
+
+        public async Task<IReadOnlyList<T>> GetAllDesc() => await
+        _db.Set<T>()
+        .OrderByDescending(x => x.Id)
+        .ToListAsync();
+
+        public async Task<IReadOnlyList<T>> GetAllDesc(string include) => await
+        _db.Set<T>()
+        .Include(include)
+        .OrderByDescending(x => x.Id)
+        .ToListAsync();
+
+
+        public async Task<IReadOnlyList<T>> GetAll(int count, string include) => await
+            _db.Set<T>()
+            .Include(include)
+            .Take(count)
+            .ToListAsync();
+
+        public async Task<IReadOnlyList<T>> GetAll(int count, string include, string include2) => await
+            _db.Set<T>()
+            .Include(include)
+            .Include(include2)
+            .Take(count)
+            .ToListAsync();
+
+        public async Task<IReadOnlyList<T>> GetAll(string include) => await
+        _db.Set<T>()
+        .Include(include)
+        .ToListAsync();
+
+        public async Task<IReadOnlyList<T>> GetAll(string include, string include2) => await
+        _db.Set<T>()
+        .Include(include)
+        .Include(include2)
+        .ToListAsync();
+
+
     }
 }

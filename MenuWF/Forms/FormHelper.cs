@@ -1,12 +1,12 @@
-﻿using MenuWF.Data;
+﻿using MenuWF.Repository;
 
 namespace MenuWF.Forms;
 
 public static class FormHelper
 {
-    public static void OpenMainForm(Form currentForm, AppDbContext db)
+    public static void OpenMainForm(Form currentForm, UnitOfWork uow)
     {
-        MainForm mainForm = new MainForm(db);
+        MainForm mainForm = new MainForm(uow);
         mainForm.Show();
         currentForm.Hide();
     }

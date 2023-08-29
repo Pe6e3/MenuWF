@@ -1,18 +1,14 @@
-﻿using MenuWF.Data;
-using MenuWF.Entities;
+﻿using MenuWF.Entities;
 using MenuWF.Repository;
 using MenuWF.UIElements;
-using Microsoft.EntityFrameworkCore;
 
 namespace MenuWF.Forms;
 
 public partial class DishesForm : ShadowedForm
 {
-    //private readonly AppDbContext _db;
     private readonly UnitOfWork _uow;
     public DishesForm(UnitOfWork uow)
     {
-        //_db = db;
         _uow = uow;
         InitializeComponent();
         Animator.Start();
@@ -22,7 +18,7 @@ public partial class DishesForm : ShadowedForm
 
     private void buttonui1_Click(object sender, EventArgs e)
     {
-        FormHelper.OpenMainForm(this, _db);
+        FormHelper.OpenMainForm(this, _uow);
     }
 
     private void allDishesListbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,7 +31,7 @@ public partial class DishesForm : ShadowedForm
 
     private void RefreshDishCard(Dish? dish)
     {
-        IEnumerable<Product> products = _db.Products.GetProductsOfDish(dish);
+        //IEnumerable<Product> products = _uow.Products.GetProductsOfDish(dish);
     }
 
     private void DishesForm_Load(object sender, EventArgs e)
@@ -47,7 +43,7 @@ public partial class DishesForm : ShadowedForm
     {
         allDishesListbox.Items.Clear();
         allDishesListbox.DisplayMember = "Name";
-        IEnumerable<Dish> dishes = await _db.Dishes.ToListAsync();
+        IEnumerable<Dish> dishes = await _uow.DishesRepository.GetAll();
         foreach (Dish dish in dishes)
             allDishesListbox.Items.Add(dish);
     }
