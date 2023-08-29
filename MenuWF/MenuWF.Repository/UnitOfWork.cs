@@ -6,9 +6,9 @@ namespace MenuWF.Repository;
 public class UnitOfWork : IDisposable
 {
     private readonly AppDbContext _db;
-    public UnitOfWork(AppDbContext db)
+    public UnitOfWork()
     {
-        _db = db;
+        _db = new AppDbContext();
     }
 
     private DishesRepository _dishesRepository;

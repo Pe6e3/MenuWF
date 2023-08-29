@@ -7,10 +7,10 @@ namespace MenuWF.Forms;
 
 public partial class DishesForm : ShadowedForm
 {
-    private readonly UnitOfWork _uow;
-    public DishesForm(UnitOfWork uow)
+    private UnitOfWork _uow = new UnitOfWork();
+
+    public DishesForm()
     {
-        _uow = uow;
         InitializeComponent();
         Animator.Start();
     }
@@ -18,7 +18,7 @@ public partial class DishesForm : ShadowedForm
 
     private void buttonui1_Click(object sender, EventArgs e)
     {
-        FormHelper.OpenMainForm(this, _uow);
+        FormHelper.OpenMainForm(this);
     }
 
     private void allDishesListbox_SelectedIndexChanged(object sender, EventArgs e)

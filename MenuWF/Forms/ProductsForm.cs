@@ -7,10 +7,10 @@ namespace MenuWF.Forms
 {
     public partial class ProductsForm : ShadowedForm
     {
-        private readonly UnitOfWork _uow;
-        public ProductsForm(UnitOfWork uow)
+        private UnitOfWork _uow = new UnitOfWork();
+
+        public ProductsForm()
         {
-            _uow = uow;
             InitializeComponent();
             Load += ProductsForm_Load;
             Animator.Start();
@@ -119,7 +119,7 @@ namespace MenuWF.Forms
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.OpenMainForm(this, _uow);
+            FormHelper.OpenMainForm(this);
         }
     }
 }

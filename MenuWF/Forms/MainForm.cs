@@ -7,10 +7,9 @@ namespace MenuWF
 {
     public partial class MainForm : ShadowedForm
     {
-        private readonly UnitOfWork _uow;
-        public MainForm(UnitOfWork uow)
+        private UnitOfWork _uow = new UnitOfWork();
+        public MainForm()
         {
-            _uow = uow;
             InitializeComponent();
             Animator.Start();
         }
@@ -22,12 +21,12 @@ namespace MenuWF
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.RedirectToForm(this, new ProductsForm(_uow));
+            FormHelper.RedirectToForm(this, new ProductsForm());
         }
 
         private void DishesBtn_Click(object sender, EventArgs e)
         {
-            FormHelper.RedirectToForm(this, new DishesForm(_uow));
+            FormHelper.RedirectToForm(this, new DishesForm());
 
         }
     }

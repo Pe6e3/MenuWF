@@ -194,7 +194,7 @@
             delProdBtn.RoundingEnable = true;
             delProdBtn.Size = new Size(165, 32);
             delProdBtn.startColorBtn = Color.FromArgb(127, 140, 141);
-            delProdBtn.TabIndex = 6;
+            delProdBtn.TabIndex = 12;
             delProdBtn.Text = "Удалить продукт";
             delProdBtn.TextHover = null;
             delProdBtn.Click += delProdBtn_Click;
@@ -205,7 +205,7 @@
             protsInfo.Location = new Point(574, 77);
             protsInfo.Name = "protsInfo";
             protsInfo.Size = new Size(141, 23);
-            protsInfo.TabIndex = 2;
+            protsInfo.TabIndex = 8;
             protsInfo.TextChanged += protsField_TextChanged;
             // 
             // fatsInfo
@@ -214,7 +214,7 @@
             fatsInfo.Location = new Point(574, 107);
             fatsInfo.Name = "fatsInfo";
             fatsInfo.Size = new Size(141, 23);
-            fatsInfo.TabIndex = 3;
+            fatsInfo.TabIndex = 9;
             fatsInfo.TextChanged += fatsField_TextChanged;
             // 
             // carbsInfo
@@ -223,7 +223,7 @@
             carbsInfo.Location = new Point(574, 137);
             carbsInfo.Name = "carbsInfo";
             carbsInfo.Size = new Size(141, 23);
-            carbsInfo.TabIndex = 4;
+            carbsInfo.TabIndex = 10;
             carbsInfo.TextChanged += carbsField_TextChanged;
             // 
             // caloriesInfo
@@ -232,7 +232,7 @@
             caloriesInfo.Location = new Point(574, 167);
             caloriesInfo.Name = "caloriesInfo";
             caloriesInfo.Size = new Size(141, 23);
-            caloriesInfo.TabIndex = 5;
+            caloriesInfo.TabIndex = 11;
             caloriesInfo.TextChanged += caloriesField_TextChanged;
             // 
             // selectedProductLabel
@@ -256,7 +256,7 @@
             backBtn.RoundingEnable = true;
             backBtn.Size = new Size(81, 36);
             backBtn.startColorBtn = Color.SkyBlue;
-            backBtn.TabIndex = 9;
+            backBtn.TabIndex = 30;
             backBtn.Text = "←";
             backBtn.TextHover = "назад";
             backBtn.Click += backBtn_Click;

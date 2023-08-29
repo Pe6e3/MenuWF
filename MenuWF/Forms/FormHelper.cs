@@ -4,9 +4,9 @@ namespace MenuWF.Forms;
 
 public static class FormHelper
 {
-    public static void OpenMainForm(Form currentForm, UnitOfWork uow)
+    public static void OpenMainForm(Form currentForm)
     {
-        MainForm mainForm = new MainForm(uow);
+        MainForm mainForm = new MainForm();
         mainForm.Show();
         currentForm.Hide();
     }

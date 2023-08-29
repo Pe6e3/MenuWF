@@ -15,20 +15,10 @@ namespace MenuWF
 
             ApplicationConfiguration.Initialize();
 
-            var appsettigsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
-            var configuration = new ConfigurationBuilder()
-                                    .AddJsonFile(appsettigsPath)
-                                    .Build();
-
-            var configurationString = configuration.GetConnectionString("AppDbContext");
-
-            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>()
-                                    .UseSqlServer(configurationString);
-
-            using (var dbContext = new AppDbContext(optionsBuilder.Options))
+            using (var dbContext = new AppDbContext())
             {
-                UnitOfWork uow = new UnitOfWork(dbContext);
-                Application.Run(new MainForm(uow));
+                UnitOfWork uow = new UnitOfWork();
+                Application.Run(new MainForm());
             }
  
         }
