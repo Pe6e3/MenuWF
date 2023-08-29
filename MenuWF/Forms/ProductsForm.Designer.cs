@@ -47,6 +47,7 @@
             carbsInfo = new TextBox();
             caloriesInfo = new TextBox();
             selectedProductLabel = new Label();
+            backBtn = new UXElements.buttonUI();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -243,11 +244,29 @@
             selectedProductLabel.TabIndex = 8;
             selectedProductLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // backBtn
+            // 
+            backBtn.endColorBorderBtn = Color.LightSkyBlue;
+            backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
+            backBtn.ForeColor = Color.LightCyan;
+            backBtn.Location = new Point(12, 402);
+            backBtn.middleColorBtn = Color.DeepSkyBlue;
+            backBtn.Name = "backBtn";
+            backBtn.Rounding = 33;
+            backBtn.RoundingEnable = true;
+            backBtn.Size = new Size(81, 36);
+            backBtn.startColorBtn = Color.SkyBlue;
+            backBtn.TabIndex = 9;
+            backBtn.Text = "←";
+            backBtn.TextHover = "назад";
+            backBtn.Click += backBtn_Click;
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(backBtn);
             Controls.Add(caloriesInfoLabel);
             Controls.Add(carbsInfoLabel);
             Controls.Add(fatsInfoLabel);
@@ -292,5 +311,6 @@
         private TextBox fatsInfo;
         private TextBox protsInfo;
         private Label selectedProductLabel;
+        private UXElements.buttonUI backBtn;
     }
 }

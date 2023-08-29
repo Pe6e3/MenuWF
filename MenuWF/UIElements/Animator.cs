@@ -32,31 +32,16 @@ public static class Animator
         while (true)
         {
             AnimationList.RemoveAll(a => a?.Status == Animation.AnimationStatus.Completed);
-            var exceptions = new ConcurrentBag<Exception>();
 
-            Parallel.For(0, AnimationList.Count, index =>
+            Parallel.For(0, Count(), index =>
             {
-                if (index >= 0 && index < AnimationList.Count)
-                {
-                    try
-                    {
-                        if (AnimationList[index] != null)
-                            AnimationList[index].UpdateFrame();
-                    }
-                    catch (Exception ex)
-                    {
-                        exceptions.Add(ex);
-                    }
-                }
+                if (index >= 0 && index < AnimationList.Count && AnimationList[index] != null)
+                    AnimationList[index].UpdateFrame();
             });
-
-            foreach (var ex in exceptions)
-                Console.WriteLine($"Ошибка с анимацией: {ex}");
 
             Thread.Sleep((int)Interval);
         }
     }
-
 
 
 

@@ -32,47 +32,48 @@ namespace MenuWF
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            addProductBtn = new buttonUI();
-            addDishBtn = new buttonUI();
+            ProductsBtn = new buttonUI();
+            DishesBtn = new buttonUI();
             addMenuBtn = new buttonUI();
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
             cardui1 = new cardUI();
             SuspendLayout();
             // 
-            // addProductBtn
+            // ProductsBtn
             // 
-            addProductBtn.BackColor = Color.Tomato;
-            addProductBtn.Cursor = Cursors.Hand;
-            addProductBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            addProductBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addProductBtn.ForeColor = Color.White;
-            addProductBtn.Location = new Point(145, 421);
-            addProductBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
-            addProductBtn.Name = "addProductBtn";
-            addProductBtn.Rounding = 33;
-            addProductBtn.RoundingEnable = true;
-            addProductBtn.Size = new Size(169, 70);
-            addProductBtn.startColorBtn = Color.FromArgb(127, 140, 141);
-            addProductBtn.TabIndex = 1;
-            addProductBtn.Text = "Добавить продукт";
-            addProductBtn.TextHover = "Страница добавления продукта";
-            addProductBtn.Click += addProductBtn_Click;
+            ProductsBtn.BackColor = Color.Tomato;
+            ProductsBtn.Cursor = Cursors.Hand;
+            ProductsBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            ProductsBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            ProductsBtn.ForeColor = Color.White;
+            ProductsBtn.Location = new Point(145, 421);
+            ProductsBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            ProductsBtn.Name = "ProductsBtn";
+            ProductsBtn.Rounding = 33;
+            ProductsBtn.RoundingEnable = true;
+            ProductsBtn.Size = new Size(169, 70);
+            ProductsBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            ProductsBtn.TabIndex = 1;
+            ProductsBtn.Text = "Продукты";
+            ProductsBtn.TextHover = "Список продуктов, добавить новые";
+            ProductsBtn.Click += addProductBtn_Click;
             // 
-            // addDishBtn
+            // DishesBtn
             // 
-            addDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            addDishBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addDishBtn.ForeColor = Color.White;
-            addDishBtn.Location = new Point(381, 421);
-            addDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
-            addDishBtn.Name = "addDishBtn";
-            addDishBtn.Rounding = 33;
-            addDishBtn.RoundingEnable = true;
-            addDishBtn.Size = new Size(169, 70);
-            addDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
-            addDishBtn.TabIndex = 1;
-            addDishBtn.Text = "Добавить блюдо";
-            addDishBtn.TextHover = "Совместить продукты в блюдо";
+            DishesBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            DishesBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            DishesBtn.ForeColor = Color.White;
+            DishesBtn.Location = new Point(381, 421);
+            DishesBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            DishesBtn.Name = "DishesBtn";
+            DishesBtn.Rounding = 33;
+            DishesBtn.RoundingEnable = true;
+            DishesBtn.Size = new Size(169, 70);
+            DishesBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            DishesBtn.TabIndex = 1;
+            DishesBtn.Text = "Блюда";
+            DishesBtn.TextHover = "Список блюд, добавить новые";
+            DishesBtn.Click += DishesBtn_Click;
             // 
             // addMenuBtn
             // 
@@ -134,8 +135,8 @@ namespace MenuWF
             ClientSize = new Size(971, 685);
             Controls.Add(cardui1);
             Controls.Add(addMenuBtn);
-            Controls.Add(addDishBtn);
-            Controls.Add(addProductBtn);
+            Controls.Add(DishesBtn);
+            Controls.Add(ProductsBtn);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Стартовое окно";
@@ -143,8 +144,8 @@ namespace MenuWF
         }
 
         #endregion
-        private buttonUI addProductBtn;
-        private buttonUI addDishBtn;
+        private buttonUI ProductsBtn;
+        private buttonUI DishesBtn;
         private buttonUI addMenuBtn;
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
         private cardUI cardui1;

@@ -23,5 +23,11 @@ namespace MenuWF
         {
             FormHelper.RedirectToForm(this, new ProductsForm(_db));
         }
+
+        private void DishesBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.RedirectToForm(this, new DishesForm(_db));
+
+        }
     }
 }

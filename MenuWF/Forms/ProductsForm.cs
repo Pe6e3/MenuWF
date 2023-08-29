@@ -4,7 +4,7 @@ using MenuWF.UIElements;
 
 namespace MenuWF.Forms
 {
-    public partial class ProductsForm : Form
+    public partial class ProductsForm : ShadowedForm
     {
         private readonly AppDbContext _db;
         public ProductsForm(AppDbContext db)
@@ -113,6 +113,11 @@ namespace MenuWF.Forms
                 delProdBtn.Enabled = false;
                 selectedProductLabel.Text = "";
             }
+        }
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenMainForm(this, _db);
         }
     }
 }
