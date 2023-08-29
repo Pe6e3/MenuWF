@@ -51,9 +51,7 @@ public static class Animator
             });
 
             foreach (var ex in exceptions)
-            {
                 Console.WriteLine($"Ошибка с анимацией: {ex}");
-            }
 
             Thread.Sleep((int)Interval);
         }
