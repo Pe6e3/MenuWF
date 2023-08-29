@@ -34,16 +34,19 @@ public static class Animator
             AnimationList.RemoveAll(a => a.Status == Animation.AnimationStatus.Completed);
             var exceptions = new ConcurrentBag<Exception>();
 
-            Parallel.For(0, Count(), index =>
+            Parallel.For(0, AnimationList.Count, index =>
             {
-                try
+                if (index >= 0 && index < AnimationList.Count)
                 {
-                    if (AnimationList[index] != null)
-                        AnimationList[index].UpdateFrame();
-                }
-                catch (Exception ex)
-                {
-                    exceptions.Add(ex);
+                    try
+                    {
+                        if (AnimationList[index] != null)
+                            AnimationList[index].UpdateFrame();
+                    }
+                    catch (Exception ex)
+                    {
+                        exceptions.Add(ex);
+                    }
                 }
             });
 
@@ -55,6 +58,7 @@ public static class Animator
             Thread.Sleep((int)Interval);
         }
     }
+
 
 
 
