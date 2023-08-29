@@ -92,10 +92,10 @@ namespace MenuWF.Forms
 
         private void RefreshProductCard(Product? product)
         {
-            protsInfo.Text = "Белки: " + product.Prots.ToString("0.0");
-            fatsInfo.Text = "Жиры: " + product.Fats.ToString("0.0");
-            carbsInfo.Text = "Углеводы: " + product.Carbs.ToString("0.0");
-            caloriesInfo.Text = "Калории: " + product.Calories.ToString("0.0");
+            protsInfo.Text = product.Prots.ToString("0.0");
+            fatsInfo.Text = product.Fats.ToString("0.0");
+            carbsInfo.Text = product.Carbs.ToString("0.0");
+            caloriesInfo.Text = product.Calories.ToString("0.0");
 
 
         }
@@ -108,6 +108,9 @@ namespace MenuWF.Forms
                 _db.Remove(product);
                 _db.SaveChanges();
                 RefreshProducts();
+                FormHelper.ClearFields(this);
+                this.ActiveControl = null;
+                delProdBtn.Enabled = false;
             }
         }
     }

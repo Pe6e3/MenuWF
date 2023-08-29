@@ -37,11 +37,15 @@
             carbsField = new TextBox();
             caloriesField = new TextBox();
             addProductBtn = new UXElements.buttonUI();
-            protsInfo = new Label();
-            fatsInfo = new Label();
-            carbsInfo = new Label();
-            caloriesInfo = new Label();
+            protsInfoLabel = new Label();
+            fatsInfoLabel = new Label();
+            carbsInfoLabel = new Label();
+            caloriesInfoLabel = new Label();
             delProdBtn = new UXElements.buttonUI();
+            protsInfo = new TextBox();
+            fatsInfo = new TextBox();
+            carbsInfo = new TextBox();
+            caloriesInfo = new TextBox();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -139,37 +143,41 @@
             addProductBtn.TextHover = null;
             addProductBtn.Click += addProductBtn_Click;
             // 
-            // protsInfo
+            // protsInfoLabel
             // 
-            protsInfo.BorderStyle = BorderStyle.Fixed3D;
-            protsInfo.Location = new Point(476, 36);
-            protsInfo.Name = "protsInfo";
-            protsInfo.Size = new Size(100, 25);
-            protsInfo.TabIndex = 8;
+            protsInfoLabel.Location = new Point(476, 36);
+            protsInfoLabel.Name = "protsInfoLabel";
+            protsInfoLabel.Size = new Size(100, 25);
+            protsInfoLabel.TabIndex = 8;
+            protsInfoLabel.Text = "Белки";
+            protsInfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // fatsInfo
+            // fatsInfoLabel
             // 
-            fatsInfo.BorderStyle = BorderStyle.Fixed3D;
-            fatsInfo.Location = new Point(476, 66);
-            fatsInfo.Name = "fatsInfo";
-            fatsInfo.Size = new Size(100, 25);
-            fatsInfo.TabIndex = 8;
+            fatsInfoLabel.Location = new Point(476, 66);
+            fatsInfoLabel.Name = "fatsInfoLabel";
+            fatsInfoLabel.Size = new Size(100, 25);
+            fatsInfoLabel.TabIndex = 8;
+            fatsInfoLabel.Text = "Жиры";
+            fatsInfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // carbsInfo
+            // carbsInfoLabel
             // 
-            carbsInfo.BorderStyle = BorderStyle.Fixed3D;
-            carbsInfo.Location = new Point(476, 96);
-            carbsInfo.Name = "carbsInfo";
-            carbsInfo.Size = new Size(100, 25);
-            carbsInfo.TabIndex = 8;
+            carbsInfoLabel.Location = new Point(476, 96);
+            carbsInfoLabel.Name = "carbsInfoLabel";
+            carbsInfoLabel.Size = new Size(100, 25);
+            carbsInfoLabel.TabIndex = 8;
+            carbsInfoLabel.Text = "Углеводы";
+            carbsInfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // caloriesInfo
+            // caloriesInfoLabel
             // 
-            caloriesInfo.BorderStyle = BorderStyle.Fixed3D;
-            caloriesInfo.Location = new Point(476, 126);
-            caloriesInfo.Name = "caloriesInfo";
-            caloriesInfo.Size = new Size(100, 25);
-            caloriesInfo.TabIndex = 8;
+            caloriesInfoLabel.Location = new Point(476, 126);
+            caloriesInfoLabel.Name = "caloriesInfoLabel";
+            caloriesInfoLabel.Size = new Size(100, 25);
+            caloriesInfoLabel.TabIndex = 8;
+            caloriesInfoLabel.Text = "Калории";
+            caloriesInfoLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // delProdBtn
             // 
@@ -189,20 +197,60 @@
             delProdBtn.TextHover = null;
             delProdBtn.Click += delProdBtn_Click;
             // 
+            // protsInfo
+            // 
+            protsInfo.AccessibleRole = AccessibleRole.Text;
+            protsInfo.Location = new Point(582, 38);
+            protsInfo.Name = "protsInfo";
+            protsInfo.Size = new Size(141, 23);
+            protsInfo.TabIndex = 2;
+            protsInfo.TextChanged += protsField_TextChanged;
+            // 
+            // fatsInfo
+            // 
+            fatsInfo.AccessibleRole = AccessibleRole.Text;
+            fatsInfo.Location = new Point(582, 68);
+            fatsInfo.Name = "fatsInfo";
+            fatsInfo.Size = new Size(141, 23);
+            fatsInfo.TabIndex = 3;
+            fatsInfo.TextChanged += fatsField_TextChanged;
+            // 
+            // carbsInfo
+            // 
+            carbsInfo.AccessibleRole = AccessibleRole.Text;
+            carbsInfo.Location = new Point(582, 98);
+            carbsInfo.Name = "carbsInfo";
+            carbsInfo.Size = new Size(141, 23);
+            carbsInfo.TabIndex = 4;
+            carbsInfo.TextChanged += carbsField_TextChanged;
+            // 
+            // caloriesInfo
+            // 
+            caloriesInfo.AccessibleRole = AccessibleRole.Text;
+            caloriesInfo.Location = new Point(582, 128);
+            caloriesInfo.Name = "caloriesInfo";
+            caloriesInfo.Size = new Size(141, 23);
+            caloriesInfo.TabIndex = 5;
+            caloriesInfo.TextChanged += caloriesField_TextChanged;
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(caloriesInfo);
-            Controls.Add(carbsInfo);
-            Controls.Add(fatsInfo);
-            Controls.Add(protsInfo);
+            Controls.Add(caloriesInfoLabel);
+            Controls.Add(carbsInfoLabel);
+            Controls.Add(fatsInfoLabel);
+            Controls.Add(protsInfoLabel);
             Controls.Add(delProdBtn);
             Controls.Add(addProductBtn);
+            Controls.Add(caloriesInfo);
             Controls.Add(caloriesField);
+            Controls.Add(carbsInfo);
             Controls.Add(carbsField);
+            Controls.Add(fatsInfo);
             Controls.Add(fatsField);
+            Controls.Add(protsInfo);
             Controls.Add(protsField);
             Controls.Add(productNameField);
             Controls.Add(allProductsListbox);
@@ -223,10 +271,14 @@
         private TextBox carbsField;
         private TextBox fatsField;
         private UXElements.buttonUI addProductBtn;
-        private Label caloriesInfo;
-        private Label carbsInfo;
-        private Label fatsInfo;
-        private Label protsInfo;
+        private Label caloriesInfoLabel;
+        private Label carbsInfoLabel;
+        private Label fatsInfoLabel;
+        private Label protsInfoLabel;
         private UXElements.buttonUI delProdBtn;
+        private TextBox caloriesInfo;
+        private TextBox carbsInfo;
+        private TextBox fatsInfo;
+        private TextBox protsInfo;
     }
 }
