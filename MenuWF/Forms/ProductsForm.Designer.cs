@@ -37,6 +37,11 @@
             carbsField = new TextBox();
             caloriesField = new TextBox();
             addProductBtn = new UXElements.buttonUI();
+            protsInfo = new Label();
+            fatsInfo = new Label();
+            carbsInfo = new Label();
+            caloriesInfo = new Label();
+            delProdBtn = new UXElements.buttonUI();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -62,10 +67,11 @@
             // 
             allProductsListbox.FormattingEnabled = true;
             allProductsListbox.ItemHeight = 15;
-            allProductsListbox.Location = new Point(541, 34);
+            allProductsListbox.Location = new Point(325, 34);
             allProductsListbox.Name = "allProductsListbox";
             allProductsListbox.Size = new Size(120, 274);
             allProductsListbox.TabIndex = 7;
+            allProductsListbox.SelectedIndexChanged += allProductsListbox_SelectedIndexChanged;
             // 
             // productNameField
             // 
@@ -133,11 +139,66 @@
             addProductBtn.TextHover = null;
             addProductBtn.Click += addProductBtn_Click;
             // 
+            // protsInfo
+            // 
+            protsInfo.BorderStyle = BorderStyle.Fixed3D;
+            protsInfo.Location = new Point(476, 36);
+            protsInfo.Name = "protsInfo";
+            protsInfo.Size = new Size(100, 25);
+            protsInfo.TabIndex = 8;
+            // 
+            // fatsInfo
+            // 
+            fatsInfo.BorderStyle = BorderStyle.Fixed3D;
+            fatsInfo.Location = new Point(476, 66);
+            fatsInfo.Name = "fatsInfo";
+            fatsInfo.Size = new Size(100, 25);
+            fatsInfo.TabIndex = 8;
+            // 
+            // carbsInfo
+            // 
+            carbsInfo.BorderStyle = BorderStyle.Fixed3D;
+            carbsInfo.Location = new Point(476, 96);
+            carbsInfo.Name = "carbsInfo";
+            carbsInfo.Size = new Size(100, 25);
+            carbsInfo.TabIndex = 8;
+            // 
+            // caloriesInfo
+            // 
+            caloriesInfo.BorderStyle = BorderStyle.Fixed3D;
+            caloriesInfo.Location = new Point(476, 126);
+            caloriesInfo.Name = "caloriesInfo";
+            caloriesInfo.Size = new Size(100, 25);
+            caloriesInfo.TabIndex = 8;
+            // 
+            // delProdBtn
+            // 
+            delProdBtn.Enabled = false;
+            delProdBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            delProdBtn.Font = new Font("W3$iP", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            delProdBtn.ForeColor = Color.White;
+            delProdBtn.Location = new Point(476, 168);
+            delProdBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            delProdBtn.Name = "delProdBtn";
+            delProdBtn.Rounding = 33;
+            delProdBtn.RoundingEnable = true;
+            delProdBtn.Size = new Size(165, 32);
+            delProdBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            delProdBtn.TabIndex = 6;
+            delProdBtn.Text = "Удалить продукт";
+            delProdBtn.TextHover = null;
+            delProdBtn.Click += delProdBtn_Click;
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(caloriesInfo);
+            Controls.Add(carbsInfo);
+            Controls.Add(fatsInfo);
+            Controls.Add(protsInfo);
+            Controls.Add(delProdBtn);
             Controls.Add(addProductBtn);
             Controls.Add(caloriesField);
             Controls.Add(carbsField);
@@ -162,5 +223,10 @@
         private TextBox carbsField;
         private TextBox fatsField;
         private UXElements.buttonUI addProductBtn;
+        private Label caloriesInfo;
+        private Label carbsInfo;
+        private Label fatsInfo;
+        private Label protsInfo;
+        private UXElements.buttonUI delProdBtn;
     }
 }

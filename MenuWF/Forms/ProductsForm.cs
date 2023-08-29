@@ -83,7 +83,32 @@ namespace MenuWF.Forms
             this.ActiveControl = null;
         }
 
+        private void allProductsListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            delProdBtn.Enabled = true;
+            Product? product = (Product?)allProductsListbox.SelectedItem;
+            RefreshProductCard(product);
+        }
+
+        private void RefreshProductCard(Product? product)
+        {
+            protsInfo.Text = "Белки: " + product.Prots.ToString("0.0");
+            fatsInfo.Text = "Жиры: " + product.Fats.ToString("0.0");
+            carbsInfo.Text = "Углеводы: " + product.Carbs.ToString("0.0");
+            caloriesInfo.Text = "Калории: " + product.Calories.ToString("0.0");
 
 
+        }
+
+        private void delProdBtn_Click(object sender, EventArgs e)
+        {
+            Product? product = (Product?)allProductsListbox.SelectedItem;
+            if (product != null)
+            {
+                _db.Remove(product);
+                _db.SaveChanges();
+                RefreshProducts();
+            }
+        }
     }
 }

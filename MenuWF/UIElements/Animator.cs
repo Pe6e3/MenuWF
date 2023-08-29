@@ -1,4 +1,6 @@
-﻿namespace MenuWF.UIElements;
+﻿using System.Collections.Concurrent;
+
+namespace MenuWF.UIElements;
 
 public static class Animator
 {
@@ -30,15 +32,31 @@ public static class Animator
         while (true)
         {
             AnimationList.RemoveAll(a => a.Status == Animation.AnimationStatus.Completed);
+            var exceptions = new ConcurrentBag<Exception>();
 
             Parallel.For(0, Count(), index =>
             {
-                AnimationList[index].UpdateFrame();
+                try
+                {
+                    if (AnimationList[index] != null)
+                        AnimationList[index].UpdateFrame();
+                }
+                catch (Exception ex)
+                {
+                    exceptions.Add(ex);
+                }
             });
+
+            foreach (var ex in exceptions)
+            {
+                Console.WriteLine($"Ошибка с анимацией: {ex}");
+            }
 
             Thread.Sleep((int)Interval);
         }
     }
+
+
 
     public static void Request(Animation Anim, bool ReplaceIfExists)
     {
