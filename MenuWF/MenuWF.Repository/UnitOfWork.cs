@@ -16,10 +16,11 @@ public class UnitOfWork : IDisposable
     private ProductsRepository _productsRepository;
     private RecipesRepository _recipesRepository;
 
-    public DishesRepository DishesRepository => _dishesRepository ?? new DishesRepository(_db);
-    public JournalsRepository JournalsRepository => _journalsRepository ?? new JournalsRepository(_db);
-    public ProductsRepository ProductsRepository => _productsRepository ?? new ProductsRepository(_db);
-    public RecipesRepository RecipesRepository => _recipesRepository ?? new RecipesRepository(_db);
+
+    public DishesRepository DishesRepository =>   new DishesRepository(_db);
+    public JournalsRepository JournalsRepository =>  new JournalsRepository(_db);
+    public ProductsRepository ProductsRepository => new ProductsRepository(_db);
+    public RecipesRepository RecipesRepository => new RecipesRepository(_db);
 
 
     private bool disposed = false;

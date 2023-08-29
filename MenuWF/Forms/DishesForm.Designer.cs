@@ -162,6 +162,7 @@
             buttonui2.TabIndex = 13;
             buttonui2.Text = "Добавить в блюдо";
             buttonui2.TextHover = "продукт будет добавлен в блюдо";
+            buttonui2.Click += buttonui2_Click;
             // 
             // DishesForm
             // 

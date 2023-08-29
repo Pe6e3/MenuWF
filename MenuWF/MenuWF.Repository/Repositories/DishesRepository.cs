@@ -6,7 +6,7 @@ namespace MenuWF.MenuWF.Repository.Repositories
 {
     public class DishesRepository :GenericRepository<Dish>, IDishesRepository
     {
-        private readonly AppDbContext db;
+        private readonly AppDbContext db = new AppDbContext();
 
         public DishesRepository(AppDbContext db) : base(db)
         {

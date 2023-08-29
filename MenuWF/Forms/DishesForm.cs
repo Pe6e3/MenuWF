@@ -30,6 +30,20 @@ public partial class DishesForm : ShadowedForm
     }
 
 
+
+
+
+
+
+    private void DishesForm_Load(object sender, EventArgs e)
+    {
+        FillProductComboBox();
+        RefreshDishes();
+
+    }
+
+
+
     private async void RefreshRecipeList(Dish? dish)
     {
         nutritionList.Items.Clear();
@@ -53,29 +67,34 @@ public partial class DishesForm : ShadowedForm
         }
     }
 
-
-
-
-    private void DishesForm_Load(object sender, EventArgs e)
-    {
-        FillProductComboBox();
-        RefreshDishes();
-    }
-
     private async void RefreshDishes()
     {
         allDishesListbox.Items.Clear();
         allDishesListbox.DisplayMember = "Name";
-        IEnumerable<Dish> dishes = await _uow.DishesRepository.GetAll();
-        foreach (Dish dish in dishes)
-            allDishesListbox.Items.Add(dish);
+
+        using (var uow = new UnitOfWork())
+        {
+            IEnumerable<Dish> dishes = await uow.DishesRepository.GetAllAsync();
+            foreach (Dish dish in dishes)
+                allDishesListbox.Items.Add(dish);
+        }
     }
 
     private async void FillProductComboBox()
     {
-        var products = await _uow.ProductsRepository.GetAll();
         productsComboBox.Items.Clear();
         productsComboBox.DisplayMember = "Name";
-        productsComboBox.DataSource = products;
+
+        using (var uow = new UnitOfWork())
+        {
+            var products = await uow.ProductsRepository.GetAllAsync();
+            productsComboBox.DataSource = products;
+        }
+    }
+
+
+    private void buttonui2_Click(object sender, EventArgs e)
+    {
+
     }
 }

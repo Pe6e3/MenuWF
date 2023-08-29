@@ -26,7 +26,7 @@ namespace MenuWF.Forms
         {
             allProductsListbox.Items.Clear();
             allProductsListbox.DisplayMember = "Name";
-            IEnumerable<Product> products = await _uow.ProductsRepository.GetAll();
+            IEnumerable<Product> products = await _uow.ProductsRepository.GetAllAsync();
 
             foreach (Product product in products)
                 allProductsListbox.Items.Add(product);

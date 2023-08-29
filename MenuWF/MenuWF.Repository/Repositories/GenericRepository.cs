@@ -50,9 +50,13 @@ namespace MenuWF.MenuWF.Repository.Repositories
 
 
 
-        public async Task<IReadOnlyList<T>> GetAll() => await
-        _db.Set<T>()
-        .ToListAsync();
+        public async Task<IReadOnlyList<T>> GetAllAsync()
+        {
+            IReadOnlyList<T> entities = await _db.Set<T>().ToListAsync();
+            _db.Dispose();
+            return entities;
+        }
+
 
         public async Task<IReadOnlyList<T>> GetAllDesc() => await
         _db.Set<T>()
