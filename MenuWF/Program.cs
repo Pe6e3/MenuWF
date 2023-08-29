@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace MenuWF
 {
-    internal static class Program
+    public static class Program
     {
         [STAThread]
         static void Main()

@@ -31,8 +31,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DishesForm));
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
-            listBox1 = new ListBox();
             buttonui1 = new UXElements.buttonUI();
+            allDishesListbox = new ListBox();
+            selectedDishLabel = new Label();
+            nutritionList = new ListBox();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -54,15 +56,6 @@
             egoldsFormStyle1.HeaderTextColor = Color.White;
             egoldsFormStyle1.HeaderTextFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(323, 200);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(120, 94);
-            listBox1.TabIndex = 0;
-            // 
             // buttonui1
             // 
             buttonui1.endColorBorderBtn = Color.LightSkyBlue;
@@ -80,23 +73,56 @@
             buttonui1.TextHover = "назад";
             buttonui1.Click += buttonui1_Click;
             // 
+            // allDishesListbox
+            // 
+            allDishesListbox.FormattingEnabled = true;
+            allDishesListbox.ItemHeight = 15;
+            allDishesListbox.Location = new Point(89, 68);
+            allDishesListbox.Name = "allDishesListbox";
+            allDishesListbox.Size = new Size(233, 274);
+            allDishesListbox.TabIndex = 8;
+            allDishesListbox.SelectedIndexChanged += allDishesListbox_SelectedIndexChanged;
+            // 
+            // selectedDishLabel
+            // 
+            selectedDishLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            selectedDishLabel.Location = new Point(389, 68);
+            selectedDishLabel.Name = "selectedDishLabel";
+            selectedDishLabel.Size = new Size(189, 25);
+            selectedDishLabel.TabIndex = 9;
+            selectedDishLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // nutritionList
+            // 
+            nutritionList.FormattingEnabled = true;
+            nutritionList.ItemHeight = 15;
+            nutritionList.Location = new Point(440, 68);
+            nutritionList.Name = "nutritionList";
+            nutritionList.Size = new Size(207, 274);
+            nutritionList.TabIndex = 10;
+            // 
             // DishesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(841, 519);
+            Controls.Add(nutritionList);
+            Controls.Add(selectedDishLabel);
+            Controls.Add(allDishesListbox);
             Controls.Add(buttonui1);
-            Controls.Add(listBox1);
             Name = "DishesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Блюда";
+            Load += DishesForm_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
-        private ListBox listBox1;
         private UXElements.buttonUI buttonui1;
+        private ListBox allDishesListbox;
+        private Label selectedDishLabel;
+        private ListBox nutritionList;
     }
 }
