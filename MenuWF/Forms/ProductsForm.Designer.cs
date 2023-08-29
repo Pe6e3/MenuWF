@@ -46,6 +46,7 @@
             fatsInfo = new TextBox();
             carbsInfo = new TextBox();
             caloriesInfo = new TextBox();
+            selectedProductLabel = new Label();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -145,7 +146,7 @@
             // 
             // protsInfoLabel
             // 
-            protsInfoLabel.Location = new Point(476, 36);
+            protsInfoLabel.Location = new Point(468, 75);
             protsInfoLabel.Name = "protsInfoLabel";
             protsInfoLabel.Size = new Size(100, 25);
             protsInfoLabel.TabIndex = 8;
@@ -154,7 +155,7 @@
             // 
             // fatsInfoLabel
             // 
-            fatsInfoLabel.Location = new Point(476, 66);
+            fatsInfoLabel.Location = new Point(468, 105);
             fatsInfoLabel.Name = "fatsInfoLabel";
             fatsInfoLabel.Size = new Size(100, 25);
             fatsInfoLabel.TabIndex = 8;
@@ -163,7 +164,7 @@
             // 
             // carbsInfoLabel
             // 
-            carbsInfoLabel.Location = new Point(476, 96);
+            carbsInfoLabel.Location = new Point(468, 135);
             carbsInfoLabel.Name = "carbsInfoLabel";
             carbsInfoLabel.Size = new Size(100, 25);
             carbsInfoLabel.TabIndex = 8;
@@ -172,7 +173,7 @@
             // 
             // caloriesInfoLabel
             // 
-            caloriesInfoLabel.Location = new Point(476, 126);
+            caloriesInfoLabel.Location = new Point(468, 165);
             caloriesInfoLabel.Name = "caloriesInfoLabel";
             caloriesInfoLabel.Size = new Size(100, 25);
             caloriesInfoLabel.TabIndex = 8;
@@ -185,7 +186,7 @@
             delProdBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             delProdBtn.Font = new Font("W3$iP", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             delProdBtn.ForeColor = Color.White;
-            delProdBtn.Location = new Point(476, 168);
+            delProdBtn.Location = new Point(526, 207);
             delProdBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             delProdBtn.Name = "delProdBtn";
             delProdBtn.Rounding = 33;
@@ -200,7 +201,7 @@
             // protsInfo
             // 
             protsInfo.AccessibleRole = AccessibleRole.Text;
-            protsInfo.Location = new Point(582, 38);
+            protsInfo.Location = new Point(574, 77);
             protsInfo.Name = "protsInfo";
             protsInfo.Size = new Size(141, 23);
             protsInfo.TabIndex = 2;
@@ -209,7 +210,7 @@
             // fatsInfo
             // 
             fatsInfo.AccessibleRole = AccessibleRole.Text;
-            fatsInfo.Location = new Point(582, 68);
+            fatsInfo.Location = new Point(574, 107);
             fatsInfo.Name = "fatsInfo";
             fatsInfo.Size = new Size(141, 23);
             fatsInfo.TabIndex = 3;
@@ -218,7 +219,7 @@
             // carbsInfo
             // 
             carbsInfo.AccessibleRole = AccessibleRole.Text;
-            carbsInfo.Location = new Point(582, 98);
+            carbsInfo.Location = new Point(574, 137);
             carbsInfo.Name = "carbsInfo";
             carbsInfo.Size = new Size(141, 23);
             carbsInfo.TabIndex = 4;
@@ -227,11 +228,20 @@
             // caloriesInfo
             // 
             caloriesInfo.AccessibleRole = AccessibleRole.Text;
-            caloriesInfo.Location = new Point(582, 128);
+            caloriesInfo.Location = new Point(574, 167);
             caloriesInfo.Name = "caloriesInfo";
             caloriesInfo.Size = new Size(141, 23);
             caloriesInfo.TabIndex = 5;
             caloriesInfo.TextChanged += caloriesField_TextChanged;
+            // 
+            // selectedProductLabel
+            // 
+            selectedProductLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            selectedProductLabel.Location = new Point(526, 45);
+            selectedProductLabel.Name = "selectedProductLabel";
+            selectedProductLabel.Size = new Size(189, 25);
+            selectedProductLabel.TabIndex = 8;
+            selectedProductLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // ProductsForm
             // 
@@ -241,6 +251,7 @@
             Controls.Add(caloriesInfoLabel);
             Controls.Add(carbsInfoLabel);
             Controls.Add(fatsInfoLabel);
+            Controls.Add(selectedProductLabel);
             Controls.Add(protsInfoLabel);
             Controls.Add(delProdBtn);
             Controls.Add(addProductBtn);
@@ -280,5 +291,6 @@
         private TextBox carbsInfo;
         private TextBox fatsInfo;
         private TextBox protsInfo;
+        private Label selectedProductLabel;
     }
 }

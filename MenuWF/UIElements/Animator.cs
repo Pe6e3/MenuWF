@@ -31,7 +31,7 @@ public static class Animator
     {
         while (true)
         {
-            AnimationList.RemoveAll(a => a.Status == Animation.AnimationStatus.Completed);
+            AnimationList.RemoveAll(a => a?.Status == Animation.AnimationStatus.Completed);
             var exceptions = new ConcurrentBag<Exception>();
 
             Parallel.For(0, AnimationList.Count, index =>

@@ -28,13 +28,10 @@ namespace MenuWF
             {
                 Application.Run(new MainForm(dbContext));
             }
-            // «акрытие консоли после закрыти€ приложени€
-            FreeConsole();
+ 
         }
         [System.Runtime.InteropServices.DllImport("kernel32.dll")]
         private static extern bool AllocConsole();
 
-        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
-        private static extern bool FreeConsole();
     }
 }

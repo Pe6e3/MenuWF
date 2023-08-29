@@ -96,7 +96,7 @@ namespace MenuWF.Forms
             fatsInfo.Text = product.Fats.ToString("0.0");
             carbsInfo.Text = product.Carbs.ToString("0.0");
             caloriesInfo.Text = product.Calories.ToString("0.0");
-
+            selectedProductLabel.Text = product?.Name;
 
         }
 
@@ -111,6 +111,7 @@ namespace MenuWF.Forms
                 FormHelper.ClearFields(this);
                 this.ActiveControl = null;
                 delProdBtn.Enabled = false;
+                selectedProductLabel.Text = "";
             }
         }
     }
