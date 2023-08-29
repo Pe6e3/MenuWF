@@ -2,7 +2,7 @@
 
 namespace MenuWF.Interfaces
 {
-    public interface IRecipeRepository : IGenericRepository<Recipe>
+    public interface IRecipesRepository : IGenericRepository<Recipe>
     {
     }
 }

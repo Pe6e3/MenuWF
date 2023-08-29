@@ -2,7 +2,7 @@
 
 namespace MenuWF.Interfaces
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IProductsRepository : IGenericRepository<Product>
     {
     }
 }

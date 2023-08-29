@@ -1,5 +1,6 @@
 ﻿using MenuWF.Data;
 using MenuWF.Entities;
+using MenuWF.Repository;
 using MenuWF.UIElements;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +8,12 @@ namespace MenuWF.Forms;
 
 public partial class DishesForm : ShadowedForm
 {
-    private readonly AppDbContext _db;
-    public DishesForm(AppDbContext db)
+    //private readonly AppDbContext _db;
+    private readonly UnitOfWork _uow;
+    public DishesForm(UnitOfWork uow)
     {
-        _db = db;
+        //_db = db;
+        _uow = uow;
         InitializeComponent();
         Animator.Start();
 
@@ -32,7 +35,7 @@ public partial class DishesForm : ShadowedForm
 
     private void RefreshDishCard(Dish? dish)
     {
-        //IEnumerable<Product> products = _db.Products.GetProductsOfDish(dish);
+        IEnumerable<Product> products = _db.Products.GetProductsOfDish(dish);
     }
 
     private void DishesForm_Load(object sender, EventArgs e)

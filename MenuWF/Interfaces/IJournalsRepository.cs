@@ -2,7 +2,7 @@
 
 namespace MenuWF.Interfaces
 {
-    public interface IJournalRepository : IGenericRepository<Journal>
+    public interface IJournalsRepository : IGenericRepository<Journal>
     {
     }
 }

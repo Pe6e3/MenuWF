@@ -4,11 +4,11 @@ using MenuWF.Interfaces;
 
 namespace MenuWF.MenuWF.Repository.Repositories
 {
-    public class DishesRepository :GenericRepository<Dish>, IDishesRepository
+    public class JournalsRepository : GenericRepository<Journal>, IJournalsRepository
     {
         private readonly AppDbContext db;
 
-        public DishesRepository(AppDbContext db) : base(db)
+        public JournalsRepository(AppDbContext db) : base(db)
         {
             this.db = db;
         }
