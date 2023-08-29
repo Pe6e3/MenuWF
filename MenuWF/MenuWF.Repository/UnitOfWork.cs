@@ -3,7 +3,7 @@ using MenuWF.MenuWF.Repository.Repositories;
 
 namespace MenuWF.Repository;
 
-public class UnitOfWork
+public class UnitOfWork : IDisposable
 {
     private readonly AppDbContext _db;
     public UnitOfWork(AppDbContext db)
@@ -21,4 +21,20 @@ public class UnitOfWork
     public ProductsRepository ProductsRepository => _productsRepository ?? new ProductsRepository(_db);
     public RecipesRepository RecipesRepository => _recipesRepository ?? new RecipesRepository(_db);
 
+
+    private bool disposed = false;
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!this.disposed)
+            if (disposing)
+                _db.Dispose();
+        this.disposed = true;
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 }
