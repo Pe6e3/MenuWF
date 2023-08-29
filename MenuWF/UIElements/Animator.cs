@@ -43,7 +43,7 @@ public static class Animator
             {
                 try
                 {
-                    AnimationList[index].UpdateFrame();
+                    AnimationList[index]?.UpdateFrame();
                 }
                 catch (Exception ex)
                 {
