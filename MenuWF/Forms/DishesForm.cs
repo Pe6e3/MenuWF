@@ -13,7 +13,6 @@ public partial class DishesForm : ShadowedForm
         _uow = uow;
         InitializeComponent();
         Animator.Start();
-
     }
 
 
@@ -41,13 +40,16 @@ public partial class DishesForm : ShadowedForm
         nutritionList.Columns.Add("Продукт").Width = 150; // Ширина первого столбца
         nutritionList.Columns.Add("Вес").Width = 50; // Ширина второго столбца
 
-        IEnumerable<Recipe> nutrients = await _uow.ProductsRepository.GetProductsOfDish(dish.Id);
-
-        foreach (Recipe nutrient in nutrients)
+        if (dish != null)
         {
-            ListViewItem item = new ListViewItem(nutrient.Product.Name);
-            item.SubItems.Add(nutrient.ProductWeight.ToString());
-            nutritionList.Items.Add(item);
+            IEnumerable<Recipe> nutrients = await _uow.ProductsRepository.GetProductsOfDish(dish.Id);
+
+            foreach (Recipe nutrient in nutrients)
+            {
+                ListViewItem item = new ListViewItem(nutrient.Product.Name);
+                item.SubItems.Add(nutrient.ProductWeight.ToString());
+                nutritionList.Items.Add(item);
+            }
         }
     }
 
@@ -56,6 +58,7 @@ public partial class DishesForm : ShadowedForm
 
     private void DishesForm_Load(object sender, EventArgs e)
     {
+        FillProductComboBox();
         RefreshDishes();
     }
 
@@ -68,5 +71,11 @@ public partial class DishesForm : ShadowedForm
             allDishesListbox.Items.Add(dish);
     }
 
-
+    private async void FillProductComboBox()
+    {
+        var products = await _uow.ProductsRepository.GetAll();
+        productsComboBox.Items.Clear();
+        productsComboBox.DisplayMember = "Name";
+        productsComboBox.DataSource = products;
+    }
 }
