@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+﻿using System.Diagnostics;
 
 namespace MenuWF.UIElements;
 
@@ -11,51 +11,72 @@ public static class Animator
         return AnimationList.Count;
     }
 
-    private static Thread? AnimatorThread;
+    private static Thread AnimatorThread;
 
     private static double Interval;
 
+    public static bool IsWork = false;
+
     public static void Start()
     {
-        Interval = 3; // 
+        if (IsWork) return;
+
+        IsWork = true;
+        Interval = 14; // FPS ~66
 
         AnimatorThread = new Thread(AnimationInvoker)
         {
             IsBackground = true,
             Name = "UI Animation"
         };
+
         AnimatorThread.Start();
     }
 
     private static void AnimationInvoker()
     {
-        while (true)
+        while (IsWork)
         {
-            AnimationList.RemoveAll(a => a?.Status == Animation.AnimationStatus.Completed);
+            AnimationList.RemoveAll(a => a == null || a.Status == Animation.AnimationStatus.Completed);
 
             Parallel.For(0, Count(), index =>
             {
-                if (index >= 0 && index < AnimationList.Count && AnimationList[index] != null)
+                try
+                {
                     AnimationList[index].UpdateFrame();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка Parallel: " + ex.Message);
+                }
             });
 
             Thread.Sleep((int)Interval);
         }
     }
 
-
-
-    public static void Request(Animation Anim, bool ReplaceIfExists)
+    public static void Request(Animation Anim, bool ReplaceIfExists = true)
     {
+        if (AnimatorThread == null || IsWork == false)
+            Start();
+
+        Debug.WriteLine("Запуск анимации: " + Anim.ID + "| TargetValue: " + Anim.TargetValue);
         Anim.Status = Animation.AnimationStatus.Requested;
 
-        Animation dupAnim = GetDuplicate(Anim);
+        try
+        {
+            Animation dupAnim = GetDuplicate(Anim);
 
-        if (dupAnim != null)
-            if (ReplaceIfExists == true)
-                dupAnim.Status = Animation.AnimationStatus.Completed;
-            else
-                return;
+            if (dupAnim != null)
+                if (ReplaceIfExists == true)
+                    dupAnim.Status = Animation.AnimationStatus.Completed;
+                else
+                    return;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Ошибка GetDuplicate: " + ex.Message);
+        }
 
         AnimationList.Add(Anim);
     }
