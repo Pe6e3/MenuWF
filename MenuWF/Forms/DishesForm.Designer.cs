@@ -34,7 +34,7 @@
             buttonui1 = new UXElements.buttonUI();
             allDishesListbox = new ListBox();
             selectedDishLabel = new Label();
-            nutritionList = new ListBox();
+            nutritionList = new ListView();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -79,27 +79,27 @@
             allDishesListbox.ItemHeight = 15;
             allDishesListbox.Location = new Point(89, 68);
             allDishesListbox.Name = "allDishesListbox";
-            allDishesListbox.Size = new Size(233, 274);
+            allDishesListbox.Size = new Size(233, 319);
             allDishesListbox.TabIndex = 8;
             allDishesListbox.SelectedIndexChanged += allDishesListbox_SelectedIndexChanged;
             // 
             // selectedDishLabel
             // 
             selectedDishLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            selectedDishLabel.Location = new Point(389, 68);
+            selectedDishLabel.Location = new Point(362, 68);
             selectedDishLabel.Name = "selectedDishLabel";
-            selectedDishLabel.Size = new Size(189, 25);
+            selectedDishLabel.Size = new Size(204, 25);
             selectedDishLabel.TabIndex = 9;
             selectedDishLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // nutritionList
             // 
-            nutritionList.FormattingEnabled = true;
-            nutritionList.ItemHeight = 15;
-            nutritionList.Location = new Point(440, 68);
+            nutritionList.ImeMode = ImeMode.NoControl;
+            nutritionList.Location = new Point(362, 112);
             nutritionList.Name = "nutritionList";
-            nutritionList.Size = new Size(207, 274);
-            nutritionList.TabIndex = 10;
+            nutritionList.Size = new Size(204, 274);
+            nutritionList.TabIndex = 11;
+            nutritionList.UseCompatibleStateImageBehavior = false;
             // 
             // DishesForm
             // 
@@ -123,6 +123,6 @@
         private UXElements.buttonUI buttonui1;
         private ListBox allDishesListbox;
         private Label selectedDishLabel;
-        private ListBox nutritionList;
+        private ListView nutritionList;
     }
 }

@@ -1,4 +1,5 @@
-﻿using MenuWF.Entities;
+﻿using MenuWF.DTO;
+using MenuWF.Entities;
 using MenuWF.Repository;
 using MenuWF.UIElements;
 
@@ -26,13 +27,32 @@ public partial class DishesForm : ShadowedForm
         Dish? dish = (Dish?)allDishesListbox.SelectedItem;
 
         selectedDishLabel.Text = dish?.Name;
-        RefreshDishCard(dish);
+        RefreshRecipeList(dish);
     }
 
-    private void RefreshDishCard(Dish? dish)
+
+    private async void RefreshRecipeList(Dish? dish)
     {
-        //IEnumerable<Product> products = _uow.Products.GetProductsOfDish(dish);
+        nutritionList.Items.Clear();
+        nutritionList.View = System.Windows.Forms.View.Details; // Установка режима просмотра в Details
+        nutritionList.Columns.Clear();
+
+        // Добавляем столбцы и задаем им ширину
+        nutritionList.Columns.Add("Продукт").Width = 150; // Ширина первого столбца
+        nutritionList.Columns.Add("Вес").Width = 50; // Ширина второго столбца
+
+        IEnumerable<Recipe> nutrients = await _uow.ProductsRepository.GetProductsOfDish(dish.Id);
+
+        foreach (Recipe nutrient in nutrients)
+        {
+            ListViewItem item = new ListViewItem(nutrient.Product.Name);
+            item.SubItems.Add(nutrient.ProductWeight.ToString());
+            nutritionList.Items.Add(item);
+        }
     }
+
+
+
 
     private void DishesForm_Load(object sender, EventArgs e)
     {
@@ -47,4 +67,6 @@ public partial class DishesForm : ShadowedForm
         foreach (Dish dish in dishes)
             allDishesListbox.Items.Add(dish);
     }
+
+
 }
