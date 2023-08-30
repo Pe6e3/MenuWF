@@ -26,6 +26,8 @@ namespace MenuWF.MenuWF.Repository.Repositories
             IEnumerable<Journal> journals = new List<Journal>();
             journals = await db.Journals
                 .Where(x => x.Date == date && x.meal == meal)
+                .Include(x=>x.Recipe)
+                .ThenInclude(x=>x.Dish)
                 .ToListAsync();
 
             return journals;

@@ -30,10 +30,18 @@ namespace MenuWF.Forms
 
             using (var uow = new UnitOfWork())
             {
-                var dishes = await uow.DishesRepository.GetAll();
-                breakfastDishCB.DataSource = dishes;
-                dinnerDishCB.DataSource = dishes;
-                supperDishCB.DataSource = dishes;
+                var dishesB = await uow.DishesRepository.GetAll();
+                breakfastDishCB.DataSource = dishesB;
+            }
+            using (var uow = new UnitOfWork())
+            {
+                var dishesD = await uow.DishesRepository.GetAll();
+                dinnerDishCB.DataSource = dishesD;
+            }
+            using (var uow = new UnitOfWork())
+            {
+                var dishesS = await uow.DishesRepository.GetAll();
+                supperDishCB.DataSource = dishesS;
             }
 
         }
@@ -123,7 +131,7 @@ namespace MenuWF.Forms
             decimal sumS = 0;
             foreach (var journalB in breakfastJournals)
             {
-                ListViewItem item = new ListViewItem(journalB.RecipeId.ToString());
+                ListViewItem item = new ListViewItem(journalB.Recipe.Dish.Name.ToString());
                 item.SubItems.Add(journalB.DishWeight.ToString("0.0"));
                 breakfastDishesLW.Items.Add(item);
                 sumB += journalB.DishWeight;
@@ -131,7 +139,7 @@ namespace MenuWF.Forms
 
             foreach (var journalD in dinnerJournals)
             {
-                ListViewItem item = new ListViewItem(journalD.RecipeId.ToString());
+                ListViewItem item = new ListViewItem(journalD.Recipe.Dish.Name.ToString());
                 item.SubItems.Add(journalD.DishWeight.ToString("0.0"));
                 dinnerDishesLW.Items.Add(item);
                 sumD += journalD.DishWeight;
@@ -139,7 +147,7 @@ namespace MenuWF.Forms
 
             foreach (var journalS in supperJournals)
             {
-                ListViewItem item = new ListViewItem(journalS.RecipeId.ToString());
+                ListViewItem item = new ListViewItem(journalS.Recipe.Dish.Name.ToString());
                 item.SubItems.Add(journalS.DishWeight.ToString("0.0"));
                 supperDishesLW.Items.Add(item);
                 sumS += journalS.DishWeight;
@@ -147,9 +155,9 @@ namespace MenuWF.Forms
             var sumLineB = new ListViewItem("Вес всех блюд");
             var sumLineD = new ListViewItem("Вес всех блюд");
             var sumLineS = new ListViewItem("Вес всех блюд");
-            sumLineB.SubItems.Add(sumB.ToString());
-            sumLineD.SubItems.Add(sumD.ToString());
-            sumLineS.SubItems.Add(sumS.ToString());
+            sumLineB.SubItems.Add(sumB.ToString("0.0"));
+            sumLineD.SubItems.Add(sumD.ToString("0.0"));
+            sumLineS.SubItems.Add(sumS.ToString("0.0"));
 
             breakfastDishesLW.Items.Add(sumLineB);
             dinnerDishesLW.Items.Add(sumLineD);

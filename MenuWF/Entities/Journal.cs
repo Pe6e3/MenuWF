@@ -6,6 +6,7 @@ public class Journal : BaseEntity
     public decimal DishWeight { get; set; }
     public DateTime Date { get; set; }
     public Meal meal { get; set; }
+    public virtual Recipe? Recipe { get; set; }
 
 
     public enum Meal
