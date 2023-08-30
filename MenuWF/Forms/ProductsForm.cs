@@ -26,7 +26,7 @@ namespace MenuWF.Forms
             allProductsListbox.DisplayMember = "Name";
             using (var uow = new UnitOfWork())
             {
-                IEnumerable<Product> products = await uow.ProductsRepository.GetAllAsync();
+                IEnumerable<Product> products = await uow.ProductsRepository.GetAll();
 
                 foreach (Product product in products)
                     allProductsListbox.Items.Add(product);
@@ -116,17 +116,17 @@ namespace MenuWF.Forms
                 {
                     await uow.ProductsRepository.Delete(product);
                 }
-                    RefreshProducts();
-                    FormHelper.ClearFields(this);
-                    this.ActiveControl = null;
-                    delProdBtn.Enabled = false;
-                    selectedProductLabel.Text = "";
-                }
-            }
-
-            private void backBtn_Click(object sender, EventArgs e)
-            {
-                FormHelper.OpenMainForm(this);
+                RefreshProducts();
+                FormHelper.ClearFields(this);
+                this.ActiveControl = null;
+                delProdBtn.Enabled = false;
+                selectedProductLabel.Text = "";
             }
         }
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.OpenMainForm(this);
+        }
     }
+}

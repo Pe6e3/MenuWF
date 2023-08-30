@@ -31,7 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DishesForm));
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
-            buttonui1 = new UXElements.buttonUI();
             allDishesListbox = new ListBox();
             selectedDishLabel = new Label();
             nutritionList = new ListView();
@@ -40,6 +39,7 @@
             productsComboBox = new ComboBox();
             prodWeightField = new TextBox();
             addProdToDishBtn = new UXElements.buttonUI();
+            backBtn = new UXElements.buttonUI();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -60,23 +60,6 @@
             egoldsFormStyle1.HeaderImage = (Image)resources.GetObject("egoldsFormStyle1.HeaderImage");
             egoldsFormStyle1.HeaderTextColor = Color.White;
             egoldsFormStyle1.HeaderTextFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            // 
-            // buttonui1
-            // 
-            buttonui1.endColorBorderBtn = Color.LightSkyBlue;
-            buttonui1.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonui1.ForeColor = Color.LightCyan;
-            buttonui1.Location = new Point(12, 471);
-            buttonui1.middleColorBtn = Color.DeepSkyBlue;
-            buttonui1.Name = "buttonui1";
-            buttonui1.Rounding = 33;
-            buttonui1.RoundingEnable = true;
-            buttonui1.Size = new Size(81, 36);
-            buttonui1.startColorBtn = Color.SkyBlue;
-            buttonui1.TabIndex = 1;
-            buttonui1.Text = "←";
-            buttonui1.TextHover = "назад";
-            buttonui1.Click += buttonui1_Click;
             // 
             // allDishesListbox
             // 
@@ -165,11 +148,29 @@
             addProdToDishBtn.TextHover = "продукт будет добавлен в блюдо";
             addProdToDishBtn.Click += addProdToDishBtn_Click;
             // 
+            // backBtn
+            // 
+            backBtn.endColorBorderBtn = Color.LightSkyBlue;
+            backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
+            backBtn.ForeColor = Color.LightCyan;
+            backBtn.Location = new Point(12, 471);
+            backBtn.middleColorBtn = Color.DeepSkyBlue;
+            backBtn.Name = "backBtn";
+            backBtn.Rounding = 33;
+            backBtn.RoundingEnable = true;
+            backBtn.Size = new Size(81, 36);
+            backBtn.startColorBtn = Color.SkyBlue;
+            backBtn.TabIndex = 31;
+            backBtn.Text = "←";
+            backBtn.TextHover = "назад";
+            backBtn.Click += backBtn_Click;
+            // 
             // DishesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(916, 519);
+            Controls.Add(backBtn);
             Controls.Add(prodWeightField);
             Controls.Add(productsComboBox);
             Controls.Add(addProdToDishBtn);
@@ -178,7 +179,6 @@
             Controls.Add(nutritionList);
             Controls.Add(selectedDishLabel);
             Controls.Add(allDishesListbox);
-            Controls.Add(buttonui1);
             Name = "DishesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Блюда";
@@ -190,7 +190,7 @@
         #endregion
 
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
-        private UXElements.buttonUI buttonui1;
+        private UXElements.buttonUI backBtn;
         private ListBox allDishesListbox;
         private Label selectedDishLabel;
         private ListView nutritionList;

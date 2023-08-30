@@ -14,9 +14,10 @@ public partial class DishesForm : ShadowedForm
     }
 
 
-    private void buttonui1_Click(object sender, EventArgs e)
+    private void DishesForm_Load(object sender, EventArgs e)
     {
-        FormHelper.OpenMainForm(this);
+        FillProductComboBox();
+        RefreshDishes();
     }
 
     private void allDishesListbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -26,20 +27,6 @@ public partial class DishesForm : ShadowedForm
         selectedDishLabel.Text = dish?.Name;
         RefreshRecipeList(dish);
     }
-
-
-
-
-
-
-
-    private void DishesForm_Load(object sender, EventArgs e)
-    {
-        FillProductComboBox();
-        RefreshDishes();
-
-    }
-
 
 
     private async void RefreshRecipeList(Dish? dish)
@@ -69,7 +56,7 @@ public partial class DishesForm : ShadowedForm
                 var sumLine = new ListViewItem("Общий вес:");
                 sumLine.SubItems.Add(sum.ToString());
                 nutritionList.Items.Add(sumLine);
-                sumLine.Font = new Font(nutritionList.Font,FontStyle.Bold);
+                sumLine.Font = new Font(nutritionList.Font, FontStyle.Bold);
                 sumLine.ForeColor = Color.Red;
             }
         }
@@ -82,7 +69,7 @@ public partial class DishesForm : ShadowedForm
 
         using (var uow = new UnitOfWork())
         {
-            IEnumerable<Dish> dishes = await uow.DishesRepository.GetAllAsync();
+            IEnumerable<Dish> dishes = await uow.DishesRepository.GetAll();
             foreach (Dish dish in dishes)
                 allDishesListbox.Items.Add(dish);
         }
@@ -95,12 +82,10 @@ public partial class DishesForm : ShadowedForm
 
         using (var uow = new UnitOfWork())
         {
-            var products = await uow.ProductsRepository.GetAllAsync();
+            var products = await uow.ProductsRepository.GetAll();
             productsComboBox.DataSource = products;
         }
     }
-
-
 
 
     private async void addDishBtn_Click(object sender, EventArgs e)
@@ -136,5 +121,10 @@ public partial class DishesForm : ShadowedForm
             RefreshRecipeList(dish);
             this.ActiveControl = null;
         }
+    }
+
+    private void backBtn_Click(object sender, EventArgs e)
+    {
+        FormHelper.OpenMainForm(this);
     }
 }

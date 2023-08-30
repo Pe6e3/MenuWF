@@ -91,6 +91,7 @@ namespace MenuWF
             addMenuBtn.TabStop = false;
             addMenuBtn.Text = "Составить меню";
             addMenuBtn.TextHover = "Сформировать Завтрак, Обед и Ужин из блюд";
+            addMenuBtn.Click += addMenuBtn_Click;
             // 
             // egoldsFormStyle1
             // 

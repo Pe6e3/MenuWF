@@ -33,7 +33,7 @@
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
             breakfastDishesLB = new ListBox();
             addDishBtn = new UXElements.buttonUI();
-            buttonui1 = new UXElements.buttonUI();
+            backBtn = new UXElements.buttonUI();
             dinnerDishesLB = new ListBox();
             supperDishesLB = new ListBox();
             breakfastDishCB = new ComboBox();
@@ -51,6 +51,7 @@
             dinnerProdsLB = new ListBox();
             supperProdsLB = new ListBox();
             dayProdsLB = new ListBox();
+            dateOfJournal = new DateTimePicker();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -97,21 +98,22 @@
             addDishBtn.Text = "Добавить";
             addDishBtn.TextHover = "Добавить блюдо на завтрак";
             // 
-            // buttonui1
+            // backBtn
             // 
-            buttonui1.endColorBorderBtn = Color.LightSkyBlue;
-            buttonui1.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonui1.ForeColor = Color.LightCyan;
-            buttonui1.Location = new Point(12, 550);
-            buttonui1.middleColorBtn = Color.DeepSkyBlue;
-            buttonui1.Name = "buttonui1";
-            buttonui1.Rounding = 33;
-            buttonui1.RoundingEnable = true;
-            buttonui1.Size = new Size(81, 36);
-            buttonui1.startColorBtn = Color.SkyBlue;
-            buttonui1.TabIndex = 15;
-            buttonui1.Text = "←";
-            buttonui1.TextHover = "назад";
+            backBtn.endColorBorderBtn = Color.LightSkyBlue;
+            backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
+            backBtn.ForeColor = Color.LightCyan;
+            backBtn.Location = new Point(12, 550);
+            backBtn.middleColorBtn = Color.DeepSkyBlue;
+            backBtn.Name = "backBtn";
+            backBtn.Rounding = 33;
+            backBtn.RoundingEnable = true;
+            backBtn.Size = new Size(81, 36);
+            backBtn.startColorBtn = Color.SkyBlue;
+            backBtn.TabIndex = 15;
+            backBtn.Text = "←";
+            backBtn.TextHover = "назад";
+            backBtn.Click += backBtn_Click;
             // 
             // dinnerDishesLB
             // 
@@ -292,18 +294,28 @@
             dayProdsLB.Size = new Size(233, 499);
             dayProdsLB.TabIndex = 9;
             // 
+            // dateOfJournal
+            // 
+            dateOfJournal.Format = DateTimePickerFormat.Short;
+            dateOfJournal.Location = new Point(132, 550);
+            dateOfJournal.Name = "dateOfJournal";
+            dateOfJournal.Size = new Size(99, 23);
+            dateOfJournal.TabIndex = 18;
+            dateOfJournal.Value = new DateTime(2023, 8, 30, 21, 32, 34, 0);
+            // 
             // MenusForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 601);
+            Controls.Add(dateOfJournal);
             Controls.Add(supperDishWeightField);
             Controls.Add(dinnerDishWeightField);
             Controls.Add(breakfastDishWeightField);
             Controls.Add(supperDishCB);
             Controls.Add(dinnerDishCB);
             Controls.Add(breakfastDishCB);
-            Controls.Add(buttonui1);
+            Controls.Add(backBtn);
             Controls.Add(buttonui3);
             Controls.Add(deleteSupperDishBtn);
             Controls.Add(deleteBreakfastDishBtn);
@@ -320,6 +332,7 @@
             Name = "MenusForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Меню на день";
+            Load += MenusForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -329,7 +342,7 @@
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
         private ListBox breakfastDishesLB;
         private UXElements.buttonUI addDishBtn;
-        private UXElements.buttonUI buttonui1;
+        private UXElements.buttonUI backBtn;
         private ListBox supperDishesLB;
         private ListBox dinnerDishesLB;
         private ComboBox supperDishCB;
@@ -347,5 +360,6 @@
         private ListBox dinnerProdsLB;
         private ListBox breakfastProdsLB;
         private ListBox dayProdsLB;
+        private DateTimePicker dateOfJournal;
     }
 }
