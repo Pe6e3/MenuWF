@@ -39,7 +39,7 @@
             addDishBtn = new UXElements.buttonUI();
             productsComboBox = new ComboBox();
             prodWeightField = new TextBox();
-            buttonui2 = new UXElements.buttonUI();
+            addProdToDishBtn = new UXElements.buttonUI();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -129,6 +129,7 @@
             addDishBtn.TabIndex = 13;
             addDishBtn.Text = "Добавить";
             addDishBtn.TextHover = "Создать новое блюдо";
+            addDishBtn.Click += addDishBtn_Click;
             // 
             // productsComboBox
             // 
@@ -143,26 +144,26 @@
             prodWeightField.AccessibleRole = AccessibleRole.Text;
             prodWeightField.Location = new Point(572, 97);
             prodWeightField.Name = "prodWeightField";
+            prodWeightField.PlaceholderText = "вес продукта";
             prodWeightField.Size = new Size(141, 23);
             prodWeightField.TabIndex = 15;
-            prodWeightField.Text = "вес продукта";
             // 
-            // buttonui2
+            // addProdToDishBtn
             // 
-            buttonui2.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            buttonui2.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonui2.ForeColor = Color.White;
-            buttonui2.Location = new Point(572, 144);
-            buttonui2.middleColorBtn = Color.FromArgb(189, 195, 199);
-            buttonui2.Name = "buttonui2";
-            buttonui2.Rounding = 33;
-            buttonui2.RoundingEnable = true;
-            buttonui2.Size = new Size(188, 36);
-            buttonui2.startColorBtn = Color.FromArgb(127, 140, 141);
-            buttonui2.TabIndex = 13;
-            buttonui2.Text = "Добавить в блюдо";
-            buttonui2.TextHover = "продукт будет добавлен в блюдо";
-            buttonui2.Click += buttonui2_Click;
+            addProdToDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            addProdToDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            addProdToDishBtn.ForeColor = Color.White;
+            addProdToDishBtn.Location = new Point(572, 144);
+            addProdToDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            addProdToDishBtn.Name = "addProdToDishBtn";
+            addProdToDishBtn.Rounding = 33;
+            addProdToDishBtn.RoundingEnable = true;
+            addProdToDishBtn.Size = new Size(188, 36);
+            addProdToDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            addProdToDishBtn.TabIndex = 13;
+            addProdToDishBtn.Text = "Добавить в блюдо";
+            addProdToDishBtn.TextHover = "продукт будет добавлен в блюдо";
+            addProdToDishBtn.Click += addProdToDishBtn_Click;
             // 
             // DishesForm
             // 
@@ -171,7 +172,7 @@
             ClientSize = new Size(916, 519);
             Controls.Add(prodWeightField);
             Controls.Add(productsComboBox);
-            Controls.Add(buttonui2);
+            Controls.Add(addProdToDishBtn);
             Controls.Add(addDishBtn);
             Controls.Add(newDishField);
             Controls.Add(nutritionList);
@@ -197,6 +198,6 @@
         private UXElements.buttonUI addDishBtn;
         private TextBox newDishField;
         private TextBox prodWeightField;
-        private UXElements.buttonUI buttonui2;
+        private UXElements.buttonUI addProdToDishBtn;
     }
 }

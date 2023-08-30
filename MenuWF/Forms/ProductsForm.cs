@@ -7,8 +7,6 @@ namespace MenuWF.Forms
 {
     public partial class ProductsForm : ShadowedForm
     {
-        private UnitOfWork _uow = new UnitOfWork();
-
         public ProductsForm()
         {
             InitializeComponent();
@@ -26,10 +24,13 @@ namespace MenuWF.Forms
         {
             allProductsListbox.Items.Clear();
             allProductsListbox.DisplayMember = "Name";
-            IEnumerable<Product> products = await _uow.ProductsRepository.GetAllAsync();
+            using (var uow = new UnitOfWork())
+            {
+                IEnumerable<Product> products = await uow.ProductsRepository.GetAllAsync();
 
-            foreach (Product product in products)
-                allProductsListbox.Items.Add(product);
+                foreach (Product product in products)
+                    allProductsListbox.Items.Add(product);
+            }
         }
 
         private void protsField_TextChanged(object sender, EventArgs e)
@@ -77,7 +78,10 @@ namespace MenuWF.Forms
 
         private async void AddProduct(Product product)
         {
-            await _uow.ProductsRepository.Insert(product);
+            using (var uow = new UnitOfWork())
+            {
+                await uow.ProductsRepository.Insert(product);
+            }
             RefreshProducts();
             FormHelper.ClearFields(this);
             this.ActiveControl = null;
@@ -105,21 +109,24 @@ namespace MenuWF.Forms
 
         private async void delProdBtn_Click(object sender, EventArgs e)
         {
-            Product? product = (Product?)allProductsListbox.SelectedItem;
-            if (product != null)
+            using (var uow = new UnitOfWork())
             {
-                await _uow.ProductsRepository.Delete(product);
-                RefreshProducts();
-                FormHelper.ClearFields(this);
-                this.ActiveControl = null;
-                delProdBtn.Enabled = false;
-                selectedProductLabel.Text = "";
+                Product? product = (Product?)allProductsListbox.SelectedItem;
+                if (product != null)
+                {
+                    await uow.ProductsRepository.Delete(product);
+                }
+                    RefreshProducts();
+                    FormHelper.ClearFields(this);
+                    this.ActiveControl = null;
+                    delProdBtn.Enabled = false;
+                    selectedProductLabel.Text = "";
+                }
+            }
+
+            private void backBtn_Click(object sender, EventArgs e)
+            {
+                FormHelper.OpenMainForm(this);
             }
         }
-
-        private void backBtn_Click(object sender, EventArgs e)
-        {
-            FormHelper.OpenMainForm(this);
-        }
     }
-}

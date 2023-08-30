@@ -7,8 +7,6 @@ namespace MenuWF.Forms;
 
 public partial class DishesForm : ShadowedForm
 {
-    private UnitOfWork _uow = new UnitOfWork();
-
     public DishesForm()
     {
         InitializeComponent();
@@ -54,15 +52,18 @@ public partial class DishesForm : ShadowedForm
         nutritionList.Columns.Add("Продукт").Width = 150; // Ширина первого столбца
         nutritionList.Columns.Add("Вес").Width = 50; // Ширина второго столбца
 
-        if (dish != null)
+        using (var uow = new UnitOfWork())
         {
-            IEnumerable<Recipe> nutrients = await _uow.ProductsRepository.GetProductsOfDish(dish.Id);
-
-            foreach (Recipe nutrient in nutrients)
+            if (dish != null)
             {
-                ListViewItem item = new ListViewItem(nutrient.Product.Name);
-                item.SubItems.Add(nutrient.ProductWeight.ToString());
-                nutritionList.Items.Add(item);
+                IEnumerable<Recipe> nutrients = await uow.ProductsRepository.GetProductsOfDish(dish.Id);
+
+                foreach (Recipe nutrient in nutrients)
+                {
+                    ListViewItem item = new ListViewItem(nutrient.Product.Name);
+                    item.SubItems.Add(nutrient.ProductWeight.ToString());
+                    nutritionList.Items.Add(item);
+                }
             }
         }
     }
@@ -93,8 +94,40 @@ public partial class DishesForm : ShadowedForm
     }
 
 
-    private void buttonui2_Click(object sender, EventArgs e)
+
+
+    private async void addDishBtn_Click(object sender, EventArgs e)
+    {
+        using (var uow = new UnitOfWork())
+        {
+            Dish dish = new Dish();
+            dish.Name = newDishField.Text;
+            await uow.DishesRepository.Insert(dish);
+        }
+        RefreshDishes();
+        newDishField.Text = "";
+    }
+
+
+    private async void addProdToDishBtn_Click(object sender, EventArgs e)
     {
 
+        Product? product = productsComboBox.SelectedItem as Product;
+        Dish? dish = allDishesListbox.SelectedItem as Dish;
+
+        if (product != null && dish != null)
+        {
+            using (var uow = new UnitOfWork())
+            {
+                Recipe recipe = new Recipe();
+                recipe.ProductId = product.Id;
+                recipe.DishId = dish.Id;
+                recipe.ProductWeight = Convert.ToInt32(prodWeightField.Text);
+                await uow.RecipesRepository.Insert(recipe);
+            }
+            FormHelper.ClearFields(this);
+            RefreshRecipeList(dish);
+            this.ActiveControl = null;
+        }
     }
 }
