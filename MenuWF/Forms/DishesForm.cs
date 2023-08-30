@@ -32,7 +32,7 @@ public partial class DishesForm : ShadowedForm
     private async void RefreshRecipeList(Dish? dish)
     {
         nutritionList.Items.Clear();
-        nutritionList.View = System.Windows.Forms.View.Details; // Установка режима просмотра в Details
+        nutritionList.View = View.Details; // Установка режима просмотра в Details
         nutritionList.Columns.Clear();
 
         // Добавляем столбцы и задаем им ширину
