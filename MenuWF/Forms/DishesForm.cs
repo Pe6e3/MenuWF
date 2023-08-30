@@ -58,12 +58,19 @@ public partial class DishesForm : ShadowedForm
             {
                 IEnumerable<Recipe> nutrients = await uow.ProductsRepository.GetProductsOfDish(dish.Id);
 
+                decimal sum = 0;
                 foreach (Recipe nutrient in nutrients)
                 {
                     ListViewItem item = new ListViewItem(nutrient.Product.Name);
                     item.SubItems.Add(nutrient.ProductWeight.ToString());
                     nutritionList.Items.Add(item);
+                    sum += nutrient.ProductWeight;
                 }
+                var sumLine = new ListViewItem("Общий вес:");
+                sumLine.SubItems.Add(sum.ToString());
+                nutritionList.Items.Add(sumLine);
+                sumLine.Font = new Font(nutritionList.Font,FontStyle.Bold);
+                sumLine.ForeColor = Color.Red;
             }
         }
     }
