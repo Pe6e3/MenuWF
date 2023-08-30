@@ -31,11 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenusForm));
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
-            breakfastDishesLB = new ListBox();
             addBreakfastDishBtn = new UXElements.buttonUI();
             backBtn = new UXElements.buttonUI();
-            dinnerDishesLB = new ListBox();
-            supperDishesLB = new ListBox();
             breakfastDishCB = new ComboBox();
             dinnerDishCB = new ComboBox();
             supperDishCB = new ComboBox();
@@ -52,6 +49,9 @@
             supperProdsLB = new ListBox();
             dayProdsLB = new ListBox();
             dateOfJournal = new DateTimePicker();
+            breakfastDishesLW = new ListView();
+            dinnerDishesLW = new ListView();
+            supperDishesLW = new ListView();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -72,15 +72,6 @@
             egoldsFormStyle1.HeaderImage = (Image)resources.GetObject("egoldsFormStyle1.HeaderImage");
             egoldsFormStyle1.HeaderTextColor = Color.White;
             egoldsFormStyle1.HeaderTextFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            // 
-            // breakfastDishesLB
-            // 
-            breakfastDishesLB.FormattingEnabled = true;
-            breakfastDishesLB.ItemHeight = 15;
-            breakfastDishesLB.Location = new Point(29, 21);
-            breakfastDishesLB.Name = "breakfastDishesLB";
-            breakfastDishesLB.Size = new Size(233, 139);
-            breakfastDishesLB.TabIndex = 9;
             // 
             // addBreakfastDishBtn
             // 
@@ -115,24 +106,6 @@
             backBtn.Text = "←";
             backBtn.TextHover = "назад";
             backBtn.Click += backBtn_Click;
-            // 
-            // dinnerDishesLB
-            // 
-            dinnerDishesLB.FormattingEnabled = true;
-            dinnerDishesLB.ItemHeight = 15;
-            dinnerDishesLB.Location = new Point(29, 206);
-            dinnerDishesLB.Name = "dinnerDishesLB";
-            dinnerDishesLB.Size = new Size(233, 139);
-            dinnerDishesLB.TabIndex = 9;
-            // 
-            // supperDishesLB
-            // 
-            supperDishesLB.FormattingEnabled = true;
-            supperDishesLB.ItemHeight = 15;
-            supperDishesLB.Location = new Point(29, 381);
-            supperDishesLB.Name = "supperDishesLB";
-            supperDishesLB.Size = new Size(233, 139);
-            supperDishesLB.TabIndex = 9;
             // 
             // breakfastDishCB
             // 
@@ -306,11 +279,38 @@
             dateOfJournal.TabIndex = 18;
             dateOfJournal.Value = new DateTime(2023, 8, 30, 21, 32, 34, 0);
             // 
+            // breakfastDishesLW
+            // 
+            breakfastDishesLW.Location = new Point(12, 21);
+            breakfastDishesLW.Name = "breakfastDishesLW";
+            breakfastDishesLW.Size = new Size(232, 139);
+            breakfastDishesLW.TabIndex = 19;
+            breakfastDishesLW.UseCompatibleStateImageBehavior = false;
+            // 
+            // dinnerDishesLW
+            // 
+            dinnerDishesLW.Location = new Point(12, 206);
+            dinnerDishesLW.Name = "dinnerDishesLW";
+            dinnerDishesLW.Size = new Size(232, 139);
+            dinnerDishesLW.TabIndex = 19;
+            dinnerDishesLW.UseCompatibleStateImageBehavior = false;
+            // 
+            // supperDishesLW
+            // 
+            supperDishesLW.Location = new Point(12, 381);
+            supperDishesLW.Name = "supperDishesLW";
+            supperDishesLW.Size = new Size(232, 139);
+            supperDishesLW.TabIndex = 19;
+            supperDishesLW.UseCompatibleStateImageBehavior = false;
+            // 
             // MenusForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 601);
+            Controls.Add(supperDishesLW);
+            Controls.Add(dinnerDishesLW);
+            Controls.Add(breakfastDishesLW);
             Controls.Add(dateOfJournal);
             Controls.Add(supperDishWeightField);
             Controls.Add(dinnerDishWeightField);
@@ -325,13 +325,10 @@
             Controls.Add(deleteDinnerDishBtn);
             Controls.Add(addDinnerDishBtn);
             Controls.Add(addBreakfastDishBtn);
-            Controls.Add(supperDishesLB);
-            Controls.Add(dinnerDishesLB);
             Controls.Add(supperProdsLB);
             Controls.Add(dinnerProdsLB);
             Controls.Add(dayProdsLB);
             Controls.Add(breakfastProdsLB);
-            Controls.Add(breakfastDishesLB);
             Name = "MenusForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Меню на день";
@@ -343,11 +340,8 @@
         #endregion
 
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
-        private ListBox breakfastDishesLB;
         private UXElements.buttonUI addBreakfastDishBtn;
         private UXElements.buttonUI backBtn;
-        private ListBox supperDishesLB;
-        private ListBox dinnerDishesLB;
         private ComboBox supperDishCB;
         private ComboBox dinnerDishCB;
         private ComboBox breakfastDishCB;
@@ -364,5 +358,8 @@
         private ListBox breakfastProdsLB;
         private ListBox dayProdsLB;
         private DateTimePicker dateOfJournal;
+        private ListView supperDishesLW;
+        private ListView dinnerDishesLW;
+        private ListView breakfastDishesLW;
     }
 }

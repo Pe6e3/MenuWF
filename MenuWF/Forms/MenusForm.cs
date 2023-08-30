@@ -79,6 +79,31 @@ namespace MenuWF.Forms
             }
         }
 
+        private async void RefreshDishesListBoxes()
+        {
+            breakfastDishesLW.Items.Clear();
+            dinnerDishesLW.Items.Clear();
+            supperDishesLW.Items.Clear();
+            DateTime date = dateOfJournal.Value.Date;
+
+            IEnumerable<Journal> breakfastJournals = new List<Journal>();
+            IEnumerable<Journal> dinnerJournals = new List<Journal>();
+            IEnumerable<Journal> supperJournals = new List<Journal>();
+            using (var uow = new UnitOfWork())
+            {
+                breakfastJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, Meal.Breakfast);
+                dinnerJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, Meal.Dinner);
+                supperJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, Meal.Supper);
+            }
+
+            breakfastDishesLW.View = View.Details;
+            dinnerDishesLW.View = View.Details;
+            supperDishesLW.View = View.Details;
+
+
+        }
+
+
         private void addBreakfastDishBtn_Click(object sender, EventArgs e)
         {
             AddDishToMenu(Meal.Breakfast);

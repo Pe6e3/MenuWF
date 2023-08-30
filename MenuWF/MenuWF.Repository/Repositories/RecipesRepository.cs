@@ -19,5 +19,16 @@ namespace MenuWF.MenuWF.Repository.Repositories
             Recipe? recipe = await db.Recipes.FirstOrDefaultAsync(x => x.DishId == dish.Id);
             return recipe;
         }
+
+        // получаем все строки журнала, которые соответстуют выбранной дате и типу приема пищи
+        internal async Task<IEnumerable<Journal>> GetJournalsByDayAndMeal(DateTime date, Journal.Meal meal)
+        {
+            IEnumerable<Journal> journals = new List<Journal>();
+            journals = await db.Journals
+                .Where(x => x.Date == date && x.meal == meal)
+                .ToListAsync();
+
+            return journals;
+        }
     }
 }
