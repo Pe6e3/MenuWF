@@ -32,15 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenusForm));
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
             breakfastDishesLB = new ListBox();
-            addDishBtn = new UXElements.buttonUI();
+            addBreakfastDishBtn = new UXElements.buttonUI();
             backBtn = new UXElements.buttonUI();
             dinnerDishesLB = new ListBox();
             supperDishesLB = new ListBox();
             breakfastDishCB = new ComboBox();
             dinnerDishCB = new ComboBox();
             supperDishCB = new ComboBox();
-            buttonui2 = new UXElements.buttonUI();
-            buttonui3 = new UXElements.buttonUI();
+            addDinnerDishBtn = new UXElements.buttonUI();
+            addSupperDishBtn = new UXElements.buttonUI();
             breakfastDishWeightField = new TextBox();
             dinnerDishWeightField = new TextBox();
             supperDishWeightField = new TextBox();
@@ -82,21 +82,22 @@
             breakfastDishesLB.Size = new Size(233, 139);
             breakfastDishesLB.TabIndex = 9;
             // 
-            // addDishBtn
+            // addBreakfastDishBtn
             // 
-            addDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            addDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addDishBtn.ForeColor = Color.White;
-            addDishBtn.Location = new Point(282, 79);
-            addDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
-            addDishBtn.Name = "addDishBtn";
-            addDishBtn.Rounding = 33;
-            addDishBtn.RoundingEnable = true;
-            addDishBtn.Size = new Size(188, 36);
-            addDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
-            addDishBtn.TabIndex = 14;
-            addDishBtn.Text = "Добавить";
-            addDishBtn.TextHover = "Добавить блюдо на завтрак";
+            addBreakfastDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            addBreakfastDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            addBreakfastDishBtn.ForeColor = Color.White;
+            addBreakfastDishBtn.Location = new Point(282, 79);
+            addBreakfastDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            addBreakfastDishBtn.Name = "addBreakfastDishBtn";
+            addBreakfastDishBtn.Rounding = 33;
+            addBreakfastDishBtn.RoundingEnable = true;
+            addBreakfastDishBtn.Size = new Size(188, 36);
+            addBreakfastDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            addBreakfastDishBtn.TabIndex = 14;
+            addBreakfastDishBtn.Text = "Добавить";
+            addBreakfastDishBtn.TextHover = "Добавить блюдо на завтрак";
+            addBreakfastDishBtn.Click += addBreakfastDishBtn_Click;
             // 
             // backBtn
             // 
@@ -157,37 +158,39 @@
             supperDishCB.Size = new Size(188, 23);
             supperDishCB.TabIndex = 16;
             // 
-            // buttonui2
+            // addDinnerDishBtn
             // 
-            buttonui2.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            buttonui2.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonui2.ForeColor = Color.White;
-            buttonui2.Location = new Point(282, 264);
-            buttonui2.middleColorBtn = Color.FromArgb(189, 195, 199);
-            buttonui2.Name = "buttonui2";
-            buttonui2.Rounding = 33;
-            buttonui2.RoundingEnable = true;
-            buttonui2.Size = new Size(188, 36);
-            buttonui2.startColorBtn = Color.FromArgb(127, 140, 141);
-            buttonui2.TabIndex = 14;
-            buttonui2.Text = "Добавить";
-            buttonui2.TextHover = "Добавить блюдо на обед";
+            addDinnerDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            addDinnerDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            addDinnerDishBtn.ForeColor = Color.White;
+            addDinnerDishBtn.Location = new Point(282, 264);
+            addDinnerDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            addDinnerDishBtn.Name = "addDinnerDishBtn";
+            addDinnerDishBtn.Rounding = 33;
+            addDinnerDishBtn.RoundingEnable = true;
+            addDinnerDishBtn.Size = new Size(188, 36);
+            addDinnerDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            addDinnerDishBtn.TabIndex = 14;
+            addDinnerDishBtn.Text = "Добавить";
+            addDinnerDishBtn.TextHover = "Добавить блюдо на обед";
+            addDinnerDishBtn.Click += addDinnerDishBtn_Click;
             // 
-            // buttonui3
+            // addSupperDishBtn
             // 
-            buttonui3.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            buttonui3.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonui3.ForeColor = Color.White;
-            buttonui3.Location = new Point(282, 439);
-            buttonui3.middleColorBtn = Color.FromArgb(189, 195, 199);
-            buttonui3.Name = "buttonui3";
-            buttonui3.Rounding = 33;
-            buttonui3.RoundingEnable = true;
-            buttonui3.Size = new Size(188, 36);
-            buttonui3.startColorBtn = Color.FromArgb(127, 140, 141);
-            buttonui3.TabIndex = 14;
-            buttonui3.Text = "Добавить";
-            buttonui3.TextHover = "Добавить блюдо на ужин";
+            addSupperDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            addSupperDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            addSupperDishBtn.ForeColor = Color.White;
+            addSupperDishBtn.Location = new Point(282, 439);
+            addSupperDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
+            addSupperDishBtn.Name = "addSupperDishBtn";
+            addSupperDishBtn.Rounding = 33;
+            addSupperDishBtn.RoundingEnable = true;
+            addSupperDishBtn.Size = new Size(188, 36);
+            addSupperDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
+            addSupperDishBtn.TabIndex = 14;
+            addSupperDishBtn.Text = "Добавить";
+            addSupperDishBtn.TextHover = "Добавить блюдо на ужин";
+            addSupperDishBtn.Click += addSupperDishBtn_Click;
             // 
             // breakfastDishWeightField
             // 
@@ -316,12 +319,12 @@
             Controls.Add(dinnerDishCB);
             Controls.Add(breakfastDishCB);
             Controls.Add(backBtn);
-            Controls.Add(buttonui3);
+            Controls.Add(addSupperDishBtn);
             Controls.Add(deleteSupperDishBtn);
             Controls.Add(deleteBreakfastDishBtn);
             Controls.Add(deleteDinnerDishBtn);
-            Controls.Add(buttonui2);
-            Controls.Add(addDishBtn);
+            Controls.Add(addDinnerDishBtn);
+            Controls.Add(addBreakfastDishBtn);
             Controls.Add(supperDishesLB);
             Controls.Add(dinnerDishesLB);
             Controls.Add(supperProdsLB);
@@ -341,18 +344,18 @@
 
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
         private ListBox breakfastDishesLB;
-        private UXElements.buttonUI addDishBtn;
+        private UXElements.buttonUI addBreakfastDishBtn;
         private UXElements.buttonUI backBtn;
         private ListBox supperDishesLB;
         private ListBox dinnerDishesLB;
         private ComboBox supperDishCB;
         private ComboBox dinnerDishCB;
         private ComboBox breakfastDishCB;
-        private UXElements.buttonUI buttonui2;
+        private UXElements.buttonUI addDinnerDishBtn;
         private TextBox supperDishWeightField;
         private TextBox dinnerDishWeightField;
         private TextBox breakfastDishWeightField;
-        private UXElements.buttonUI buttonui3;
+        private UXElements.buttonUI addSupperDishBtn;
         private UXElements.buttonUI deleteDinnerDishBtn;
         private UXElements.buttonUI deleteSupperDishBtn;
         private UXElements.buttonUI deleteBreakfastDishBtn;
