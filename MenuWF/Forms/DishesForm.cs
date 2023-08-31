@@ -115,7 +115,7 @@ public partial class DishesForm : ShadowedForm
                 recipe.ProductId = product.Id;
                 recipe.DishId = dish.Id;
                 recipe.ProductWeight = Convert.ToInt32(prodWeightField.Text);
-                await uow.RecipesRepository.AddProductToRecipe(recipe); 
+                await uow.RecipesRepository.AddProductToRecipe(recipe);
             }
             FormHelper.ClearFields(this);
             RefreshRecipeList(dish);
@@ -126,5 +126,19 @@ public partial class DishesForm : ShadowedForm
     private void backBtn_Click(object sender, EventArgs e)
     {
         FormHelper.OpenMainForm(this);
+    }
+
+    private async void deleteProdFromDishBtn_Click(object sender, EventArgs e)
+    {
+        Dish? dish = allDishesListbox.SelectedItem as Dish;
+        ListViewItem line = nutritionList.SelectedItems[0];
+
+        if (line != null && dish != null)
+            using (var uow = new UnitOfWork())
+            {
+                await uow.RecipesRepository.DeleteProdFromRecipeByDishId(dish.Id, line.Text.ToString());
+            }
+
+        RefreshRecipeList(dish);
     }
 }

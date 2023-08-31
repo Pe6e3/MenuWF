@@ -32,6 +32,20 @@ namespace MenuWF.MenuWF.Repository.Repositories
             }
         }
 
+        internal async Task DeleteProdFromRecipeByDishId(int dishId, string productName)
+        {
+            Product? product = await db.Products.FirstOrDefaultAsync(x => x.Name == productName);
+            if (product != null)
+            {
+                Recipe? recipe = await db.Recipes.FirstOrDefaultAsync(x => x.DishId == dishId && x.ProductId == product.Id);
+                if (recipe != null)
+                {
+                    db.Recipes.Remove(recipe);
+                    await db.SaveChangesAsync();
+                }
+            }
+        }
+
         internal async Task<Recipe> GetRecipeByDish(Dish? dish) => await db.Recipes.FirstOrDefaultAsync(x => x.DishId == dish.Id);
 
         internal async Task<IEnumerable<Recipe>> GetRecipesOfDayMeal(DateTime date, Journal.Meal meal) => await
