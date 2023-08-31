@@ -52,6 +52,9 @@
             dinnerProductsLV = new ListView();
             supperProductsLV = new ListView();
             dayProdsLV = new ListView();
+            breakfastSumWeightDishesLabel = new Label();
+            dinnerSumWeightDishesLabel = new Label();
+            supperSumWeightDishesLabel = new Label();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -315,11 +318,44 @@
             dayProdsLV.TabIndex = 19;
             dayProdsLV.UseCompatibleStateImageBehavior = false;
             // 
+            // breakfastSumWeightDishesLabel
+            // 
+            breakfastSumWeightDishesLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            breakfastSumWeightDishesLabel.ForeColor = Color.DarkRed;
+            breakfastSumWeightDishesLabel.Location = new Point(12, 163);
+            breakfastSumWeightDishesLabel.Name = "breakfastSumWeightDishesLabel";
+            breakfastSumWeightDishesLabel.Size = new Size(232, 25);
+            breakfastSumWeightDishesLabel.TabIndex = 20;
+            breakfastSumWeightDishesLabel.TextAlign = ContentAlignment.TopRight;
+            // 
+            // dinnerSumWeightDishesLabel
+            // 
+            dinnerSumWeightDishesLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dinnerSumWeightDishesLabel.ForeColor = Color.DarkRed;
+            dinnerSumWeightDishesLabel.Location = new Point(12, 348);
+            dinnerSumWeightDishesLabel.Name = "dinnerSumWeightDishesLabel";
+            dinnerSumWeightDishesLabel.Size = new Size(232, 25);
+            dinnerSumWeightDishesLabel.TabIndex = 20;
+            dinnerSumWeightDishesLabel.TextAlign = ContentAlignment.TopRight;
+            // 
+            // supperSumWeightDishesLabel
+            // 
+            supperSumWeightDishesLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            supperSumWeightDishesLabel.ForeColor = Color.DarkRed;
+            supperSumWeightDishesLabel.Location = new Point(12, 522);
+            supperSumWeightDishesLabel.Name = "supperSumWeightDishesLabel";
+            supperSumWeightDishesLabel.Size = new Size(232, 25);
+            supperSumWeightDishesLabel.TabIndex = 20;
+            supperSumWeightDishesLabel.TextAlign = ContentAlignment.TopRight;
+            // 
             // MenusForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 601);
+            Controls.Add(supperSumWeightDishesLabel);
+            Controls.Add(dinnerSumWeightDishesLabel);
+            Controls.Add(breakfastSumWeightDishesLabel);
             Controls.Add(supperProductsLV);
             Controls.Add(supperDishesLV);
             Controls.Add(dinnerProductsLV);
@@ -373,5 +409,8 @@
         private ListView dinnerProductsLV;
         private ListView dayProdsLV;
         private ListView breakfastProductsLV;
+        private Label breakfastSumWeightDishesLabel;
+        private Label supperSumWeightDishesLabel;
+        private Label dinnerSumWeightDishesLabel;
     }
 }

@@ -94,16 +94,23 @@ namespace MenuWF.Forms
         private async void RefreshDishesListViews(Meal meal)
         {
             ListView someDishesLV = new ListView();
+            Label sumLabel = new Label();
             switch (meal)
             {
                 case Meal.Breakfast:
                     someDishesLV = breakfastDishesLV;
+                    sumLabel = breakfastSumWeightDishesLabel;
+                    sumLabel.Text = "Общий вес блюд на завтрак: ";
                     break;
                 case Meal.Dinner:
                     someDishesLV = dinnerDishesLV;
+                    sumLabel = dinnerSumWeightDishesLabel;
+                    sumLabel.Text = "Общий вес блюд на обед: ";
                     break;
                 case Meal.Supper:
                     someDishesLV = supperDishesLV;
+                    sumLabel = supperSumWeightDishesLabel;
+                    sumLabel.Text = "Общий вес блюд на ужин: ";
                     break;
                 default: return; // если ничего не выбрано - завершаем метод
             }
@@ -135,11 +142,7 @@ namespace MenuWF.Forms
                     sumWeight += journal.DishWeight;
                 }
 
-            var sumLine = new ListViewItem("Вес всех блюд");
-            sumLine.SubItems.Add(sumWeight.ToString("0"));
-            someDishesLV.Items.Add(sumLine);
-            sumLine.Font = new Font(someDishesLV.Font, FontStyle.Bold);
-            sumLine.ForeColor = Color.Red;
+            sumLabel.Text += sumWeight.ToString("0");
         }
 
         private void RefreshAllDishesLV()
@@ -293,6 +296,6 @@ namespace MenuWF.Forms
             FormHelper.ValidateDecimal(supperDishWeightField, maxValue: 10000);
             FormHelper.ButtonEnableByField(addSupperDishBtn, supperDishWeightField);
         }
-       
+
     }
 }
