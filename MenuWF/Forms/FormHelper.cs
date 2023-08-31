@@ -1,4 +1,5 @@
 ﻿using MenuWF.Repository;
+using MenuWF.UXElements;
 
 namespace MenuWF.Forms;
 
@@ -43,6 +44,7 @@ public static class FormHelper
         {
             textField.Text = textField.Text.Substring(0, textField.Text.Length - 1);
             textField.SelectionStart = textField.Text.Length;
+            MessageBox.Show("Максимальное значение в этом поле не может превышать " + maxValue);
         }
     }
 
@@ -56,5 +58,12 @@ public static class FormHelper
     }
 
 
-
+    // мето проверяет - если указанное поле пустое, то указанная кнопка неактивна и наоборот
+    internal static void ButtonEnableByField(buttonUI button, TextBox textBox)
+    {
+        if (textBox.Text.Length == 0)
+            button.Enabled = false;
+        else
+            button.Enabled = true;
+    }
 }
