@@ -30,5 +30,28 @@ namespace MenuWF.MenuWF.Repository.Repositories
                 await db.SaveChangesAsync();
             }
         }
+
+        // получаем все строки журнала, которые соответстуют выбранной дате и типу приема пищи
+        internal async Task<IEnumerable<Journal>> GetJournalsByDayAndMeal(DateTime date, Journal.Meal meal)
+        {
+            IEnumerable<Journal> journals = new List<Journal>();
+            journals = await db.Journals
+                .Where(x => x.Date == date && x.meal == meal)
+                .Include(x => x.Dish)
+                .ToListAsync();
+
+            return journals;
+        }
+
+        // Находим конкретный пункт в меню в конкретный день и прием пищи
+        internal async Task<Journal> GetJournalByDayMealAndDishId(DateTime date, Journal.Meal meal, int dishId)
+        {
+            Journal? journal = new Journal();
+            journal = await db.Journals
+                .Include(x => x.Dish)
+                .FirstOrDefaultAsync(x => x.Date == date && x.meal == meal && x.DishId == dishId);
+
+            return journal;
+        }
     }
 }

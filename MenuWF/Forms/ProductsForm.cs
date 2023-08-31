@@ -99,10 +99,10 @@ namespace MenuWF.Forms
 
         private void RefreshProductCard(Product? product)
         {
-            protsInfo.Text = product.Prots.ToString("0.0");
-            fatsInfo.Text = product.Fats.ToString("0.0");
-            carbsInfo.Text = product.Carbs.ToString("0.0");
-            caloriesInfo.Text = product.Calories.ToString("0.0");
+            protsInfo.Text = product.Prots.ToString("0");
+            fatsInfo.Text = product.Fats.ToString("0");
+            carbsInfo.Text = product.Carbs.ToString("0");
+            caloriesInfo.Text = product.Calories.ToString("0");
             selectedProductLabel.Text = product?.Name;
 
         }
