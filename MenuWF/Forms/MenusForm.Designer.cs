@@ -110,15 +110,16 @@
             // 
             // breakfastDishCB
             // 
+            breakfastDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             breakfastDishCB.FormattingEnabled = true;
             breakfastDishCB.Location = new Point(282, 21);
             breakfastDishCB.Name = "breakfastDishCB";
             breakfastDishCB.Size = new Size(188, 23);
             breakfastDishCB.TabIndex = 16;
-            breakfastDishCB.SelectedIndexChanged += breakfastDishCB_SelectedIndexChanged;
             // 
             // dinnerDishCB
             // 
+            dinnerDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             dinnerDishCB.FormattingEnabled = true;
             dinnerDishCB.Location = new Point(282, 206);
             dinnerDishCB.Name = "dinnerDishCB";
@@ -127,8 +128,10 @@
             // 
             // supperDishCB
             // 
+            supperDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             supperDishCB.FormattingEnabled = true;
             supperDishCB.Location = new Point(282, 381);
+            supperDishCB.MaxDropDownItems = 15;
             supperDishCB.Name = "supperDishCB";
             supperDishCB.Size = new Size(188, 23);
             supperDishCB.TabIndex = 16;

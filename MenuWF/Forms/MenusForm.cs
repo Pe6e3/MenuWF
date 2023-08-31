@@ -273,15 +273,6 @@ namespace MenuWF.Forms
             sumLine.ForeColor = Color.Red;
         }
 
-        private void breakfastDishCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void CheckButtonsAsEnabled()
-        {
-           
-
-        }
 
         private void breakfastDishWeightField_TextChanged(object sender, EventArgs e)
         {
@@ -293,7 +284,7 @@ namespace MenuWF.Forms
         private void dinnerDishWeightField_TextChanged(object sender, EventArgs e)
         {
             FormHelper.ValidateDecimal(dinnerDishWeightField, maxValue: 10000);
-            FormHelper.ButtonEnableByField(addDinnerDishBtn, dinnerDishWeightField);
+            FormHelper.ButtonEnableByField(addDinnerDishBtn, dinnerDishWeightField, dinnerDishCB);
 
         }
 
@@ -301,7 +292,7 @@ namespace MenuWF.Forms
         {
             FormHelper.ValidateDecimal(supperDishWeightField, maxValue: 10000);
             FormHelper.ButtonEnableByField(addSupperDishBtn, supperDishWeightField);
-
         }
+       
     }
 }

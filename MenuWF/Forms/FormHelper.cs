@@ -1,5 +1,6 @@
 ﻿using MenuWF.Repository;
 using MenuWF.UXElements;
+using System.ComponentModel;
 
 namespace MenuWF.Forms;
 
@@ -58,7 +59,7 @@ public static class FormHelper
     }
 
 
-    // мето проверяет - если указанное поле пустое, то указанная кнопка неактивна и наоборот
+    // метод проверяет - если указанное поле пустое, то указанная кнопка неактивна и наоборот
     internal static void ButtonEnableByField(buttonUI button, TextBox textBox)
     {
         if (textBox.Text.Length == 0)
@@ -66,4 +67,5 @@ public static class FormHelper
         else
             button.Enabled = true;
     }
+ 
 }
