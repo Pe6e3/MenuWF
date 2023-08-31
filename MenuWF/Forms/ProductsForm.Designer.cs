@@ -87,6 +87,7 @@
             productNameField.PlaceholderText = "Название продукта";
             productNameField.Size = new Size(141, 23);
             productNameField.TabIndex = 1;
+            productNameField.TextChanged += productNameField_TextChanged;
             // 
             // protsField
             // 
@@ -130,6 +131,7 @@
             // 
             // addProductBtn
             // 
+            addProductBtn.Enabled = false;
             addProductBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProductBtn.Font = new Font("W3$iP", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             addProductBtn.ForeColor = Color.White;

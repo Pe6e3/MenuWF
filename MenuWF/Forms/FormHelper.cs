@@ -74,4 +74,11 @@ public static class FormHelper
         else
             button.Enabled = true;
     }
+    internal static void ButtonEnableByFieldAndListBox(buttonUI button, TextBox textBox, ListBox listBox)
+    {
+        if (listBox.SelectedItems.Count == 0 || textBox.Text.Length == 0)
+            button.Enabled = false;
+        else
+            button.Enabled = true;
+    }
 }

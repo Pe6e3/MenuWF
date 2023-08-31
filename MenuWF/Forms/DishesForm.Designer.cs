@@ -97,9 +97,11 @@
             newDishField.PlaceholderText = "Новое блюдо";
             newDishField.Size = new Size(231, 23);
             newDishField.TabIndex = 12;
+            newDishField.TextChanged += newDishField_TextChanged;
             // 
             // addDishBtn
             // 
+            addDishBtn.Enabled = false;
             addDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addDishBtn.ForeColor = Color.White;
@@ -131,9 +133,11 @@
             prodWeightField.PlaceholderText = "вес продукта";
             prodWeightField.Size = new Size(141, 23);
             prodWeightField.TabIndex = 15;
+            prodWeightField.TextChanged += prodWeightField_TextChanged;
             // 
             // addProdToDishBtn
             // 
+            addProdToDishBtn.Enabled = false;
             addProdToDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProdToDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addProdToDishBtn.ForeColor = Color.White;

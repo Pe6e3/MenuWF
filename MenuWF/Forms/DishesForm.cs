@@ -26,6 +26,7 @@ public partial class DishesForm : ShadowedForm
 
         selectedDishLabel.Text = dish?.Name;
         RefreshRecipeList(dish);
+        FormHelper.ButtonEnableByFieldAndListBox(addProdToDishBtn, prodWeightField, allDishesListbox);
     }
 
 
@@ -140,5 +141,17 @@ public partial class DishesForm : ShadowedForm
             }
 
         RefreshRecipeList(dish);
+    }
+
+    private void prodWeightField_TextChanged(object sender, EventArgs e)
+    {
+        FormHelper.ButtonEnableByFieldAndListBox(addProdToDishBtn, prodWeightField, allDishesListbox);
+    }
+
+    private void newDishField_TextChanged(object sender, EventArgs e)
+    {
+        FormHelper.ButtonEnableByField(addDishBtn, newDishField);
+        FormHelper.CheckTextFieldLength(newDishField, 25);
+
     }
 }

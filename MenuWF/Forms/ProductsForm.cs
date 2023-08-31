@@ -128,5 +128,12 @@ namespace MenuWF.Forms
         {
             FormHelper.OpenMainForm(this);
         }
+
+        private void productNameField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ButtonEnableByField(addProductBtn, productNameField);
+            FormHelper.CheckTextFieldLength(productNameField, 25);
+
+        }
     }
 }
