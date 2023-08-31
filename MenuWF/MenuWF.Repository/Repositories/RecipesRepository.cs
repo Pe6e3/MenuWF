@@ -14,30 +14,19 @@ namespace MenuWF.MenuWF.Repository.Repositories
             this.db = db;
         }
 
-        internal async Task<Recipe> GetRecipeByDish(Dish? dish)
-        {
-            Recipe? recipe = await db.Recipes.FirstOrDefaultAsync(x => x.DishId == dish.Id);
-            return recipe;
-        }
+        internal async Task<Recipe> GetRecipeByDish(Dish? dish) => await db.Recipes.FirstOrDefaultAsync(x => x.DishId == dish.Id);
 
-
-
-        internal async Task<IEnumerable<Recipe>> GetRecipesOfDayMeal(DateTime date, Journal.Meal meal)
-        {
-            var recipes = await
+        internal async Task<IEnumerable<Recipe>> GetRecipesOfDayMeal(DateTime date, Journal.Meal meal) => await
             (
                 from r in db.Recipes
                 join j in db.Journals on r.DishId equals j.DishId
                 where j.Date == date && j.meal == meal
                 select r
             )
-            //db.Recipes
             .Include(x => x.Dish)
-            .Include(x=>x.Product)
+            .Include(x => x.Product)
             .ToListAsync();
 
-            return recipes;
-        }
 
     }
 }
