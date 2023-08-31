@@ -260,7 +260,7 @@ namespace MenuWF.Forms
                 }
                 decimal recipeWeight = recipes.Where(x => x.DishId == recipe.DishId).Sum(x => x.ProductWeight);
                 decimal dishWeight = journal.DishWeight;
-                decimal productMenuWeight = dishWeight/recipeWeight*recipe.ProductWeight; // здесь мы получили вес продукта в блюде относительно веса блюда в меню
+                decimal productMenuWeight = dishWeight / recipeWeight * recipe.ProductWeight; // здесь мы получили вес продукта в блюде относительно веса блюда в меню
                 ListViewItem lineLV = new ListViewItem(recipe.Product.Name.ToString());
                 lineLV.SubItems.Add(productMenuWeight.ToString("0"));
                 someProductsLV.Items.Add(lineLV);
@@ -271,6 +271,37 @@ namespace MenuWF.Forms
             someProductsLV.Items.Add(sumLine);
             sumLine.Font = new Font(someProductsLV.Font, FontStyle.Bold);
             sumLine.ForeColor = Color.Red;
+        }
+
+        private void breakfastDishCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void CheckButtonsAsEnabled()
+        {
+           
+
+        }
+
+        private void breakfastDishWeightField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(breakfastDishWeightField, maxValue: 10000);
+            FormHelper.ButtonEnableByField(addBreakfastDishBtn, breakfastDishWeightField);
+
+        }
+
+        private void dinnerDishWeightField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(dinnerDishWeightField, maxValue: 10000);
+            FormHelper.ButtonEnableByField(addDinnerDishBtn, dinnerDishWeightField);
+
+        }
+
+        private void supperDishWeightField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(supperDishWeightField, maxValue: 10000);
+            FormHelper.ButtonEnableByField(addSupperDishBtn, supperDishWeightField);
+
         }
     }
 }

@@ -75,6 +75,7 @@
             // 
             // addBreakfastDishBtn
             // 
+            addBreakfastDishBtn.Enabled = false;
             addBreakfastDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addBreakfastDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addBreakfastDishBtn.ForeColor = Color.White;
@@ -114,6 +115,7 @@
             breakfastDishCB.Name = "breakfastDishCB";
             breakfastDishCB.Size = new Size(188, 23);
             breakfastDishCB.TabIndex = 16;
+            breakfastDishCB.SelectedIndexChanged += breakfastDishCB_SelectedIndexChanged;
             // 
             // dinnerDishCB
             // 
@@ -133,6 +135,7 @@
             // 
             // addDinnerDishBtn
             // 
+            addDinnerDishBtn.Enabled = false;
             addDinnerDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addDinnerDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addDinnerDishBtn.ForeColor = Color.White;
@@ -150,6 +153,7 @@
             // 
             // addSupperDishBtn
             // 
+            addSupperDishBtn.Enabled = false;
             addSupperDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addSupperDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addSupperDishBtn.ForeColor = Color.White;
@@ -171,6 +175,7 @@
             breakfastDishWeightField.Name = "breakfastDishWeightField";
             breakfastDishWeightField.Size = new Size(100, 23);
             breakfastDishWeightField.TabIndex = 17;
+            breakfastDishWeightField.TextChanged += breakfastDishWeightField_TextChanged;
             // 
             // dinnerDishWeightField
             // 
@@ -178,6 +183,7 @@
             dinnerDishWeightField.Name = "dinnerDishWeightField";
             dinnerDishWeightField.Size = new Size(100, 23);
             dinnerDishWeightField.TabIndex = 17;
+            dinnerDishWeightField.TextChanged += dinnerDishWeightField_TextChanged;
             // 
             // supperDishWeightField
             // 
@@ -185,9 +191,11 @@
             supperDishWeightField.Name = "supperDishWeightField";
             supperDishWeightField.Size = new Size(100, 23);
             supperDishWeightField.TabIndex = 17;
+            supperDishWeightField.TextChanged += supperDishWeightField_TextChanged;
             // 
             // deleteDinnerDishBtn
             // 
+            deleteDinnerDishBtn.Enabled = false;
             deleteDinnerDishBtn.endColorBorderBtn = Color.DarkOrange;
             deleteDinnerDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteDinnerDishBtn.ForeColor = Color.Sienna;
@@ -205,6 +213,7 @@
             // 
             // deleteBreakfastDishBtn
             // 
+            deleteBreakfastDishBtn.Enabled = false;
             deleteBreakfastDishBtn.endColorBorderBtn = Color.DarkOrange;
             deleteBreakfastDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteBreakfastDishBtn.ForeColor = Color.Sienna;
@@ -222,6 +231,7 @@
             // 
             // deleteSupperDishBtn
             // 
+            deleteSupperDishBtn.Enabled = false;
             deleteSupperDishBtn.endColorBorderBtn = Color.DarkOrange;
             deleteSupperDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteSupperDishBtn.ForeColor = Color.Sienna;
