@@ -16,6 +16,7 @@ namespace MenuWF.Forms
         {
             RefreshDishesComboBoxes();
             RefreshAllDishesLV();
+            RefreshAllProdsLV();
         }
 
         public async void RefreshDishesComboBoxes()
@@ -80,7 +81,7 @@ namespace MenuWF.Forms
                 if (recipe != null && dishWeight > 0)
                 {
                     journal.DishWeight = dishWeight;
-                    journal.RecipeId = recipe.Id;
+                    journal.DishId = dish.Id;
                     journal.meal = meal;
                     journal.Date = dateJournal;
                     await uow.JournalsRepository.AddJournal(journal);
@@ -123,14 +124,15 @@ namespace MenuWF.Forms
             }
 
             decimal sumWeight = 0;
-            foreach (var journal in someJournals)
-            {
-                ListViewItem item = new ListViewItem(journal.Recipe.Dish.Name.ToString());
-                item.SubItems.Add(journal.DishWeight.ToString("0.0"));
-                item.Tag = journal;
-                someDishesLV.Items.Add(item);
-                sumWeight += journal.DishWeight;
-            }
+            if (someJournals.Any())
+                foreach (var journal in someJournals)
+                {
+                    ListViewItem item = new ListViewItem(journal.Dish.Name.ToString());
+                    item.SubItems.Add(journal.DishWeight.ToString("0.0"));
+                    item.Tag = journal;
+                    someDishesLV.Items.Add(item);
+                    sumWeight += journal.DishWeight;
+                }
 
             var sumLine = new ListViewItem("Вес всех блюд");
             sumLine.SubItems.Add(sumWeight.ToString("0.0"));
@@ -208,6 +210,58 @@ namespace MenuWF.Forms
                     RefreshDishesListViews(meal);
                 }
             }
+        }
+
+        private void RefreshAllProdsLV()
+        {
+            RefreshProdsLV(Meal.Breakfast);
+            RefreshProdsLV(Meal.Dinner);
+            RefreshProdsLV(Meal.Supper);
+        }
+        private async void RefreshProdsLV(Meal meal)
+        {
+            ListView someProductsLV = new ListView();
+            switch (meal)
+            {
+                case Meal.Breakfast:
+                    someProductsLV = breakfastProductsLV;
+                    break;
+                case Meal.Dinner:
+                    someProductsLV = dinnerProductsLV;
+                    break;
+                case Meal.Supper:
+                    someProductsLV = supperProductsLV;
+                    break;
+                default: return; // если ничего не выбрано - завершаем метод
+            }
+            IEnumerable<Recipe> recipes = new List<Recipe>();
+            IEnumerable<Product> productsLV = new List<Product>();
+            DateTime date = dateOfJournal.Value.Date;
+            using (var uow = new UnitOfWork())
+            {
+                recipes = await uow.RecipesRepository.GetRecipesOfDayMeal(date, meal);
+                //productsLV = await uow.ProductsRepository.GetProductsByRecipe(recipes);
+            }
+            someProductsLV.Items.Clear();
+            someProductsLV.View = View.Details;
+            someProductsLV.Columns.Clear();
+
+            someProductsLV.Columns.Add("Блюдо").Width = 160;
+            someProductsLV.Columns.Add("Вес").Width = 50;
+
+            decimal sumWeight = 0;
+            foreach (var recipe in recipes)
+            {
+                ListViewItem lineLV = new ListViewItem(recipe.Dish.Name.ToString());
+                lineLV.SubItems.Add(recipe.ProductWeight.ToString("0.0"));
+                someProductsLV.Items.Add(lineLV);
+                sumWeight += recipe.ProductWeight;
+            }
+            var sumLine = new ListViewItem("Вес всех продуктов");
+            sumLine.SubItems.Add(sumWeight.ToString("0.0"));
+            someProductsLV.Items.Add(sumLine);
+            sumLine.Font = new Font(someProductsLV.Font, FontStyle.Bold);
+            sumLine.ForeColor = Color.Red;
         }
     }
 }

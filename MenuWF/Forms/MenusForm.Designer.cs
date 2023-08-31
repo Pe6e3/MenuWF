@@ -44,14 +44,14 @@
             deleteDinnerDishBtn = new UXElements.buttonUI();
             deleteBreakfastDishBtn = new UXElements.buttonUI();
             deleteSupperDishBtn = new UXElements.buttonUI();
-            breakfastProdsLB = new ListBox();
-            dinnerProdsLB = new ListBox();
-            supperProdsLB = new ListBox();
-            dayProdsLB = new ListBox();
             dateOfJournal = new DateTimePicker();
             breakfastDishesLV = new ListView();
             dinnerDishesLV = new ListView();
             supperDishesLV = new ListView();
+            breakfastProductsLV = new ListView();
+            dinnerProductsLV = new ListView();
+            supperProductsLV = new ListView();
+            dayProdsLV = new ListView();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -237,42 +237,6 @@
             deleteSupperDishBtn.TextHover = "Удалить выбранное блюдо из Ужина";
             deleteSupperDishBtn.Click += deleteSupperDishBtn_Click;
             // 
-            // breakfastProdsLB
-            // 
-            breakfastProdsLB.FormattingEnabled = true;
-            breakfastProdsLB.ItemHeight = 15;
-            breakfastProdsLB.Location = new Point(487, 21);
-            breakfastProdsLB.Name = "breakfastProdsLB";
-            breakfastProdsLB.Size = new Size(233, 139);
-            breakfastProdsLB.TabIndex = 9;
-            // 
-            // dinnerProdsLB
-            // 
-            dinnerProdsLB.FormattingEnabled = true;
-            dinnerProdsLB.ItemHeight = 15;
-            dinnerProdsLB.Location = new Point(487, 203);
-            dinnerProdsLB.Name = "dinnerProdsLB";
-            dinnerProdsLB.Size = new Size(233, 139);
-            dinnerProdsLB.TabIndex = 9;
-            // 
-            // supperProdsLB
-            // 
-            supperProdsLB.FormattingEnabled = true;
-            supperProdsLB.ItemHeight = 15;
-            supperProdsLB.Location = new Point(487, 381);
-            supperProdsLB.Name = "supperProdsLB";
-            supperProdsLB.Size = new Size(233, 139);
-            supperProdsLB.TabIndex = 9;
-            // 
-            // dayProdsLB
-            // 
-            dayProdsLB.FormattingEnabled = true;
-            dayProdsLB.ItemHeight = 15;
-            dayProdsLB.Location = new Point(758, 21);
-            dayProdsLB.Name = "dayProdsLB";
-            dayProdsLB.Size = new Size(233, 499);
-            dayProdsLB.TabIndex = 9;
-            // 
             // dateOfJournal
             // 
             dateOfJournal.Format = DateTimePickerFormat.Short;
@@ -306,13 +270,49 @@
             supperDishesLV.TabIndex = 19;
             supperDishesLV.UseCompatibleStateImageBehavior = false;
             // 
+            // breakfastProductsLV
+            // 
+            breakfastProductsLV.Location = new Point(500, 21);
+            breakfastProductsLV.Name = "breakfastProductsLV";
+            breakfastProductsLV.Size = new Size(222, 139);
+            breakfastProductsLV.TabIndex = 19;
+            breakfastProductsLV.UseCompatibleStateImageBehavior = false;
+            // 
+            // dinnerProductsLV
+            // 
+            dinnerProductsLV.Location = new Point(500, 206);
+            dinnerProductsLV.Name = "dinnerProductsLV";
+            dinnerProductsLV.Size = new Size(222, 139);
+            dinnerProductsLV.TabIndex = 19;
+            dinnerProductsLV.UseCompatibleStateImageBehavior = false;
+            // 
+            // supperProductsLV
+            // 
+            supperProductsLV.Location = new Point(500, 381);
+            supperProductsLV.Name = "supperProductsLV";
+            supperProductsLV.Size = new Size(222, 139);
+            supperProductsLV.TabIndex = 19;
+            supperProductsLV.UseCompatibleStateImageBehavior = false;
+            // 
+            // dayProdsLV
+            // 
+            dayProdsLV.Location = new Point(758, 21);
+            dayProdsLV.Name = "dayProdsLV";
+            dayProdsLV.Size = new Size(233, 499);
+            dayProdsLV.TabIndex = 19;
+            dayProdsLV.UseCompatibleStateImageBehavior = false;
+            // 
             // MenusForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 601);
+            Controls.Add(supperProductsLV);
             Controls.Add(supperDishesLV);
+            Controls.Add(dinnerProductsLV);
             Controls.Add(dinnerDishesLV);
+            Controls.Add(dayProdsLV);
+            Controls.Add(breakfastProductsLV);
             Controls.Add(breakfastDishesLV);
             Controls.Add(dateOfJournal);
             Controls.Add(supperDishWeightField);
@@ -328,10 +328,6 @@
             Controls.Add(deleteDinnerDishBtn);
             Controls.Add(addDinnerDishBtn);
             Controls.Add(addBreakfastDishBtn);
-            Controls.Add(supperProdsLB);
-            Controls.Add(dinnerProdsLB);
-            Controls.Add(dayProdsLB);
-            Controls.Add(breakfastProdsLB);
             Name = "MenusForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Меню на день";
@@ -356,13 +352,13 @@
         private UXElements.buttonUI deleteDinnerDishBtn;
         private UXElements.buttonUI deleteSupperDishBtn;
         private UXElements.buttonUI deleteBreakfastDishBtn;
-        private ListBox supperProdsLB;
-        private ListBox dinnerProdsLB;
-        private ListBox breakfastProdsLB;
-        private ListBox dayProdsLB;
         private DateTimePicker dateOfJournal;
         private ListView supperDishesLV;
         private ListView dinnerDishesLV;
         private ListView breakfastDishesLV;
+        private ListView supperProductsLV;
+        private ListView dinnerProductsLV;
+        private ListView dayProdsLV;
+        private ListView breakfastProductsLV;
     }
 }

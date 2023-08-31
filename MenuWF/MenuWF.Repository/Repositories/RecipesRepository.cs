@@ -26,11 +26,27 @@ namespace MenuWF.MenuWF.Repository.Repositories
             IEnumerable<Journal> journals = new List<Journal>();
             journals = await db.Journals
                 .Where(x => x.Date == date && x.meal == meal)
-                .Include(x=>x.Recipe)
-                .ThenInclude(x=>x.Dish)
+                .Include(x => x.Dish)
                 .ToListAsync();
 
             return journals;
         }
+
+        internal async Task<IEnumerable<Recipe>> GetRecipesOfDayMeal(DateTime date, Journal.Meal meal)
+        {
+            var recipes = await
+            //(
+            //    from r in db.Recipes
+            //    join j in db.Journals on r.Id equals j.RecipeId
+            //    where j.Date == date && j.meal == meal
+            //    select r
+            //)
+            db.Recipes
+            .Include(x => x.Dish)
+            .ToListAsync();
+
+            return recipes;
+        }
+
     }
 }

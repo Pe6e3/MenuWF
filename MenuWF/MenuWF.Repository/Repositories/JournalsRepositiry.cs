@@ -17,7 +17,7 @@ namespace MenuWF.MenuWF.Repository.Repositories
         // проверяем, если в журнале есть уже подобное блюдо, то прибавляем вес к нему. Если нет - создаем новую запись
         internal async Task AddJournal(Journal journal)
         {
-            Journal? oldJournal = await db.Journals.FirstOrDefaultAsync(x => x.RecipeId == journal.RecipeId && x.Date == journal.Date && x.meal == journal.meal);
+            Journal? oldJournal = await db.Journals.FirstOrDefaultAsync(x => x.DishId == journal.DishId && x.Date == journal.Date && x.meal == journal.meal);
             if (oldJournal == null)
             {
                 await db.Journals.AddAsync(journal);
