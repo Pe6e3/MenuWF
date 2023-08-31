@@ -49,9 +49,9 @@
             supperProdsLB = new ListBox();
             dayProdsLB = new ListBox();
             dateOfJournal = new DateTimePicker();
-            breakfastDishesLW = new ListView();
-            dinnerDishesLW = new ListView();
-            supperDishesLW = new ListView();
+            breakfastDishesLV = new ListView();
+            dinnerDishesLV = new ListView();
+            supperDishesLV = new ListView();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -201,6 +201,7 @@
             deleteDinnerDishBtn.TabIndex = 14;
             deleteDinnerDishBtn.Text = "Удалить";
             deleteDinnerDishBtn.TextHover = "Удалить выбранное блюдо из Обеда";
+            deleteDinnerDishBtn.Click += deleteDinnerDishBtn_Click;
             // 
             // deleteBreakfastDishBtn
             // 
@@ -217,6 +218,7 @@
             deleteBreakfastDishBtn.TabIndex = 14;
             deleteBreakfastDishBtn.Text = "Удалить";
             deleteBreakfastDishBtn.TextHover = "Удалить выбранное блюдо из Завтрака";
+            deleteBreakfastDishBtn.Click += deleteBreakfastDishBtn_Click;
             // 
             // deleteSupperDishBtn
             // 
@@ -233,6 +235,7 @@
             deleteSupperDishBtn.TabIndex = 14;
             deleteSupperDishBtn.Text = "Удалить";
             deleteSupperDishBtn.TextHover = "Удалить выбранное блюдо из Ужина";
+            deleteSupperDishBtn.Click += deleteSupperDishBtn_Click;
             // 
             // breakfastProdsLB
             // 
@@ -279,38 +282,38 @@
             dateOfJournal.TabIndex = 18;
             dateOfJournal.Value = new DateTime(2023, 8, 30, 21, 32, 34, 0);
             // 
-            // breakfastDishesLW
+            // breakfastDishesLV
             // 
-            breakfastDishesLW.Location = new Point(12, 21);
-            breakfastDishesLW.Name = "breakfastDishesLW";
-            breakfastDishesLW.Size = new Size(232, 139);
-            breakfastDishesLW.TabIndex = 19;
-            breakfastDishesLW.UseCompatibleStateImageBehavior = false;
+            breakfastDishesLV.Location = new Point(12, 21);
+            breakfastDishesLV.Name = "breakfastDishesLV";
+            breakfastDishesLV.Size = new Size(232, 139);
+            breakfastDishesLV.TabIndex = 19;
+            breakfastDishesLV.UseCompatibleStateImageBehavior = false;
             // 
-            // dinnerDishesLW
+            // dinnerDishesLV
             // 
-            dinnerDishesLW.Location = new Point(12, 206);
-            dinnerDishesLW.Name = "dinnerDishesLW";
-            dinnerDishesLW.Size = new Size(232, 139);
-            dinnerDishesLW.TabIndex = 19;
-            dinnerDishesLW.UseCompatibleStateImageBehavior = false;
+            dinnerDishesLV.Location = new Point(12, 206);
+            dinnerDishesLV.Name = "dinnerDishesLV";
+            dinnerDishesLV.Size = new Size(232, 139);
+            dinnerDishesLV.TabIndex = 19;
+            dinnerDishesLV.UseCompatibleStateImageBehavior = false;
             // 
-            // supperDishesLW
+            // supperDishesLV
             // 
-            supperDishesLW.Location = new Point(12, 381);
-            supperDishesLW.Name = "supperDishesLW";
-            supperDishesLW.Size = new Size(232, 139);
-            supperDishesLW.TabIndex = 19;
-            supperDishesLW.UseCompatibleStateImageBehavior = false;
+            supperDishesLV.Location = new Point(12, 381);
+            supperDishesLV.Name = "supperDishesLV";
+            supperDishesLV.Size = new Size(232, 139);
+            supperDishesLV.TabIndex = 19;
+            supperDishesLV.UseCompatibleStateImageBehavior = false;
             // 
             // MenusForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 601);
-            Controls.Add(supperDishesLW);
-            Controls.Add(dinnerDishesLW);
-            Controls.Add(breakfastDishesLW);
+            Controls.Add(supperDishesLV);
+            Controls.Add(dinnerDishesLV);
+            Controls.Add(breakfastDishesLV);
             Controls.Add(dateOfJournal);
             Controls.Add(supperDishWeightField);
             Controls.Add(dinnerDishWeightField);
@@ -358,8 +361,8 @@
         private ListBox breakfastProdsLB;
         private ListBox dayProdsLB;
         private DateTimePicker dateOfJournal;
-        private ListView supperDishesLW;
-        private ListView dinnerDishesLW;
-        private ListView breakfastDishesLW;
+        private ListView supperDishesLV;
+        private ListView dinnerDishesLV;
+        private ListView breakfastDishesLV;
     }
 }

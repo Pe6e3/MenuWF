@@ -15,7 +15,7 @@ namespace MenuWF.Forms
         private void MenusForm_Load(object sender, EventArgs e)
         {
             RefreshDishesComboBoxes();
-            RefreshDishesListBoxes();
+            RefreshAllDishesLV();
         }
 
         public async void RefreshDishesComboBoxes()
@@ -86,93 +86,66 @@ namespace MenuWF.Forms
                     await uow.JournalsRepository.Insert(journal);
                 }
             }
-            RefreshDishesListBoxes();
+            RefreshAllDishesLV();
         }
 
-        private async void RefreshDishesListBoxes()
+        private async void RefreshDishesListViews(Meal meal)
         {
-            breakfastDishesLW.Items.Clear();
-            dinnerDishesLW.Items.Clear();
-            supperDishesLW.Items.Clear();
+            ListView someDishesLV = new ListView();
+            switch (meal)
+            {
+                case Meal.Breakfast:
+                    someDishesLV = breakfastDishesLV;
+                    break;
+                case Meal.Dinner:
+                    someDishesLV = dinnerDishesLV;
+                    break;
+                case Meal.Supper:
+                    someDishesLV = supperDishesLV;
+                    break;
+                default: return; // если ничего не выбрано - завершаем метод
+            }
+
+            someDishesLV.Items.Clear();
             DateTime date = dateOfJournal.Value.Date;
 
-            IEnumerable<Journal> breakfastJournals = new List<Journal>();
-            IEnumerable<Journal> dinnerJournals = new List<Journal>();
-            IEnumerable<Journal> supperJournals = new List<Journal>();
+            IEnumerable<Journal> someJournals = new List<Journal>();
 
+            someDishesLV.View = View.Details;
+            someDishesLV.Columns.Clear();
 
-            breakfastDishesLW.View = View.Details;
-            dinnerDishesLW.View = View.Details;
-            supperDishesLW.View = View.Details;
-
-            breakfastDishesLW.Columns.Clear();
-            dinnerDishesLW.Columns.Clear();
-            supperDishesLW.Columns.Clear();
-
-            breakfastDishesLW.Columns.Add("Блюдо").Width = 160;
-            breakfastDishesLW.Columns.Add("Вес").Width = 50;
-
-            dinnerDishesLW.Columns.Add("Блюдо").Width = 160;
-            dinnerDishesLW.Columns.Add("Вес").Width = 50;
-
-            supperDishesLW.Columns.Add("Блюдо").Width = 160;
-            supperDishesLW.Columns.Add("Вес").Width = 50;
+            someDishesLV.Columns.Add("Блюдо").Width = 160;
+            someDishesLV.Columns.Add("Вес").Width = 50;
 
             using (var uow = new UnitOfWork())
             {
-                breakfastJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, Meal.Breakfast);
-                dinnerJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, Meal.Dinner);
-                supperJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, Meal.Supper);
+                someJournals = await uow.RecipesRepository.GetJournalsByDayAndMeal(date, meal);
             }
 
-            // Суммы весов блюд по Завтраку, Обеду и Ужину
-            decimal sumB = 0;
-            decimal sumD = 0;
-            decimal sumS = 0;
-            foreach (var journalB in breakfastJournals)
+            decimal sumWeight = 0;
+            foreach (var journal in someJournals)
             {
-                ListViewItem item = new ListViewItem(journalB.Recipe.Dish.Name.ToString());
-                item.SubItems.Add(journalB.DishWeight.ToString("0.0"));
-                breakfastDishesLW.Items.Add(item);
-                sumB += journalB.DishWeight;
+                ListViewItem item = new ListViewItem(journal.Recipe.Dish.Name.ToString());
+                item.SubItems.Add(journal.DishWeight.ToString("0.0"));
+                item.Tag = journal;
+                someDishesLV.Items.Add(item);
+                sumWeight += journal.DishWeight;
             }
 
-            foreach (var journalD in dinnerJournals)
-            {
-                ListViewItem item = new ListViewItem(journalD.Recipe.Dish.Name.ToString());
-                item.SubItems.Add(journalD.DishWeight.ToString("0.0"));
-                dinnerDishesLW.Items.Add(item);
-                sumD += journalD.DishWeight;
-            }
-
-            foreach (var journalS in supperJournals)
-            {
-                ListViewItem item = new ListViewItem(journalS.Recipe.Dish.Name.ToString());
-                item.SubItems.Add(journalS.DishWeight.ToString("0.0"));
-                supperDishesLW.Items.Add(item);
-                sumS += journalS.DishWeight;
-            }
-            var sumLineB = new ListViewItem("Вес всех блюд");
-            var sumLineD = new ListViewItem("Вес всех блюд");
-            var sumLineS = new ListViewItem("Вес всех блюд");
-            sumLineB.SubItems.Add(sumB.ToString("0.0"));
-            sumLineD.SubItems.Add(sumD.ToString("0.0"));
-            sumLineS.SubItems.Add(sumS.ToString("0.0"));
-
-            breakfastDishesLW.Items.Add(sumLineB);
-            dinnerDishesLW.Items.Add(sumLineD);
-            supperDishesLW.Items.Add(sumLineS);
-
-            sumLineB.Font = new Font(breakfastDishesLW.Font, FontStyle.Bold);
-            sumLineD.Font = new Font(dinnerDishesLW.Font, FontStyle.Bold);
-            sumLineS.Font = new Font(supperDishesLW.Font, FontStyle.Bold);
-
-            sumLineB.ForeColor = Color.Red;
-            sumLineD.ForeColor = Color.Red;
-            sumLineS.ForeColor = Color.Red;
-
+            var sumLine = new ListViewItem("Вес всех блюд");
+            sumLine.SubItems.Add(sumWeight.ToString("0.0"));
+            someDishesLV.Items.Add(sumLine);
+            sumLine.Font = new Font(someDishesLV.Font, FontStyle.Bold);
+            sumLine.ForeColor = Color.Red;
         }
 
+        private void RefreshAllDishesLV()
+        {
+            RefreshDishesListViews(Meal.Breakfast);
+            RefreshDishesListViews(Meal.Dinner);
+            RefreshDishesListViews(Meal.Supper);
+
+        }
 
         private void addBreakfastDishBtn_Click(object sender, EventArgs e)
         {
@@ -187,6 +160,54 @@ namespace MenuWF.Forms
         private void addSupperDishBtn_Click(object sender, EventArgs e)
         {
             AddDishToMenu(Meal.Supper);
+        }
+
+        private void deleteBreakfastDishBtn_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedJournal(Meal.Breakfast);
+        }
+
+        private void deleteDinnerDishBtn_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedJournal(Meal.Dinner);
+        }
+
+        private void deleteSupperDishBtn_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedJournal(Meal.Supper);
+        }
+
+
+        private async void DeleteSelectedJournal(Meal meal)
+        {
+            ListView someDishesLV = new ListView();
+            switch (meal)
+            {
+                case Meal.Breakfast:
+                    someDishesLV = breakfastDishesLV;
+                    break;
+                case Meal.Dinner:
+                    someDishesLV = dinnerDishesLV;
+                    break;
+                case Meal.Supper:
+                    someDishesLV = supperDishesLV;
+                    break;
+                default: return; // если ничего не выбрано - завершаем метод
+            }
+
+            if (someDishesLV.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedListViewItem = someDishesLV.SelectedItems[0];
+                if (selectedListViewItem.Tag is Journal journal)
+                {
+                    using (var uow = new UnitOfWork())
+                    {
+                        await uow.JournalsRepository.Delete(journal);
+                    }
+                    // После удаления обновите список
+                    RefreshDishesListViews(meal);
+                }
+            }
         }
     }
 }
