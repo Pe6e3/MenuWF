@@ -284,7 +284,7 @@ namespace MenuWF.Forms
         private void dinnerDishWeightField_TextChanged(object sender, EventArgs e)
         {
             FormHelper.ValidateDecimal(dinnerDishWeightField, maxValue: 10000);
-            FormHelper.ButtonEnableByField(addDinnerDishBtn, dinnerDishWeightField, dinnerDishCB);
+            FormHelper.ButtonEnableByField(addDinnerDishBtn, dinnerDishWeightField);
 
         }
 
