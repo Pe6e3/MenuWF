@@ -67,5 +67,11 @@ public static class FormHelper
         else
             button.Enabled = true;
     }
- 
+    internal static void ButtonEnableByListView(buttonUI button, ListView listView)
+    {
+        if (listView.SelectedItems == null)
+            button.Enabled = false;
+        else
+            button.Enabled = true;
+    }
 }

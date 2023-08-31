@@ -269,6 +269,7 @@
             breakfastDishesLV.Size = new Size(232, 139);
             breakfastDishesLV.TabIndex = 19;
             breakfastDishesLV.UseCompatibleStateImageBehavior = false;
+            breakfastDishesLV.SelectedIndexChanged += breakfastDishesLV_SelectedIndexChanged;
             // 
             // dinnerDishesLV
             // 
@@ -277,6 +278,7 @@
             dinnerDishesLV.Size = new Size(232, 139);
             dinnerDishesLV.TabIndex = 19;
             dinnerDishesLV.UseCompatibleStateImageBehavior = false;
+            dinnerDishesLV.SelectedIndexChanged += dinnerDishesLV_SelectedIndexChanged;
             // 
             // supperDishesLV
             // 
@@ -285,6 +287,7 @@
             supperDishesLV.Size = new Size(232, 139);
             supperDishesLV.TabIndex = 19;
             supperDishesLV.UseCompatibleStateImageBehavior = false;
+            supperDishesLV.SelectedIndexChanged += supperDishesLV_SelectedIndexChanged;
             // 
             // breakfastProductsLV
             // 

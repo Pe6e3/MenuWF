@@ -171,16 +171,19 @@ namespace MenuWF.Forms
         private void deleteBreakfastDishBtn_Click(object sender, EventArgs e)
         {
             DeleteSelectedJournal(Meal.Breakfast);
+            deleteBreakfastDishBtn.Enabled = false;
         }
 
         private void deleteDinnerDishBtn_Click(object sender, EventArgs e)
         {
             DeleteSelectedJournal(Meal.Dinner);
+            deleteDinnerDishBtn.Enabled = false;
         }
 
         private void deleteSupperDishBtn_Click(object sender, EventArgs e)
         {
             DeleteSelectedJournal(Meal.Supper);
+            deleteSupperDishBtn.Enabled = false;
         }
 
 
@@ -297,5 +300,23 @@ namespace MenuWF.Forms
             FormHelper.ButtonEnableByField(addSupperDishBtn, supperDishWeightField);
         }
 
+        private void breakfastDishesLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormHelper.ButtonEnableByListView(deleteBreakfastDishBtn, breakfastDishesLV);
+        }
+
+        private void dinnerDishesLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormHelper.ButtonEnableByListView(deleteDinnerDishBtn, dinnerDishesLV);
+
+        }
+
+        private void supperDishesLV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormHelper.ButtonEnableByListView(deleteSupperDishBtn, supperDishesLV);
+        }
+
+
+ 
     }
 }
