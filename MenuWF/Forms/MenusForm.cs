@@ -83,7 +83,7 @@ namespace MenuWF.Forms
                     journal.RecipeId = recipe.Id;
                     journal.meal = meal;
                     journal.Date = dateJournal;
-                    await uow.JournalsRepository.Insert(journal);
+                    await uow.JournalsRepository.AddJournal(journal);
                 }
             }
             RefreshAllDishesLV();
