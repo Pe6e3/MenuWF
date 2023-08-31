@@ -1,4 +1,5 @@
-﻿using MenuWF.Entities;
+﻿using MenuWF.DTO;
+using MenuWF.Entities;
 using MenuWF.Repository;
 using MenuWF.UIElements;
 using static MenuWF.Entities.Journal;
@@ -249,6 +250,25 @@ namespace MenuWF.Forms
             {
                 recipes = await uow.RecipesRepository.GetRecipesOfDayMeal(date, meal);
             }
+            IEnumerable<ProductsInMenuDTO> productsDTO = recipes
+                .Select(recipe => new ProductsInMenuDTO
+                {
+                    ProdName = recipe.Product.Name,
+                    ProdWeight = recipe.ProductWeight, //////////
+                    DishId = recipe.DishId,
+                    RecipeWeight = recipes.Where(x => x.DishId == recipe.DishId).Sum(x => x.ProductWeight)
+                })
+                .ToList();
+
+            foreach (var productDTO in productsDTO)
+                productDTO.ProdWeight /= productDTO.RecipeWeight;
+
+
+
+            //foreach (var product in productsDTO)
+            //    Console.WriteLine(product.ProdName + " -  " + product.ProdWeight + " (" + product.RecipeWeight + ")\n");
+
+
             someProductsLV.Items.Clear();
             someProductsLV.View = View.Details;
             someProductsLV.Columns.Clear();
@@ -256,27 +276,31 @@ namespace MenuWF.Forms
             someProductsLV.Columns.Add("Продукт").Width = 150;
             someProductsLV.Columns.Add("Вес").Width = 50;
 
-            decimal sumWeight = 0;
-            foreach (var recipe in recipes)
+            // Здесь только заполняем список productDTO (в слелдующем цикел будем переносить его в ListView)
+            foreach (var product in productsDTO)
             {
                 Journal journal = new Journal();
                 using (var uow = new UnitOfWork())
                 {
-                    journal = await uow.JournalsRepository.GetJournalByDayMealAndDishId(date, meal, recipe.DishId);
+                    journal = await uow.JournalsRepository.GetJournalByDayMealAndDishId(date, meal, product.DishId);
                 }
-                decimal recipeWeight = recipes.Where(x => x.DishId == recipe.DishId).Sum(x => x.ProductWeight);
-                decimal dishWeight = journal.DishWeight;
-                decimal productMenuWeight = dishWeight / recipeWeight * recipe.ProductWeight; // здесь мы получили вес продукта в блюде относительно веса блюда в меню
-                ListViewItem lineLV = new ListViewItem(recipe.Product.Name.ToString());
-                lineLV.SubItems.Add(productMenuWeight.ToString("0"));
-                someProductsLV.Items.Add(lineLV);
-                sumWeight += productMenuWeight;
+                product.ProdWeight *= journal.DishWeight;
             }
-            var sumLine = new ListViewItem("Вес всех продуктов");
-            sumLine.SubItems.Add(sumWeight.ToString("0"));
-            someProductsLV.Items.Add(sumLine);
-            sumLine.Font = new Font(someProductsLV.Font, FontStyle.Bold);
-            sumLine.ForeColor = Color.Red;
+            productsDTO = productsDTO
+                .GroupBy(prod => prod.ProdName)
+                .Select(group => new ProductsInMenuDTO
+                {
+                    ProdName = group.Key,
+                    ProdWeight = group.Sum(x => x.ProdWeight)
+                }).ToList();
+
+            foreach (var product in productsDTO)
+            {
+                ListViewItem lineLV = new ListViewItem(product.ProdName.ToString());
+                lineLV.SubItems.Add(product.ProdWeight.ToString("0"));
+                someProductsLV.Items.Add(lineLV);
+            }
+
         }
 
 
@@ -317,6 +341,6 @@ namespace MenuWF.Forms
         }
 
 
- 
+
     }
 }
