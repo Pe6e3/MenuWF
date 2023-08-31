@@ -14,6 +14,24 @@ namespace MenuWF.MenuWF.Repository.Repositories
             this.db = db;
         }
 
+
+        // Добавляем продукт в рецепт, если его там нет. Если есть - прибавляем вес к этому продукту
+        internal async Task AddProductToRecipe(Recipe recipe)
+        {
+            Recipe oldRecipe = await db.Recipes.FirstOrDefaultAsync(x => x.ProductId == recipe.ProductId);
+            if (oldRecipe != null)
+            {
+                oldRecipe.ProductWeight += recipe.ProductWeight;
+                db.Entry(oldRecipe).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+            }
+            else
+            {
+                await db.Recipes.AddAsync(recipe);
+                await db.SaveChangesAsync();
+            }
+        }
+
         internal async Task<Recipe> GetRecipeByDish(Dish? dish) => await db.Recipes.FirstOrDefaultAsync(x => x.DishId == dish.Id);
 
         internal async Task<IEnumerable<Recipe>> GetRecipesOfDayMeal(DateTime date, Journal.Meal meal) => await

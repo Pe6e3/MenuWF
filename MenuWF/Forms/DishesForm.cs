@@ -115,7 +115,7 @@ public partial class DishesForm : ShadowedForm
                 recipe.ProductId = product.Id;
                 recipe.DishId = dish.Id;
                 recipe.ProductWeight = Convert.ToInt32(prodWeightField.Text);
-                await uow.RecipesRepository.Insert(recipe);
+                await uow.RecipesRepository.AddProductToRecipe(recipe); 
             }
             FormHelper.ClearFields(this);
             RefreshRecipeList(dish);
