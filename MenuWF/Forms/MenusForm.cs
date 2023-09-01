@@ -2,6 +2,7 @@
 using MenuWF.Entities;
 using MenuWF.Repository;
 using MenuWF.UIElements;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using static MenuWF.Entities.Journal;
 
 namespace MenuWF.Forms
@@ -11,6 +12,8 @@ namespace MenuWF.Forms
         IEnumerable<ProductsInMenuDTO> breakfastDTOs;
         IEnumerable<ProductsInMenuDTO> dinnerDTOs;
         IEnumerable<ProductsInMenuDTO> supperDTOs;
+        IEnumerable<ProductsInMenuDTO> allProductsDTO;
+
         public MenusForm()
         {
             InitializeComponent();
@@ -18,10 +21,9 @@ namespace MenuWF.Forms
 
         private void MenusForm_Load(object sender, EventArgs e)
         {
-            RefreshDishesComboBoxes();
-            RefreshAllDishesLV();
-            RefreshAllProdsLV();
             dateOfJournal.Value = DateTime.Now;
+            RefreshDishesComboBoxes();
+            RefreshAllProdsLV();
         }
 
         public async void RefreshDishesComboBoxes()
@@ -105,17 +107,17 @@ namespace MenuWF.Forms
                 case Meal.Breakfast:
                     someDishesLV = breakfastDishesLV;
                     sumLabel = breakfastSumWeightDishesLabel;
-                    sumLabel.Text = "Общий вес блюд на завтрак: ";
+                    sumLabel.Text = "0";
                     break;
                 case Meal.Dinner:
                     someDishesLV = dinnerDishesLV;
                     sumLabel = dinnerSumWeightDishesLabel;
-                    sumLabel.Text = "Общий вес блюд на обед: ";
+                    sumLabel.Text = "0";
                     break;
                 case Meal.Supper:
                     someDishesLV = supperDishesLV;
                     sumLabel = supperSumWeightDishesLabel;
-                    sumLabel.Text = "Общий вес блюд на ужин: ";
+                    sumLabel.Text = "0";
                     break;
                 default: return; // если ничего не выбрано - завершаем метод
             }
@@ -147,7 +149,7 @@ namespace MenuWF.Forms
                     sumWeight += journal.DishWeight;
                 }
 
-            sumLabel.Text += sumWeight.ToString("0");
+            sumLabel.Text = (Convert.ToDecimal(sumLabel.Text) + Convert.ToDecimal(sumWeight)).ToString("0");
         }
 
         private void RefreshAllDishesLV()
@@ -156,6 +158,77 @@ namespace MenuWF.Forms
             RefreshDishesListViews(Meal.Dinner);
             RefreshDishesListViews(Meal.Supper);
 
+        }
+
+        private async void RefreshAllProdsLV()
+        {
+            breakfastDTOs = await RefreshProdsLV(Meal.Breakfast);
+            dinnerDTOs = await RefreshProdsLV(Meal.Dinner);
+            supperDTOs = await RefreshProdsLV(Meal.Supper);
+
+            // Объединяю списки продуктов из разных приемов пищи в один
+            allProductsDTO = breakfastDTOs
+                .Concat(dinnerDTOs)
+                .Concat(supperDTOs);
+
+            // Объединяю повторяющиеся продукты в полученном списке
+            allProductsDTO = allProductsDTO
+                .GroupBy(prod => prod.ProdName)
+                .Select(group => new ProductsInMenuDTO
+                {
+                    ProdName = group.Key,
+                    ProdWeight = group.Sum(x => x.ProdWeight)
+                }).ToList();
+
+
+            RefreshCPFC(allProductsDTO);
+            RefreshDayProdsLV(allProductsDTO);
+        }
+
+        private async void RefreshCPFC(IEnumerable<ProductsInMenuDTO> allProductsDTO) // Обновить КБЖУ
+        {
+            decimal prots = 0;
+            decimal fats = 0;
+            decimal carbs = 0;
+            decimal calories = 0;
+
+            foreach (var productDTO in allProductsDTO)
+            {
+                Product product;
+                using (var uow = new UnitOfWork())
+                {
+                    product = await uow.ProductsRepository.GetByProdName(productDTO.ProdName);
+                }
+                prots += product.Prots * productDTO.ProdWeight / 100;
+                fats += product.Fats * productDTO.ProdWeight / 100;
+                carbs += product.Carbs * productDTO.ProdWeight / 100;
+                calories += product.Calories * productDTO.ProdWeight / 100;
+            }
+            decimal coeff = 0;  // Если в поле Количество персон есть текст (а там только число по валидации) то ниже будем на него делить. Если нет - умножим на 0
+            if (personCountField.Text.Length > 0 && personCountField.Text != "0")
+                coeff = 1 / decimal.Parse(personCountField.Text);
+            else
+                coeff = 0;
+
+            protsLabel.Text = (prots * coeff).ToString("0.0");
+            fatsLabel.Text = (fats * coeff).ToString("0.0");
+            carbsLabel.Text = (carbs * coeff).ToString("0.0");
+            caloriesLabel.Text = (calories * coeff).ToString("0.0");
+        }
+
+        private void RefreshDayProdsLV(IEnumerable<ProductsInMenuDTO> allProductsDTO)
+        {
+            dayProdsLV.Items.Clear();
+            dayProdsLV.View = View.Details;
+            dayProdsLV.Columns.Clear();
+            dayProdsLV.Columns.Add("Продукт").Width = 150;
+            dayProdsLV.Columns.Add("Вес").Width = 50;
+            foreach (var product in allProductsDTO)
+            {
+                ListViewItem lineLV = new ListViewItem(product.ProdName.ToString());
+                lineLV.SubItems.Add(product.ProdWeight.ToString("0"));
+                dayProdsLV.Items.Add(lineLV);
+            }
         }
 
         private void addBreakfastDishBtn_Click(object sender, EventArgs e)
@@ -225,47 +298,6 @@ namespace MenuWF.Forms
             }
         }
 
-        private async void RefreshAllProdsLV()
-        {
-            breakfastDTOs = await RefreshProdsLV(Meal.Breakfast);
-            dinnerDTOs = await RefreshProdsLV(Meal.Dinner);
-            supperDTOs = await RefreshProdsLV(Meal.Supper);
-
-            // Объединяю списки продуктов из разных приемов пищи в один
-            IEnumerable<ProductsInMenuDTO> allProductsDTO = breakfastDTOs
-                .Concat(dinnerDTOs)
-                .Concat(supperDTOs);
-
-            // Объединяю повторяющиеся продукты в полученном списке
-            allProductsDTO = allProductsDTO
-                .GroupBy(prod => prod.ProdName)
-                .Select(group => new ProductsInMenuDTO
-                {
-                    ProdName = group.Key,
-                    ProdWeight = group.Sum(x => x.ProdWeight)
-                }).ToList();
-
-
-
-
-
-            RefreshDayProdsLV(allProductsDTO);
-        }
-
-        private void RefreshDayProdsLV(IEnumerable<ProductsInMenuDTO> allProductsDTO)
-        {
-            dayProdsLV.Items.Clear();
-            dayProdsLV.View = View.Details;
-            dayProdsLV.Columns.Clear();
-            dayProdsLV.Columns.Add("Продукт").Width = 150;
-            dayProdsLV.Columns.Add("Вес").Width = 50;
-            foreach (var product in allProductsDTO)
-            {
-                ListViewItem lineLV = new ListViewItem(product.ProdName.ToString());
-                lineLV.SubItems.Add(product.ProdWeight.ToString("0"));
-                dayProdsLV.Items.Add(lineLV);
-            }
-        }
 
         private async Task<IEnumerable<ProductsInMenuDTO>> RefreshProdsLV(Meal meal)
         {
@@ -377,6 +409,12 @@ namespace MenuWF.Forms
         {
             RefreshAllDishesLV();
             RefreshAllProdsLV();
+        }
+
+        private void personCountField_TextChanged(object sender, EventArgs e)
+        {
+            FormHelper.ValidateDecimal(personCountField, maxValue: 100);
+            RefreshCPFC(allProductsDTO);
         }
     }
 }

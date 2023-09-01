@@ -19,10 +19,13 @@ namespace MenuWF.MenuWF.Repository.Repositories
             IEnumerable<Recipe> nutrients = await _db.Recipes
                 .Include(x => x.Product)
                 .Include(x => x.Dish)
-                .Where(dish=>dish.Dish.Id == dishId)
+                .Where(dish => dish.Dish.Id == dishId)
                 .ToListAsync();
 
             return nutrients;
         }
+
+        internal async Task<Product> GetByProdName(string prodName) =>
+         await _db.Products.FirstOrDefaultAsync(x => x.Name == prodName);
     }
 }
