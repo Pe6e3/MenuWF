@@ -264,6 +264,7 @@
             dateOfJournal.Size = new Size(99, 23);
             dateOfJournal.TabIndex = 18;
             dateOfJournal.Value = new DateTime(2023, 8, 30, 21, 32, 34, 0);
+            dateOfJournal.ValueChanged += dateOfJournal_ValueChanged;
             // 
             // breakfastDishesLV
             // 

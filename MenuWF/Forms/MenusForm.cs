@@ -21,6 +21,7 @@ namespace MenuWF.Forms
             RefreshDishesComboBoxes();
             RefreshAllDishesLV();
             RefreshAllProdsLV();
+            dateOfJournal.Value = DateTime.Now;
         }
 
         public async void RefreshDishesComboBoxes()
@@ -372,7 +373,10 @@ namespace MenuWF.Forms
             FormHelper.ButtonEnableByListView(deleteSupperDishBtn, supperDishesLV);
         }
 
-
-
+        private void dateOfJournal_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshAllDishesLV();
+            RefreshAllProdsLV();
+        }
     }
 }
