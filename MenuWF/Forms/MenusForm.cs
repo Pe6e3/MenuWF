@@ -8,6 +8,9 @@ namespace MenuWF.Forms
 {
     public partial class MenusForm : ShadowedForm
     {
+        IEnumerable<ProductsInMenuDTO> breakfastDTOs;
+        IEnumerable<ProductsInMenuDTO> dinnerDTOs;
+        IEnumerable<ProductsInMenuDTO> supperDTOs;
         public MenusForm()
         {
             InitializeComponent();
@@ -216,18 +219,54 @@ namespace MenuWF.Forms
                     }
                     // После удаления обновите список
                     RefreshDishesListViews(meal);
-                    RefreshProdsLV(meal);
+                    RefreshAllProdsLV();
                 }
             }
         }
 
-        private void RefreshAllProdsLV()
+        private async void RefreshAllProdsLV()
         {
-            RefreshProdsLV(Meal.Breakfast);
-            RefreshProdsLV(Meal.Dinner);
-            RefreshProdsLV(Meal.Supper);
+            breakfastDTOs = await RefreshProdsLV(Meal.Breakfast);
+            dinnerDTOs = await RefreshProdsLV(Meal.Dinner);
+            supperDTOs = await RefreshProdsLV(Meal.Supper);
+
+            // Объединяю списки продуктов из разных приемов пищи в один
+            IEnumerable<ProductsInMenuDTO> allProductsDTO = breakfastDTOs
+                .Concat(dinnerDTOs)
+                .Concat(supperDTOs);
+
+            // Объединяю повторяющиеся продукты в полученном списке
+            allProductsDTO = allProductsDTO
+                .GroupBy(prod => prod.ProdName)
+                .Select(group => new ProductsInMenuDTO
+                {
+                    ProdName = group.Key,
+                    ProdWeight = group.Sum(x => x.ProdWeight)
+                }).ToList();
+
+
+
+
+
+            RefreshDayProdsLV(allProductsDTO);
         }
-        private async void RefreshProdsLV(Meal meal)
+
+        private void RefreshDayProdsLV(IEnumerable<ProductsInMenuDTO> allProductsDTO)
+        {
+            dayProdsLV.Items.Clear();
+            dayProdsLV.View = View.Details;
+            dayProdsLV.Columns.Clear();
+            dayProdsLV.Columns.Add("Продукт").Width = 150;
+            dayProdsLV.Columns.Add("Вес").Width = 50;
+            foreach (var product in allProductsDTO)
+            {
+                ListViewItem lineLV = new ListViewItem(product.ProdName.ToString());
+                lineLV.SubItems.Add(product.ProdWeight.ToString("0"));
+                dayProdsLV.Items.Add(lineLV);
+            }
+        }
+
+        private async Task<IEnumerable<ProductsInMenuDTO>> RefreshProdsLV(Meal meal)
         {
             ListView someProductsLV = new ListView();
             switch (meal)
@@ -241,7 +280,7 @@ namespace MenuWF.Forms
                 case Meal.Supper:
                     someProductsLV = supperProductsLV;
                     break;
-                default: return; // если ничего не выбрано - завершаем метод
+                default: return null;
             }
             IEnumerable<Recipe> recipes = new List<Recipe>();
             IEnumerable<Product> productsLV = new List<Product>();
@@ -254,7 +293,7 @@ namespace MenuWF.Forms
                 .Select(recipe => new ProductsInMenuDTO
                 {
                     ProdName = recipe.Product.Name,
-                    ProdWeight = recipe.ProductWeight, //////////
+                    ProdWeight = recipe.ProductWeight,
                     DishId = recipe.DishId,
                     RecipeWeight = recipes.Where(x => x.DishId == recipe.DishId).Sum(x => x.ProductWeight)
                 })
@@ -263,20 +302,13 @@ namespace MenuWF.Forms
             foreach (var productDTO in productsDTO)
                 productDTO.ProdWeight /= productDTO.RecipeWeight;
 
-
-
-            //foreach (var product in productsDTO)
-            //    Console.WriteLine(product.ProdName + " -  " + product.ProdWeight + " (" + product.RecipeWeight + ")\n");
-
-
             someProductsLV.Items.Clear();
             someProductsLV.View = View.Details;
             someProductsLV.Columns.Clear();
-
             someProductsLV.Columns.Add("Продукт").Width = 150;
             someProductsLV.Columns.Add("Вес").Width = 50;
 
-            // Здесь только заполняем список productDTO (в слелдующем цикел будем переносить его в ListView)
+            // Здесь только заполняем список productDTO (в слелдующем цикле будем переносить его в ListView)
             foreach (var product in productsDTO)
             {
                 Journal journal = new Journal();
@@ -300,7 +332,7 @@ namespace MenuWF.Forms
                 lineLV.SubItems.Add(product.ProdWeight.ToString("0"));
                 someProductsLV.Items.Add(lineLV);
             }
-
+            return productsDTO;
         }
 
 
