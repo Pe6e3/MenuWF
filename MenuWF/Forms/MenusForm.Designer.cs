@@ -86,11 +86,15 @@
             supperIncreaseBtn = new UXElements.buttonUI();
             label7 = new Label();
             panel4 = new Panel();
+            protsProgressBar = new ProgressBar();
             label10 = new Label();
             prodPerPersonLabel = new Label();
             prodWeightSumLabel = new Label();
             label8 = new Label();
             label4 = new Label();
+            fatsProgressBar = new ProgressBar();
+            carbsProgressBar = new ProgressBar();
+            caloriesProgressBar = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -139,16 +143,16 @@
             // backBtn
             // 
             backBtn.BackColor = Color.Transparent;
-            backBtn.endColorBorderBtn = Color.LightSkyBlue;
+            backBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.ForeColor = Color.LightCyan;
             backBtn.Location = new Point(16, 12);
-            backBtn.middleColorBtn = Color.DeepSkyBlue;
+            backBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             backBtn.Name = "backBtn";
             backBtn.Rounding = 33;
             backBtn.RoundingEnable = true;
             backBtn.Size = new Size(67, 33);
-            backBtn.startColorBtn = Color.SkyBlue;
+            backBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             backBtn.TabIndex = 15;
             backBtn.Text = "←";
             backBtn.TextHover = "назад";
@@ -419,10 +423,11 @@
             protsLabel.BorderStyle = BorderStyle.Fixed3D;
             protsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             protsLabel.ForeColor = Color.DarkRed;
-            protsLabel.Location = new Point(90, 506);
+            protsLabel.Location = new Point(80, 506);
             protsLabel.Name = "protsLabel";
-            protsLabel.Size = new Size(53, 23);
+            protsLabel.Size = new Size(42, 23);
             protsLabel.TabIndex = 20;
+            protsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // personCountField
             // 
@@ -452,30 +457,33 @@
             fatsLabel.BorderStyle = BorderStyle.Fixed3D;
             fatsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             fatsLabel.ForeColor = Color.DarkRed;
-            fatsLabel.Location = new Point(90, 531);
+            fatsLabel.Location = new Point(80, 531);
             fatsLabel.Name = "fatsLabel";
-            fatsLabel.Size = new Size(53, 23);
+            fatsLabel.Size = new Size(42, 23);
             fatsLabel.TabIndex = 20;
+            fatsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // carbsLabel
             // 
             carbsLabel.BorderStyle = BorderStyle.Fixed3D;
             carbsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             carbsLabel.ForeColor = Color.DarkRed;
-            carbsLabel.Location = new Point(90, 556);
+            carbsLabel.Location = new Point(80, 556);
             carbsLabel.Name = "carbsLabel";
-            carbsLabel.Size = new Size(53, 23);
+            carbsLabel.Size = new Size(42, 23);
             carbsLabel.TabIndex = 20;
+            carbsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // caloriesLabel
             // 
             caloriesLabel.BorderStyle = BorderStyle.Fixed3D;
             caloriesLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             caloriesLabel.ForeColor = Color.DarkRed;
-            caloriesLabel.Location = new Point(90, 581);
+            caloriesLabel.Location = new Point(80, 581);
             caloriesLabel.Name = "caloriesLabel";
-            caloriesLabel.Size = new Size(53, 23);
+            caloriesLabel.Size = new Size(42, 23);
             caloriesLabel.TabIndex = 20;
+            caloriesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -518,7 +526,7 @@
             infoLabelProts.BackColor = Color.Transparent;
             infoLabelProts.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelProts.ForeColor = Color.DarkRed;
-            infoLabelProts.Location = new Point(12, 507);
+            infoLabelProts.Location = new Point(2, 507);
             infoLabelProts.Name = "infoLabelProts";
             infoLabelProts.Size = new Size(77, 21);
             infoLabelProts.TabIndex = 20;
@@ -530,7 +538,7 @@
             infoLabelFats.BackColor = Color.Transparent;
             infoLabelFats.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelFats.ForeColor = Color.DarkRed;
-            infoLabelFats.Location = new Point(12, 532);
+            infoLabelFats.Location = new Point(2, 532);
             infoLabelFats.Name = "infoLabelFats";
             infoLabelFats.Size = new Size(77, 21);
             infoLabelFats.TabIndex = 20;
@@ -542,7 +550,7 @@
             infoLabelCarbs.BackColor = Color.Transparent;
             infoLabelCarbs.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCarbs.ForeColor = Color.DarkRed;
-            infoLabelCarbs.Location = new Point(12, 557);
+            infoLabelCarbs.Location = new Point(2, 557);
             infoLabelCarbs.Name = "infoLabelCarbs";
             infoLabelCarbs.Size = new Size(77, 21);
             infoLabelCarbs.TabIndex = 20;
@@ -554,7 +562,7 @@
             infoLabelCalories.BackColor = Color.Transparent;
             infoLabelCalories.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCalories.ForeColor = Color.DarkRed;
-            infoLabelCalories.Location = new Point(12, 581);
+            infoLabelCalories.Location = new Point(2, 581);
             infoLabelCalories.Name = "infoLabelCalories";
             infoLabelCalories.Size = new Size(77, 21);
             infoLabelCalories.TabIndex = 20;
@@ -576,44 +584,44 @@
             // protsPercentLabel
             // 
             protsPercentLabel.BackColor = Color.Transparent;
-            protsPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            protsPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             protsPercentLabel.ForeColor = Color.DarkRed;
-            protsPercentLabel.Location = new Point(149, 507);
+            protsPercentLabel.Location = new Point(125, 506);
             protsPercentLabel.Name = "protsPercentLabel";
-            protsPercentLabel.Size = new Size(77, 21);
+            protsPercentLabel.Size = new Size(34, 21);
             protsPercentLabel.TabIndex = 20;
             protsPercentLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // fatsPercentLabel
             // 
             fatsPercentLabel.BackColor = Color.Transparent;
-            fatsPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            fatsPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             fatsPercentLabel.ForeColor = Color.DarkRed;
-            fatsPercentLabel.Location = new Point(149, 531);
+            fatsPercentLabel.Location = new Point(125, 531);
             fatsPercentLabel.Name = "fatsPercentLabel";
-            fatsPercentLabel.Size = new Size(77, 21);
+            fatsPercentLabel.Size = new Size(34, 21);
             fatsPercentLabel.TabIndex = 20;
             fatsPercentLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // carbsPercentLabel
             // 
             carbsPercentLabel.BackColor = Color.Transparent;
-            carbsPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            carbsPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             carbsPercentLabel.ForeColor = Color.DarkRed;
-            carbsPercentLabel.Location = new Point(149, 557);
+            carbsPercentLabel.Location = new Point(125, 556);
             carbsPercentLabel.Name = "carbsPercentLabel";
-            carbsPercentLabel.Size = new Size(77, 21);
+            carbsPercentLabel.Size = new Size(34, 21);
             carbsPercentLabel.TabIndex = 20;
             carbsPercentLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // caloriesPercentLabel
             // 
             caloriesPercentLabel.BackColor = Color.Transparent;
-            caloriesPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            caloriesPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             caloriesPercentLabel.ForeColor = Color.DarkRed;
-            caloriesPercentLabel.Location = new Point(149, 582);
+            caloriesPercentLabel.Location = new Point(125, 581);
             caloriesPercentLabel.Name = "caloriesPercentLabel";
-            caloriesPercentLabel.Size = new Size(77, 21);
+            caloriesPercentLabel.Size = new Size(34, 21);
             caloriesPercentLabel.TabIndex = 20;
             caloriesPercentLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -825,6 +833,8 @@
             // 
             panel4.BackColor = Color.FromArgb(30, 250, 150, 0);
             panel4.BorderStyle = BorderStyle.Fixed3D;
+            panel4.Controls.Add(protsPercentLabel);
+            panel4.Controls.Add(protsProgressBar);
             panel4.Controls.Add(label10);
             panel4.Controls.Add(prodPerPersonLabel);
             panel4.Controls.Add(prodWeightSumLabel);
@@ -837,7 +847,6 @@
             panel4.Controls.Add(infoLabelFats);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(infoLabelCountPerson);
-            panel4.Controls.Add(protsPercentLabel);
             panel4.Controls.Add(infoLabelProts);
             panel4.Controls.Add(infoLabelTite);
             panel4.Controls.Add(carbsLabel);
@@ -846,10 +855,21 @@
             panel4.Controls.Add(protsLabel);
             panel4.Controls.Add(personCountField);
             panel4.Controls.Add(dayProdsLV);
+            panel4.Controls.Add(fatsProgressBar);
+            panel4.Controls.Add(carbsProgressBar);
+            panel4.Controls.Add(caloriesProgressBar);
             panel4.Location = new Point(776, 53);
             panel4.Name = "panel4";
             panel4.Size = new Size(241, 623);
             panel4.TabIndex = 24;
+            // 
+            // protsProgressBar
+            // 
+            protsProgressBar.Location = new Point(159, 506);
+            protsProgressBar.Name = "protsProgressBar";
+            protsProgressBar.Size = new Size(67, 22);
+            protsProgressBar.TabIndex = 24;
+            protsProgressBar.Value = 50;
             // 
             // label10
             // 
@@ -906,6 +926,30 @@
             label4.TabIndex = 20;
             label4.Text = "Все продукты на день";
             label4.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // fatsProgressBar
+            // 
+            fatsProgressBar.Location = new Point(159, 531);
+            fatsProgressBar.Name = "fatsProgressBar";
+            fatsProgressBar.Size = new Size(67, 22);
+            fatsProgressBar.TabIndex = 24;
+            fatsProgressBar.Value = 50;
+            // 
+            // carbsProgressBar
+            // 
+            carbsProgressBar.Location = new Point(159, 556);
+            carbsProgressBar.Name = "carbsProgressBar";
+            carbsProgressBar.Size = new Size(67, 22);
+            carbsProgressBar.TabIndex = 24;
+            carbsProgressBar.Value = 50;
+            // 
+            // caloriesProgressBar
+            // 
+            caloriesProgressBar.Location = new Point(159, 581);
+            caloriesProgressBar.Name = "caloriesProgressBar";
+            caloriesProgressBar.Size = new Size(67, 22);
+            caloriesProgressBar.TabIndex = 24;
+            caloriesProgressBar.Value = 50;
             // 
             // MenusForm
             // 
@@ -998,5 +1042,9 @@
         private Label label10;
         private Label prodPerPersonLabel;
         private Label prodWeightSumLabel;
+        private ProgressBar protsProgressBar;
+        private ProgressBar caloriesProgressBar;
+        private ProgressBar carbsProgressBar;
+        private ProgressBar fatsProgressBar;
     }
 }

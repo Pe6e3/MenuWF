@@ -19,6 +19,8 @@ namespace MenuWF.Forms
         private const int CARB_NORM = 261;
         private const int CAL_NORM = 1800;
 
+
+
         public MenusForm()
         {
             InitializeComponent();
@@ -226,19 +228,37 @@ namespace MenuWF.Forms
                 prodPerPersonLabel.Text = "";
             }
 
-            protsLabel.Text = (prots * coeff).ToString("0.0");
-            fatsLabel.Text = (fats * coeff).ToString("0.0");
-            carbsLabel.Text = (carbs * coeff).ToString("0.0");
-            caloriesLabel.Text = (calories * coeff).ToString("0.0");
+            protsLabel.Text = (prots * coeff).ToString("0");
+            fatsLabel.Text = (fats * coeff).ToString("0");
+            carbsLabel.Text = (carbs * coeff).ToString("0");
+            caloriesLabel.Text = (calories * coeff).ToString("0");
 
-            protsPercentLabel.Text = (prots * coeff / PROT_NORM).ToString("0%");
-            fatsPercentLabel.Text = (fats * coeff / FAT_NORM).ToString("0%");
-            carbsPercentLabel.Text = (carbs * coeff / CARB_NORM).ToString("0%");
-            caloriesPercentLabel.Text = (calories * coeff / CAL_NORM).ToString("0%");
+            int protsPercent = (int)((prots * coeff / PROT_NORM) * 100);
+            int fatsPercent = (int)((fats * coeff / FAT_NORM) * 100);
+            int carbsPercent = (int)((carbs * coeff / CARB_NORM) * 100);
+            int caloriesPercent = (int)((calories * coeff / CAL_NORM) * 100);
+
+            protsPercentLabel.Text = (protsPercent).ToString("0") + "%";
+            fatsPercentLabel.Text = (fatsPercent).ToString("0") + "%";
+            carbsPercentLabel.Text = (carbsPercent).ToString("0") + "%";
+            caloriesPercentLabel.Text = (caloriesPercent).ToString("0") + "%";
+
+            protsProgressBar.Value = protsPercent < 100 ? protsPercent : 100;
+            fatsProgressBar.Value = fatsPercent < 100 ? fatsPercent : 100;
+            carbsProgressBar.Value = carbsPercent < 100 ? carbsPercent : 100;
+            caloriesProgressBar.Value = caloriesPercent < 100 ? caloriesPercent : 100;
+
 
             prodWeightSumLabel.Text = weight.ToString("0г");
 
         }
+
+
+
+        private Brush textBrush = new SolidBrush(Color.FromArgb(220, 110, 110, 110));
+
+
+
 
         private void RefreshDayProdsLV(IEnumerable<ProductsInMenuDTO> allProductsDTO)
         {
