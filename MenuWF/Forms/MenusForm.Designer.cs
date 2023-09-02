@@ -1,4 +1,6 @@
-﻿namespace MenuWF.Forms
+﻿using MenuWF.UIElements;
+
+namespace MenuWF.Forms
 {
     partial class MenusForm
     {
@@ -30,7 +32,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenusForm));
-            egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
+            egoldsFormStyle1 = new EgoldsFormStyle(components);
             addBreakfastDishBtn = new UXElements.buttonUI();
             backBtn = new UXElements.buttonUI();
             breakfastDishCB = new ComboBox();
@@ -73,7 +75,7 @@
             fatsPercentLabel = new Label();
             carbsPercentLabel = new Label();
             caloriesPercentLabel = new Label();
-            breakfastPanel = new Panel();
+            breakfastPanel = new RoundedPanel();
             bfDecreaseBtn = new UXElements.buttonUI();
             bfIncreaseBtn = new UXElements.buttonUI();
             label5 = new Label();
@@ -111,7 +113,7 @@
             egoldsFormStyle1.EnableControlBoxIconsLight = true;
             egoldsFormStyle1.EnableControlBoxMouseLight = true;
             egoldsFormStyle1.Form = this;
-            egoldsFormStyle1.FormStyle = UIElements.EgoldsFormStyle.fStyle.UserStyle;
+            egoldsFormStyle1.FormStyle = EgoldsFormStyle.fStyle.UserStyle;
             egoldsFormStyle1.HeaderColor = Color.DarkSlateGray;
             egoldsFormStyle1.HeaderColorAdditional = Color.FromArgb(140, 100, 100);
             egoldsFormStyle1.HeaderColorGradientEnable = true;
@@ -627,7 +629,9 @@
             // 
             // breakfastPanel
             // 
-            breakfastPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            breakfastPanel.BackColor = Color.Transparent;
+            breakfastPanel.BorderColor = Color.FromArgb(60, 121, 121, 156);
+            breakfastPanel.BorderWidth = 7;
             breakfastPanel.Controls.Add(bfDecreaseBtn);
             breakfastPanel.Controls.Add(bfIncreaseBtn);
             breakfastPanel.Controls.Add(label1);
@@ -639,8 +643,10 @@
             breakfastPanel.Controls.Add(breakfastDishCB);
             breakfastPanel.Controls.Add(deleteBreakfastDishBtn);
             breakfastPanel.Controls.Add(addBreakfastDishBtn);
+            breakfastPanel.CornerRadius = 12;
             breakfastPanel.Location = new Point(12, 53);
             breakfastPanel.Name = "breakfastPanel";
+            breakfastPanel.PanelColor = Color.Silver;
             breakfastPanel.Size = new Size(750, 200);
             breakfastPanel.TabIndex = 21;
             // 
@@ -1022,7 +1028,7 @@
         private Panel resultsPanel;
         private Panel supperPanel;
         private Panel dinnerPanel;
-        private Panel breakfastPanel;
+        private RoundedPanel breakfastPanel;
         private Label label4;
         private Label label7;
         private Label label6;
