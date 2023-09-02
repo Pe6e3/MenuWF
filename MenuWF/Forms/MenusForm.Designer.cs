@@ -73,19 +73,19 @@
             fatsPercentLabel = new Label();
             carbsPercentLabel = new Label();
             caloriesPercentLabel = new Label();
-            panel1 = new Panel();
+            breakfastPanel = new Panel();
             bfDecreaseBtn = new UXElements.buttonUI();
             bfIncreaseBtn = new UXElements.buttonUI();
             label5 = new Label();
-            panel2 = new Panel();
+            dinnerPanel = new Panel();
             dinnerDecreaseBtn = new UXElements.buttonUI();
             dinnerIncreaseBtn = new UXElements.buttonUI();
             label6 = new Label();
-            panel3 = new Panel();
+            supperPanel = new Panel();
             supperDecreaseBtn = new UXElements.buttonUI();
             supperIncreaseBtn = new UXElements.buttonUI();
             label7 = new Label();
-            panel4 = new Panel();
+            resultsPanel = new Panel();
             protsProgressBar = new ProgressBar();
             label10 = new Label();
             prodPerPersonLabel = new Label();
@@ -96,10 +96,10 @@
             carbsProgressBar = new ProgressBar();
             caloriesProgressBar = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
-            panel4.SuspendLayout();
+            breakfastPanel.SuspendLayout();
+            dinnerPanel.SuspendLayout();
+            supperPanel.SuspendLayout();
+            resultsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -625,25 +625,24 @@
             caloriesPercentLabel.TabIndex = 20;
             caloriesPercentLabel.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel1
+            // breakfastPanel
             // 
-            panel1.BackColor = Color.FromArgb(30, 250, 150, 0);
-            panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(bfDecreaseBtn);
-            panel1.Controls.Add(bfIncreaseBtn);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(breakfastSumWeightDishesLabel);
-            panel1.Controls.Add(breakfastProductsLV);
-            panel1.Controls.Add(breakfastDishesLV);
-            panel1.Controls.Add(breakfastDishWeightField);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(breakfastDishCB);
-            panel1.Controls.Add(deleteBreakfastDishBtn);
-            panel1.Controls.Add(addBreakfastDishBtn);
-            panel1.Location = new Point(12, 53);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(750, 200);
-            panel1.TabIndex = 21;
+            breakfastPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            breakfastPanel.Controls.Add(bfDecreaseBtn);
+            breakfastPanel.Controls.Add(bfIncreaseBtn);
+            breakfastPanel.Controls.Add(label1);
+            breakfastPanel.Controls.Add(breakfastSumWeightDishesLabel);
+            breakfastPanel.Controls.Add(breakfastProductsLV);
+            breakfastPanel.Controls.Add(breakfastDishesLV);
+            breakfastPanel.Controls.Add(breakfastDishWeightField);
+            breakfastPanel.Controls.Add(label5);
+            breakfastPanel.Controls.Add(breakfastDishCB);
+            breakfastPanel.Controls.Add(deleteBreakfastDishBtn);
+            breakfastPanel.Controls.Add(addBreakfastDishBtn);
+            breakfastPanel.Location = new Point(12, 53);
+            breakfastPanel.Name = "breakfastPanel";
+            breakfastPanel.Size = new Size(750, 200);
+            breakfastPanel.TabIndex = 21;
             // 
             // bfDecreaseBtn
             // 
@@ -693,25 +692,24 @@
             label5.Text = "Продукты на завтрак";
             label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel2
+            // dinnerPanel
             // 
-            panel2.BackColor = Color.FromArgb(30, 250, 150, 0);
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(dinnerDecreaseBtn);
-            panel2.Controls.Add(dinnerSumWeightDishesLabel);
-            panel2.Controls.Add(dinnerIncreaseBtn);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(dinnerProductsLV);
-            panel2.Controls.Add(dinnerDishesLV);
-            panel2.Controls.Add(dinnerDishWeightField);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(dinnerDishCB);
-            panel2.Controls.Add(deleteDinnerDishBtn);
-            panel2.Controls.Add(addDinnerDishBtn);
-            panel2.Location = new Point(12, 264);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(750, 200);
-            panel2.TabIndex = 22;
+            dinnerPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            dinnerPanel.Controls.Add(dinnerDecreaseBtn);
+            dinnerPanel.Controls.Add(dinnerSumWeightDishesLabel);
+            dinnerPanel.Controls.Add(dinnerIncreaseBtn);
+            dinnerPanel.Controls.Add(label2);
+            dinnerPanel.Controls.Add(dinnerProductsLV);
+            dinnerPanel.Controls.Add(dinnerDishesLV);
+            dinnerPanel.Controls.Add(dinnerDishWeightField);
+            dinnerPanel.Controls.Add(label6);
+            dinnerPanel.Controls.Add(dinnerDishCB);
+            dinnerPanel.Controls.Add(deleteDinnerDishBtn);
+            dinnerPanel.Controls.Add(addDinnerDishBtn);
+            dinnerPanel.Location = new Point(12, 264);
+            dinnerPanel.Name = "dinnerPanel";
+            dinnerPanel.Size = new Size(750, 200);
+            dinnerPanel.TabIndex = 22;
             // 
             // dinnerDecreaseBtn
             // 
@@ -761,25 +759,24 @@
             label6.Text = "Продукты на обед";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel3
+            // supperPanel
             // 
-            panel3.BackColor = Color.FromArgb(30, 250, 150, 0);
-            panel3.BorderStyle = BorderStyle.Fixed3D;
-            panel3.Controls.Add(supperDecreaseBtn);
-            panel3.Controls.Add(supperSumWeightDishesLabel);
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(supperIncreaseBtn);
-            panel3.Controls.Add(supperProductsLV);
-            panel3.Controls.Add(supperDishesLV);
-            panel3.Controls.Add(supperDishWeightField);
-            panel3.Controls.Add(label7);
-            panel3.Controls.Add(supperDishCB);
-            panel3.Controls.Add(addSupperDishBtn);
-            panel3.Controls.Add(deleteSupperDishBtn);
-            panel3.Location = new Point(12, 476);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(750, 200);
-            panel3.TabIndex = 23;
+            supperPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            supperPanel.Controls.Add(supperDecreaseBtn);
+            supperPanel.Controls.Add(supperSumWeightDishesLabel);
+            supperPanel.Controls.Add(label3);
+            supperPanel.Controls.Add(supperIncreaseBtn);
+            supperPanel.Controls.Add(supperProductsLV);
+            supperPanel.Controls.Add(supperDishesLV);
+            supperPanel.Controls.Add(supperDishWeightField);
+            supperPanel.Controls.Add(label7);
+            supperPanel.Controls.Add(supperDishCB);
+            supperPanel.Controls.Add(addSupperDishBtn);
+            supperPanel.Controls.Add(deleteSupperDishBtn);
+            supperPanel.Location = new Point(12, 476);
+            supperPanel.Name = "supperPanel";
+            supperPanel.Size = new Size(750, 200);
+            supperPanel.TabIndex = 23;
             // 
             // supperDecreaseBtn
             // 
@@ -829,39 +826,38 @@
             label7.Text = "Продукты на ужин";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel4
+            // resultsPanel
             // 
-            panel4.BackColor = Color.FromArgb(30, 250, 150, 0);
-            panel4.BorderStyle = BorderStyle.Fixed3D;
-            panel4.Controls.Add(protsPercentLabel);
-            panel4.Controls.Add(protsProgressBar);
-            panel4.Controls.Add(label10);
-            panel4.Controls.Add(prodPerPersonLabel);
-            panel4.Controls.Add(prodWeightSumLabel);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(caloriesPercentLabel);
-            panel4.Controls.Add(infoLabelCalories);
-            panel4.Controls.Add(carbsPercentLabel);
-            panel4.Controls.Add(infoLabelCarbs);
-            panel4.Controls.Add(fatsPercentLabel);
-            panel4.Controls.Add(infoLabelFats);
-            panel4.Controls.Add(label4);
-            panel4.Controls.Add(infoLabelCountPerson);
-            panel4.Controls.Add(infoLabelProts);
-            panel4.Controls.Add(infoLabelTite);
-            panel4.Controls.Add(carbsLabel);
-            panel4.Controls.Add(fatsLabel);
-            panel4.Controls.Add(caloriesLabel);
-            panel4.Controls.Add(protsLabel);
-            panel4.Controls.Add(personCountField);
-            panel4.Controls.Add(dayProdsLV);
-            panel4.Controls.Add(fatsProgressBar);
-            panel4.Controls.Add(carbsProgressBar);
-            panel4.Controls.Add(caloriesProgressBar);
-            panel4.Location = new Point(776, 53);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(241, 623);
-            panel4.TabIndex = 24;
+            resultsPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            resultsPanel.Controls.Add(protsPercentLabel);
+            resultsPanel.Controls.Add(protsProgressBar);
+            resultsPanel.Controls.Add(label10);
+            resultsPanel.Controls.Add(prodPerPersonLabel);
+            resultsPanel.Controls.Add(prodWeightSumLabel);
+            resultsPanel.Controls.Add(label8);
+            resultsPanel.Controls.Add(caloriesPercentLabel);
+            resultsPanel.Controls.Add(infoLabelCalories);
+            resultsPanel.Controls.Add(carbsPercentLabel);
+            resultsPanel.Controls.Add(infoLabelCarbs);
+            resultsPanel.Controls.Add(fatsPercentLabel);
+            resultsPanel.Controls.Add(infoLabelFats);
+            resultsPanel.Controls.Add(label4);
+            resultsPanel.Controls.Add(infoLabelCountPerson);
+            resultsPanel.Controls.Add(infoLabelProts);
+            resultsPanel.Controls.Add(infoLabelTite);
+            resultsPanel.Controls.Add(carbsLabel);
+            resultsPanel.Controls.Add(fatsLabel);
+            resultsPanel.Controls.Add(caloriesLabel);
+            resultsPanel.Controls.Add(protsLabel);
+            resultsPanel.Controls.Add(personCountField);
+            resultsPanel.Controls.Add(dayProdsLV);
+            resultsPanel.Controls.Add(fatsProgressBar);
+            resultsPanel.Controls.Add(carbsProgressBar);
+            resultsPanel.Controls.Add(caloriesProgressBar);
+            resultsPanel.Location = new Point(776, 53);
+            resultsPanel.Name = "resultsPanel";
+            resultsPanel.Size = new Size(241, 623);
+            resultsPanel.TabIndex = 24;
             // 
             // protsProgressBar
             // 
@@ -957,24 +953,24 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
             ClientSize = new Size(1026, 686);
-            Controls.Add(panel4);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(resultsPanel);
+            Controls.Add(supperPanel);
+            Controls.Add(dinnerPanel);
+            Controls.Add(breakfastPanel);
             Controls.Add(dateOfJournal);
             Controls.Add(backBtn);
             Name = "MenusForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Меню на день";
             Load += MenusForm_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            breakfastPanel.ResumeLayout(false);
+            breakfastPanel.PerformLayout();
+            dinnerPanel.ResumeLayout(false);
+            dinnerPanel.PerformLayout();
+            supperPanel.ResumeLayout(false);
+            supperPanel.PerformLayout();
+            resultsPanel.ResumeLayout(false);
+            resultsPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1023,10 +1019,10 @@
         private Label carbsPercentLabel;
         private Label fatsPercentLabel;
         private Label protsPercentLabel;
-        private Panel panel4;
-        private Panel panel3;
-        private Panel panel2;
-        private Panel panel1;
+        private Panel resultsPanel;
+        private Panel supperPanel;
+        private Panel dinnerPanel;
+        private Panel breakfastPanel;
         private Label label4;
         private Label label7;
         private Label label6;
