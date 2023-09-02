@@ -50,45 +50,45 @@ namespace MenuWF.MenuWF.Repository.Repositories
 
 
 
-        public async Task<IReadOnlyList<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            IReadOnlyList<T> entities = await _db.Set<T>().ToListAsync();
+            IEnumerable<T> entities = await _db.Set<T>().ToListAsync();
             _db.Dispose();
             return entities;
         }
 
 
-        public async Task<IReadOnlyList<T>> GetAllDesc() => await
+        public async Task<IEnumerable<T>> GetAllDesc() => await
         _db.Set<T>()
         .OrderByDescending(x => x.Id)
         .ToListAsync();
 
-        public async Task<IReadOnlyList<T>> GetAllDesc(string include) => await
+        public async Task<IEnumerable<T>> GetAllDesc(string include) => await
         _db.Set<T>()
         .Include(include)
         .OrderByDescending(x => x.Id)
         .ToListAsync();
 
 
-        public async Task<IReadOnlyList<T>> GetAll(int count, string include) => await
+        public async Task<IEnumerable<T>> GetAll(int count, string include) => await
             _db.Set<T>()
             .Include(include)
             .Take(count)
             .ToListAsync();
 
-        public async Task<IReadOnlyList<T>> GetAll(int count, string include, string include2) => await
+        public async Task<IEnumerable<T>> GetAll(int count, string include, string include2) => await
             _db.Set<T>()
             .Include(include)
             .Include(include2)
             .Take(count)
             .ToListAsync();
 
-        public async Task<IReadOnlyList<T>> GetAll(string include) => await
+        public async Task<IEnumerable<T>> GetAll(string include) => await
         _db.Set<T>()
         .Include(include)
         .ToListAsync();
 
-        public async Task<IReadOnlyList<T>> GetAll(string include, string include2) => await
+        public async Task<IEnumerable<T>> GetAll(string include, string include2) => await
         _db.Set<T>()
         .Include(include)
         .Include(include2)

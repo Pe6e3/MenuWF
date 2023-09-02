@@ -164,16 +164,15 @@ namespace MenuWF.Forms
             // 
             // breakfastDishCB
             // 
-            breakfastDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             breakfastDishCB.FormattingEnabled = true;
             breakfastDishCB.Location = new Point(284, 31);
             breakfastDishCB.Name = "breakfastDishCB";
             breakfastDishCB.Size = new Size(188, 23);
             breakfastDishCB.TabIndex = 16;
+            breakfastDishCB.TextUpdate += breakfastDishCB_TextUpdate;
             // 
             // dinnerDishCB
             // 
-            dinnerDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             dinnerDishCB.FormattingEnabled = true;
             dinnerDishCB.Location = new Point(284, 30);
             dinnerDishCB.Name = "dinnerDishCB";
@@ -182,7 +181,6 @@ namespace MenuWF.Forms
             // 
             // supperDishCB
             // 
-            supperDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             supperDishCB.FormattingEnabled = true;
             supperDishCB.Location = new Point(284, 30);
             supperDishCB.MaxDropDownItems = 15;

@@ -2,7 +2,7 @@
 using MenuWF.Entities;
 using MenuWF.Repository;
 using MenuWF.UIElements;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using static Azure.Core.HttpHeader;
 using static MenuWF.Entities.Journal;
 
 namespace MenuWF.Forms
@@ -46,21 +46,29 @@ namespace MenuWF.Forms
             dinnerDishCB.DisplayMember = "Name";
             supperDishCB.DisplayMember = "Name";
 
+            IEnumerable<Dish> breakDishes;
+            IEnumerable<Dish> dinnerDishes;
+            IEnumerable<Dish> supperDishes;
+
             using (var uow = new UnitOfWork())
             {
-                var dishesB = await uow.DishesRepository.GetAll();
-                breakfastDishCB.DataSource = dishesB;
+                breakDishes = await uow.DishesRepository.GetAll();
             }
             using (var uow = new UnitOfWork())
             {
-                var dishesD = await uow.DishesRepository.GetAll();
-                dinnerDishCB.DataSource = dishesD;
+                dinnerDishes = await uow.DishesRepository.GetAll();
             }
             using (var uow = new UnitOfWork())
             {
-                var dishesS = await uow.DishesRepository.GetAll();
-                supperDishCB.DataSource = dishesS;
+                supperDishes = await uow.DishesRepository.GetAll();
             }
+            foreach (Dish dish in breakDishes)
+                breakfastDishCB.Items.Add(dish);
+            foreach (Dish dish in dinnerDishes)
+                dinnerDishCB.Items.Add(dish);
+            foreach (Dish dish in supperDishes)
+                supperDishCB.Items.Add(dish);
+
 
         }
 
@@ -489,6 +497,43 @@ namespace MenuWF.Forms
         private void supperIncreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.IncreaseField(supperDishWeightField, 50);
+        }
+
+  
+
+        
+
+        private void breakfastDishCB_TextUpdate(object sender, EventArgs e)
+        {
+            FilterComboBox(breakfastDishCB);
+        }
+
+        private async void FilterComboBox(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            IEnumerable<Dish> filteredDishes;
+            string filteredText = comboBox.Text;
+            using (var uow = new UnitOfWork())
+            {
+                filteredDishes = await uow.DishesRepository.FilterDishes(filteredText);
+            }
+            foreach (var filteredDish in filteredDishes)
+                comboBox.Items.Add(filteredDish);
+            comboBox.DroppedDown = true;
+
+            if (filteredDishes.Count() == 1)
+            {
+                comboBox.DroppedDown = false;
+                comboBox.SelectedItem = filteredDishes.FirstOrDefault();
+            }
+            else
+            {
+                comboBox.SelectedIndex = -1;
+                comboBox.Text = filteredText;
+                comboBox.SelectionStart = filteredText.Length;
+                comboBox.SelectionLength = 0;
+            }
+
         }
 
     }
