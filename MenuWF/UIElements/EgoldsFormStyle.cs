@@ -343,7 +343,7 @@ namespace MenuWF.UIElements
         private void MigrateControls()
         {
             // Определение панели-контейнера
-            MainContainer = new Panel();
+            MainContainer = new RoundedPanel();
             MainContainer.BackColor = Form.BackColor;
             MainContainer.Location = new Point(1, HeaderHeight + 1);
             ChangeMainContainerSize();

@@ -79,15 +79,15 @@ namespace MenuWF.Forms
             bfDecreaseBtn = new UXElements.buttonUI();
             bfIncreaseBtn = new UXElements.buttonUI();
             label5 = new Label();
-            dinnerPanel = new Panel();
+            dinnerPanel = new RoundedPanel();
             dinnerDecreaseBtn = new UXElements.buttonUI();
             dinnerIncreaseBtn = new UXElements.buttonUI();
             label6 = new Label();
-            supperPanel = new Panel();
+            supperPanel = new RoundedPanel();
             supperDecreaseBtn = new UXElements.buttonUI();
             supperIncreaseBtn = new UXElements.buttonUI();
             label7 = new Label();
-            resultsPanel = new Panel();
+            resultsPanel = new RoundedPanel();
             protsProgressBar = new ProgressBar();
             label10 = new Label();
             prodPerPersonLabel = new Label();
@@ -98,10 +98,12 @@ namespace MenuWF.Forms
             carbsProgressBar = new ProgressBar();
             caloriesProgressBar = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
+            panel1 = new Panel();
             breakfastPanel.SuspendLayout();
             dinnerPanel.SuspendLayout();
             supperPanel.SuspendLayout();
             resultsPanel.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -127,16 +129,16 @@ namespace MenuWF.Forms
             // 
             addBreakfastDishBtn.BackColor = Color.Transparent;
             addBreakfastDishBtn.Enabled = false;
-            addBreakfastDishBtn.endColorBorderBtn = Color.LimeGreen;
+            addBreakfastDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addBreakfastDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addBreakfastDishBtn.ForeColor = Color.LemonChiffon;
-            addBreakfastDishBtn.Location = new Point(277, 82);
-            addBreakfastDishBtn.middleColorBtn = Color.ForestGreen;
+            addBreakfastDishBtn.ForeColor = Color.DarkSlateGray;
+            addBreakfastDishBtn.Location = new Point(300, 89);
+            addBreakfastDishBtn.middleColorBtn = Color.LightGray;
             addBreakfastDishBtn.Name = "addBreakfastDishBtn";
             addBreakfastDishBtn.Rounding = 33;
             addBreakfastDishBtn.RoundingEnable = true;
-            addBreakfastDishBtn.Size = new Size(188, 36);
-            addBreakfastDishBtn.startColorBtn = Color.YellowGreen;
+            addBreakfastDishBtn.Size = new Size(159, 36);
+            addBreakfastDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             addBreakfastDishBtn.TabIndex = 14;
             addBreakfastDishBtn.Text = "Добавить";
             addBreakfastDishBtn.TextHover = "Добавить блюдо на завтрак";
@@ -148,7 +150,7 @@ namespace MenuWF.Forms
             backBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.ForeColor = Color.LightCyan;
-            backBtn.Location = new Point(16, 12);
+            backBtn.Location = new Point(23, 19);
             backBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             backBtn.Name = "backBtn";
             backBtn.Rounding = 33;
@@ -164,7 +166,7 @@ namespace MenuWF.Forms
             // 
             breakfastDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             breakfastDishCB.FormattingEnabled = true;
-            breakfastDishCB.Location = new Point(277, 24);
+            breakfastDishCB.Location = new Point(284, 31);
             breakfastDishCB.Name = "breakfastDishCB";
             breakfastDishCB.Size = new Size(188, 23);
             breakfastDishCB.TabIndex = 16;
@@ -173,7 +175,7 @@ namespace MenuWF.Forms
             // 
             dinnerDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             dinnerDishCB.FormattingEnabled = true;
-            dinnerDishCB.Location = new Point(277, 23);
+            dinnerDishCB.Location = new Point(284, 30);
             dinnerDishCB.Name = "dinnerDishCB";
             dinnerDishCB.Size = new Size(188, 23);
             dinnerDishCB.TabIndex = 16;
@@ -182,7 +184,7 @@ namespace MenuWF.Forms
             // 
             supperDishCB.DropDownStyle = ComboBoxStyle.DropDownList;
             supperDishCB.FormattingEnabled = true;
-            supperDishCB.Location = new Point(277, 23);
+            supperDishCB.Location = new Point(284, 30);
             supperDishCB.MaxDropDownItems = 15;
             supperDishCB.Name = "supperDishCB";
             supperDishCB.Size = new Size(188, 23);
@@ -192,16 +194,16 @@ namespace MenuWF.Forms
             // 
             addDinnerDishBtn.BackColor = Color.Transparent;
             addDinnerDishBtn.Enabled = false;
-            addDinnerDishBtn.endColorBorderBtn = Color.LimeGreen;
+            addDinnerDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addDinnerDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addDinnerDishBtn.ForeColor = Color.LemonChiffon;
-            addDinnerDishBtn.Location = new Point(277, 81);
-            addDinnerDishBtn.middleColorBtn = Color.ForestGreen;
+            addDinnerDishBtn.ForeColor = Color.DarkSlateGray;
+            addDinnerDishBtn.Location = new Point(300, 88);
+            addDinnerDishBtn.middleColorBtn = Color.LightGray;
             addDinnerDishBtn.Name = "addDinnerDishBtn";
             addDinnerDishBtn.Rounding = 33;
             addDinnerDishBtn.RoundingEnable = true;
-            addDinnerDishBtn.Size = new Size(188, 36);
-            addDinnerDishBtn.startColorBtn = Color.YellowGreen;
+            addDinnerDishBtn.Size = new Size(159, 36);
+            addDinnerDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             addDinnerDishBtn.TabIndex = 14;
             addDinnerDishBtn.Text = "Добавить";
             addDinnerDishBtn.TextHover = "Добавить блюдо на обед";
@@ -211,16 +213,16 @@ namespace MenuWF.Forms
             // 
             addSupperDishBtn.BackColor = Color.Transparent;
             addSupperDishBtn.Enabled = false;
-            addSupperDishBtn.endColorBorderBtn = Color.LimeGreen;
+            addSupperDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addSupperDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            addSupperDishBtn.ForeColor = Color.LemonChiffon;
-            addSupperDishBtn.Location = new Point(277, 81);
-            addSupperDishBtn.middleColorBtn = Color.ForestGreen;
+            addSupperDishBtn.ForeColor = Color.DarkSlateGray;
+            addSupperDishBtn.Location = new Point(300, 88);
+            addSupperDishBtn.middleColorBtn = Color.LightGray;
             addSupperDishBtn.Name = "addSupperDishBtn";
             addSupperDishBtn.Rounding = 33;
             addSupperDishBtn.RoundingEnable = true;
-            addSupperDishBtn.Size = new Size(188, 36);
-            addSupperDishBtn.startColorBtn = Color.YellowGreen;
+            addSupperDishBtn.Size = new Size(159, 36);
+            addSupperDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             addSupperDishBtn.TabIndex = 14;
             addSupperDishBtn.Text = "Добавить";
             addSupperDishBtn.TextHover = "Добавить блюдо на ужин";
@@ -228,7 +230,7 @@ namespace MenuWF.Forms
             // 
             // breakfastDishWeightField
             // 
-            breakfastDishWeightField.Location = new Point(341, 53);
+            breakfastDishWeightField.Location = new Point(348, 60);
             breakfastDishWeightField.Name = "breakfastDishWeightField";
             breakfastDishWeightField.Size = new Size(69, 23);
             breakfastDishWeightField.TabIndex = 17;
@@ -237,7 +239,7 @@ namespace MenuWF.Forms
             // 
             // dinnerDishWeightField
             // 
-            dinnerDishWeightField.Location = new Point(341, 52);
+            dinnerDishWeightField.Location = new Point(348, 59);
             dinnerDishWeightField.Name = "dinnerDishWeightField";
             dinnerDishWeightField.Size = new Size(69, 23);
             dinnerDishWeightField.TabIndex = 17;
@@ -246,7 +248,7 @@ namespace MenuWF.Forms
             // 
             // supperDishWeightField
             // 
-            supperDishWeightField.Location = new Point(341, 52);
+            supperDishWeightField.Location = new Point(348, 59);
             supperDishWeightField.Name = "supperDishWeightField";
             supperDishWeightField.Size = new Size(69, 23);
             supperDishWeightField.TabIndex = 17;
@@ -257,16 +259,16 @@ namespace MenuWF.Forms
             // 
             deleteDinnerDishBtn.BackColor = Color.Transparent;
             deleteDinnerDishBtn.Enabled = false;
-            deleteDinnerDishBtn.endColorBorderBtn = Color.DarkOrange;
-            deleteDinnerDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteDinnerDishBtn.ForeColor = Color.Sienna;
-            deleteDinnerDishBtn.Location = new Point(277, 155);
-            deleteDinnerDishBtn.middleColorBtn = Color.NavajoWhite;
+            deleteDinnerDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            deleteDinnerDishBtn.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteDinnerDishBtn.ForeColor = Color.Firebrick;
+            deleteDinnerDishBtn.Location = new Point(322, 159);
+            deleteDinnerDishBtn.middleColorBtn = Color.DarkSeaGreen;
             deleteDinnerDishBtn.Name = "deleteDinnerDishBtn";
             deleteDinnerDishBtn.Rounding = 33;
             deleteDinnerDishBtn.RoundingEnable = true;
-            deleteDinnerDishBtn.Size = new Size(188, 36);
-            deleteDinnerDishBtn.startColorBtn = Color.Orange;
+            deleteDinnerDishBtn.Size = new Size(116, 29);
+            deleteDinnerDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             deleteDinnerDishBtn.TabIndex = 14;
             deleteDinnerDishBtn.Text = "Удалить";
             deleteDinnerDishBtn.TextHover = "Удалить выбранное блюдо из Обеда";
@@ -276,16 +278,16 @@ namespace MenuWF.Forms
             // 
             deleteBreakfastDishBtn.BackColor = Color.Transparent;
             deleteBreakfastDishBtn.Enabled = false;
-            deleteBreakfastDishBtn.endColorBorderBtn = Color.DarkOrange;
-            deleteBreakfastDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteBreakfastDishBtn.ForeColor = Color.Sienna;
-            deleteBreakfastDishBtn.Location = new Point(277, 156);
-            deleteBreakfastDishBtn.middleColorBtn = Color.NavajoWhite;
+            deleteBreakfastDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            deleteBreakfastDishBtn.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteBreakfastDishBtn.ForeColor = Color.Firebrick;
+            deleteBreakfastDishBtn.Location = new Point(322, 160);
+            deleteBreakfastDishBtn.middleColorBtn = Color.DarkSeaGreen;
             deleteBreakfastDishBtn.Name = "deleteBreakfastDishBtn";
             deleteBreakfastDishBtn.Rounding = 33;
             deleteBreakfastDishBtn.RoundingEnable = true;
-            deleteBreakfastDishBtn.Size = new Size(188, 36);
-            deleteBreakfastDishBtn.startColorBtn = Color.Orange;
+            deleteBreakfastDishBtn.Size = new Size(116, 29);
+            deleteBreakfastDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             deleteBreakfastDishBtn.TabIndex = 14;
             deleteBreakfastDishBtn.Text = "Удалить";
             deleteBreakfastDishBtn.TextHover = "Удалить выбранное блюдо из Завтрака";
@@ -295,16 +297,16 @@ namespace MenuWF.Forms
             // 
             deleteSupperDishBtn.BackColor = Color.Transparent;
             deleteSupperDishBtn.Enabled = false;
-            deleteSupperDishBtn.endColorBorderBtn = Color.DarkOrange;
-            deleteSupperDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            deleteSupperDishBtn.ForeColor = Color.Sienna;
-            deleteSupperDishBtn.Location = new Point(277, 155);
-            deleteSupperDishBtn.middleColorBtn = Color.NavajoWhite;
+            deleteSupperDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
+            deleteSupperDishBtn.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            deleteSupperDishBtn.ForeColor = Color.Firebrick;
+            deleteSupperDishBtn.Location = new Point(322, 159);
+            deleteSupperDishBtn.middleColorBtn = Color.DarkSeaGreen;
             deleteSupperDishBtn.Name = "deleteSupperDishBtn";
             deleteSupperDishBtn.Rounding = 33;
             deleteSupperDishBtn.RoundingEnable = true;
-            deleteSupperDishBtn.Size = new Size(188, 36);
-            deleteSupperDishBtn.startColorBtn = Color.Orange;
+            deleteSupperDishBtn.Size = new Size(116, 29);
+            deleteSupperDishBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             deleteSupperDishBtn.TabIndex = 14;
             deleteSupperDishBtn.Text = "Удалить";
             deleteSupperDishBtn.TextHover = "Удалить выбранное блюдо из Ужина";
@@ -314,7 +316,7 @@ namespace MenuWF.Forms
             // 
             dateOfJournal.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             dateOfJournal.Format = DateTimePickerFormat.Short;
-            dateOfJournal.Location = new Point(888, 14);
+            dateOfJournal.Location = new Point(841, 19);
             dateOfJournal.Name = "dateOfJournal";
             dateOfJournal.Size = new Size(130, 33);
             dateOfJournal.TabIndex = 18;
@@ -324,9 +326,9 @@ namespace MenuWF.Forms
             // breakfastDishesLV
             // 
             breakfastDishesLV.BackColor = Color.WhiteSmoke;
-            breakfastDishesLV.Location = new Point(16, 24);
+            breakfastDishesLV.Location = new Point(23, 31);
             breakfastDishesLV.Name = "breakfastDishesLV";
-            breakfastDishesLV.Size = new Size(230, 140);
+            breakfastDishesLV.Size = new Size(230, 137);
             breakfastDishesLV.TabIndex = 19;
             breakfastDishesLV.UseCompatibleStateImageBehavior = false;
             breakfastDishesLV.SelectedIndexChanged += breakfastDishesLV_SelectedIndexChanged;
@@ -334,9 +336,9 @@ namespace MenuWF.Forms
             // dinnerDishesLV
             // 
             dinnerDishesLV.BackColor = Color.WhiteSmoke;
-            dinnerDishesLV.Location = new Point(16, 23);
+            dinnerDishesLV.Location = new Point(23, 30);
             dinnerDishesLV.Name = "dinnerDishesLV";
-            dinnerDishesLV.Size = new Size(230, 140);
+            dinnerDishesLV.Size = new Size(230, 137);
             dinnerDishesLV.TabIndex = 19;
             dinnerDishesLV.UseCompatibleStateImageBehavior = false;
             dinnerDishesLV.SelectedIndexChanged += dinnerDishesLV_SelectedIndexChanged;
@@ -344,9 +346,9 @@ namespace MenuWF.Forms
             // supperDishesLV
             // 
             supperDishesLV.BackColor = Color.WhiteSmoke;
-            supperDishesLV.Location = new Point(16, 23);
+            supperDishesLV.Location = new Point(23, 30);
             supperDishesLV.Name = "supperDishesLV";
-            supperDishesLV.Size = new Size(230, 140);
+            supperDishesLV.Size = new Size(230, 137);
             supperDishesLV.TabIndex = 19;
             supperDishesLV.UseCompatibleStateImageBehavior = false;
             supperDishesLV.SelectedIndexChanged += supperDishesLV_SelectedIndexChanged;
@@ -354,34 +356,34 @@ namespace MenuWF.Forms
             // breakfastProductsLV
             // 
             breakfastProductsLV.BackColor = Color.WhiteSmoke;
-            breakfastProductsLV.Location = new Point(495, 24);
+            breakfastProductsLV.Location = new Point(493, 31);
             breakfastProductsLV.Name = "breakfastProductsLV";
-            breakfastProductsLV.Size = new Size(233, 163);
+            breakfastProductsLV.Size = new Size(233, 158);
             breakfastProductsLV.TabIndex = 19;
             breakfastProductsLV.UseCompatibleStateImageBehavior = false;
             // 
             // dinnerProductsLV
             // 
             dinnerProductsLV.BackColor = Color.WhiteSmoke;
-            dinnerProductsLV.Location = new Point(497, 23);
+            dinnerProductsLV.Location = new Point(495, 30);
             dinnerProductsLV.Name = "dinnerProductsLV";
-            dinnerProductsLV.Size = new Size(233, 163);
+            dinnerProductsLV.Size = new Size(233, 158);
             dinnerProductsLV.TabIndex = 19;
             dinnerProductsLV.UseCompatibleStateImageBehavior = false;
             // 
             // supperProductsLV
             // 
             supperProductsLV.BackColor = Color.WhiteSmoke;
-            supperProductsLV.Location = new Point(496, 23);
+            supperProductsLV.Location = new Point(495, 30);
             supperProductsLV.Name = "supperProductsLV";
-            supperProductsLV.Size = new Size(233, 163);
+            supperProductsLV.Size = new Size(233, 158);
             supperProductsLV.TabIndex = 19;
             supperProductsLV.UseCompatibleStateImageBehavior = false;
             // 
             // dayProdsLV
             // 
             dayProdsLV.BackColor = Color.WhiteSmoke;
-            dayProdsLV.Location = new Point(11, 34);
+            dayProdsLV.Location = new Point(18, 41);
             dayProdsLV.Name = "dayProdsLV";
             dayProdsLV.Size = new Size(215, 351);
             dayProdsLV.TabIndex = 19;
@@ -392,9 +394,9 @@ namespace MenuWF.Forms
             breakfastSumWeightDishesLabel.BorderStyle = BorderStyle.Fixed3D;
             breakfastSumWeightDishesLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
             breakfastSumWeightDishesLabel.ForeColor = Color.DarkRed;
-            breakfastSumWeightDishesLabel.Location = new Point(166, 167);
+            breakfastSumWeightDishesLabel.Location = new Point(173, 172);
             breakfastSumWeightDishesLabel.Name = "breakfastSumWeightDishesLabel";
-            breakfastSumWeightDishesLabel.Size = new Size(80, 25);
+            breakfastSumWeightDishesLabel.Size = new Size(80, 22);
             breakfastSumWeightDishesLabel.TabIndex = 20;
             breakfastSumWeightDishesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -403,9 +405,9 @@ namespace MenuWF.Forms
             dinnerSumWeightDishesLabel.BorderStyle = BorderStyle.Fixed3D;
             dinnerSumWeightDishesLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
             dinnerSumWeightDishesLabel.ForeColor = Color.DarkRed;
-            dinnerSumWeightDishesLabel.Location = new Point(162, 166);
+            dinnerSumWeightDishesLabel.Location = new Point(173, 171);
             dinnerSumWeightDishesLabel.Name = "dinnerSumWeightDishesLabel";
-            dinnerSumWeightDishesLabel.Size = new Size(80, 25);
+            dinnerSumWeightDishesLabel.Size = new Size(80, 22);
             dinnerSumWeightDishesLabel.TabIndex = 20;
             dinnerSumWeightDishesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -414,9 +416,9 @@ namespace MenuWF.Forms
             supperSumWeightDishesLabel.BorderStyle = BorderStyle.Fixed3D;
             supperSumWeightDishesLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
             supperSumWeightDishesLabel.ForeColor = Color.DarkRed;
-            supperSumWeightDishesLabel.Location = new Point(166, 166);
+            supperSumWeightDishesLabel.Location = new Point(173, 171);
             supperSumWeightDishesLabel.Name = "supperSumWeightDishesLabel";
-            supperSumWeightDishesLabel.Size = new Size(80, 25);
+            supperSumWeightDishesLabel.Size = new Size(80, 22);
             supperSumWeightDishesLabel.TabIndex = 20;
             supperSumWeightDishesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -425,7 +427,7 @@ namespace MenuWF.Forms
             protsLabel.BorderStyle = BorderStyle.Fixed3D;
             protsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             protsLabel.ForeColor = Color.DarkRed;
-            protsLabel.Location = new Point(80, 506);
+            protsLabel.Location = new Point(87, 513);
             protsLabel.Name = "protsLabel";
             protsLabel.Size = new Size(42, 23);
             protsLabel.TabIndex = 20;
@@ -434,7 +436,7 @@ namespace MenuWF.Forms
             // personCountField
             // 
             personCountField.BackColor = Color.WhiteSmoke;
-            personCountField.Location = new Point(173, 437);
+            personCountField.Location = new Point(180, 444);
             personCountField.Name = "personCountField";
             personCountField.Size = new Size(53, 23);
             personCountField.TabIndex = 17;
@@ -447,9 +449,9 @@ namespace MenuWF.Forms
             infoLabelTite.BackColor = Color.Transparent;
             infoLabelTite.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelTite.ForeColor = Color.DarkRed;
-            infoLabelTite.Location = new Point(-1, 475);
+            infoLabelTite.Location = new Point(10, 482);
             infoLabelTite.Name = "infoLabelTite";
-            infoLabelTite.Size = new Size(241, 31);
+            infoLabelTite.Size = new Size(235, 31);
             infoLabelTite.TabIndex = 20;
             infoLabelTite.Text = "Итого КБЖУ на человека:";
             infoLabelTite.TextAlign = ContentAlignment.MiddleCenter;
@@ -459,7 +461,7 @@ namespace MenuWF.Forms
             fatsLabel.BorderStyle = BorderStyle.Fixed3D;
             fatsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             fatsLabel.ForeColor = Color.DarkRed;
-            fatsLabel.Location = new Point(80, 531);
+            fatsLabel.Location = new Point(87, 538);
             fatsLabel.Name = "fatsLabel";
             fatsLabel.Size = new Size(42, 23);
             fatsLabel.TabIndex = 20;
@@ -470,7 +472,7 @@ namespace MenuWF.Forms
             carbsLabel.BorderStyle = BorderStyle.Fixed3D;
             carbsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             carbsLabel.ForeColor = Color.DarkRed;
-            carbsLabel.Location = new Point(80, 556);
+            carbsLabel.Location = new Point(87, 563);
             carbsLabel.Name = "carbsLabel";
             carbsLabel.Size = new Size(42, 23);
             carbsLabel.TabIndex = 20;
@@ -481,7 +483,7 @@ namespace MenuWF.Forms
             caloriesLabel.BorderStyle = BorderStyle.Fixed3D;
             caloriesLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             caloriesLabel.ForeColor = Color.DarkRed;
-            caloriesLabel.Location = new Point(80, 581);
+            caloriesLabel.Location = new Point(87, 588);
             caloriesLabel.Name = "caloriesLabel";
             caloriesLabel.Size = new Size(42, 23);
             caloriesLabel.TabIndex = 20;
@@ -492,7 +494,7 @@ namespace MenuWF.Forms
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DarkRed;
-            label1.Location = new Point(16, 2);
+            label1.Location = new Point(23, 9);
             label1.Name = "label1";
             label1.Size = new Size(230, 23);
             label1.TabIndex = 20;
@@ -504,7 +506,7 @@ namespace MenuWF.Forms
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.DarkRed;
-            label2.Location = new Point(12, 0);
+            label2.Location = new Point(19, 7);
             label2.Name = "label2";
             label2.Size = new Size(230, 23);
             label2.TabIndex = 20;
@@ -516,7 +518,7 @@ namespace MenuWF.Forms
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.DarkRed;
-            label3.Location = new Point(16, 0);
+            label3.Location = new Point(23, 7);
             label3.Name = "label3";
             label3.Size = new Size(230, 23);
             label3.TabIndex = 20;
@@ -528,7 +530,7 @@ namespace MenuWF.Forms
             infoLabelProts.BackColor = Color.Transparent;
             infoLabelProts.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelProts.ForeColor = Color.DarkRed;
-            infoLabelProts.Location = new Point(2, 507);
+            infoLabelProts.Location = new Point(9, 514);
             infoLabelProts.Name = "infoLabelProts";
             infoLabelProts.Size = new Size(77, 21);
             infoLabelProts.TabIndex = 20;
@@ -540,7 +542,7 @@ namespace MenuWF.Forms
             infoLabelFats.BackColor = Color.Transparent;
             infoLabelFats.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelFats.ForeColor = Color.DarkRed;
-            infoLabelFats.Location = new Point(2, 532);
+            infoLabelFats.Location = new Point(9, 539);
             infoLabelFats.Name = "infoLabelFats";
             infoLabelFats.Size = new Size(77, 21);
             infoLabelFats.TabIndex = 20;
@@ -552,7 +554,7 @@ namespace MenuWF.Forms
             infoLabelCarbs.BackColor = Color.Transparent;
             infoLabelCarbs.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCarbs.ForeColor = Color.DarkRed;
-            infoLabelCarbs.Location = new Point(2, 557);
+            infoLabelCarbs.Location = new Point(9, 564);
             infoLabelCarbs.Name = "infoLabelCarbs";
             infoLabelCarbs.Size = new Size(77, 21);
             infoLabelCarbs.TabIndex = 20;
@@ -564,7 +566,7 @@ namespace MenuWF.Forms
             infoLabelCalories.BackColor = Color.Transparent;
             infoLabelCalories.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCalories.ForeColor = Color.DarkRed;
-            infoLabelCalories.Location = new Point(2, 581);
+            infoLabelCalories.Location = new Point(9, 588);
             infoLabelCalories.Name = "infoLabelCalories";
             infoLabelCalories.Size = new Size(77, 21);
             infoLabelCalories.TabIndex = 20;
@@ -576,7 +578,7 @@ namespace MenuWF.Forms
             infoLabelCountPerson.BackColor = Color.Transparent;
             infoLabelCountPerson.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCountPerson.ForeColor = Color.DarkRed;
-            infoLabelCountPerson.Location = new Point(35, 435);
+            infoLabelCountPerson.Location = new Point(42, 442);
             infoLabelCountPerson.Name = "infoLabelCountPerson";
             infoLabelCountPerson.Size = new Size(127, 25);
             infoLabelCountPerson.TabIndex = 20;
@@ -588,7 +590,7 @@ namespace MenuWF.Forms
             protsPercentLabel.BackColor = Color.Transparent;
             protsPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             protsPercentLabel.ForeColor = Color.DarkRed;
-            protsPercentLabel.Location = new Point(125, 506);
+            protsPercentLabel.Location = new Point(132, 513);
             protsPercentLabel.Name = "protsPercentLabel";
             protsPercentLabel.Size = new Size(34, 21);
             protsPercentLabel.TabIndex = 20;
@@ -599,7 +601,7 @@ namespace MenuWF.Forms
             fatsPercentLabel.BackColor = Color.Transparent;
             fatsPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             fatsPercentLabel.ForeColor = Color.DarkRed;
-            fatsPercentLabel.Location = new Point(125, 531);
+            fatsPercentLabel.Location = new Point(132, 538);
             fatsPercentLabel.Name = "fatsPercentLabel";
             fatsPercentLabel.Size = new Size(34, 21);
             fatsPercentLabel.TabIndex = 20;
@@ -610,7 +612,7 @@ namespace MenuWF.Forms
             carbsPercentLabel.BackColor = Color.Transparent;
             carbsPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             carbsPercentLabel.ForeColor = Color.DarkRed;
-            carbsPercentLabel.Location = new Point(125, 556);
+            carbsPercentLabel.Location = new Point(132, 563);
             carbsPercentLabel.Name = "carbsPercentLabel";
             carbsPercentLabel.Size = new Size(34, 21);
             carbsPercentLabel.TabIndex = 20;
@@ -621,7 +623,7 @@ namespace MenuWF.Forms
             caloriesPercentLabel.BackColor = Color.Transparent;
             caloriesPercentLabel.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             caloriesPercentLabel.ForeColor = Color.DarkRed;
-            caloriesPercentLabel.Location = new Point(125, 581);
+            caloriesPercentLabel.Location = new Point(132, 588);
             caloriesPercentLabel.Name = "caloriesPercentLabel";
             caloriesPercentLabel.Size = new Size(34, 21);
             caloriesPercentLabel.TabIndex = 20;
@@ -630,8 +632,8 @@ namespace MenuWF.Forms
             // breakfastPanel
             // 
             breakfastPanel.BackColor = Color.Transparent;
-            breakfastPanel.BorderColor = Color.FromArgb(60, 121, 121, 156);
-            breakfastPanel.BorderWidth = 7;
+            breakfastPanel.BorderColor = Color.FromArgb(70, 121, 121, 156);
+            breakfastPanel.BorderWidth = 9;
             breakfastPanel.Controls.Add(bfDecreaseBtn);
             breakfastPanel.Controls.Add(bfIncreaseBtn);
             breakfastPanel.Controls.Add(label1);
@@ -644,7 +646,7 @@ namespace MenuWF.Forms
             breakfastPanel.Controls.Add(deleteBreakfastDishBtn);
             breakfastPanel.Controls.Add(addBreakfastDishBtn);
             breakfastPanel.CornerRadius = 12;
-            breakfastPanel.Location = new Point(12, 53);
+            breakfastPanel.Location = new Point(16, 65);
             breakfastPanel.Name = "breakfastPanel";
             breakfastPanel.PanelColor = Color.Silver;
             breakfastPanel.Size = new Size(750, 200);
@@ -656,7 +658,7 @@ namespace MenuWF.Forms
             bfDecreaseBtn.endColorBorderBtn = Color.SkyBlue;
             bfDecreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             bfDecreaseBtn.ForeColor = Color.Indigo;
-            bfDecreaseBtn.Location = new Point(315, 53);
+            bfDecreaseBtn.Location = new Point(322, 60);
             bfDecreaseBtn.middleColorBtn = Color.CornflowerBlue;
             bfDecreaseBtn.Name = "bfDecreaseBtn";
             bfDecreaseBtn.Rounding = 33;
@@ -674,7 +676,7 @@ namespace MenuWF.Forms
             bfIncreaseBtn.endColorBorderBtn = Color.SkyBlue;
             bfIncreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             bfIncreaseBtn.ForeColor = Color.Indigo;
-            bfIncreaseBtn.Location = new Point(416, 53);
+            bfIncreaseBtn.Location = new Point(423, 60);
             bfIncreaseBtn.middleColorBtn = Color.CornflowerBlue;
             bfIncreaseBtn.Name = "bfIncreaseBtn";
             bfIncreaseBtn.Rounding = 33;
@@ -691,7 +693,7 @@ namespace MenuWF.Forms
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.DarkRed;
-            label5.Location = new Point(497, 0);
+            label5.Location = new Point(495, 7);
             label5.Name = "label5";
             label5.Size = new Size(230, 23);
             label5.TabIndex = 20;
@@ -700,7 +702,9 @@ namespace MenuWF.Forms
             // 
             // dinnerPanel
             // 
-            dinnerPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            dinnerPanel.BackColor = Color.Transparent;
+            dinnerPanel.BorderColor = Color.FromArgb(70, 121, 121, 156);
+            dinnerPanel.BorderWidth = 9;
             dinnerPanel.Controls.Add(dinnerDecreaseBtn);
             dinnerPanel.Controls.Add(dinnerSumWeightDishesLabel);
             dinnerPanel.Controls.Add(dinnerIncreaseBtn);
@@ -712,8 +716,10 @@ namespace MenuWF.Forms
             dinnerPanel.Controls.Add(dinnerDishCB);
             dinnerPanel.Controls.Add(deleteDinnerDishBtn);
             dinnerPanel.Controls.Add(addDinnerDishBtn);
-            dinnerPanel.Location = new Point(12, 264);
+            dinnerPanel.CornerRadius = 12;
+            dinnerPanel.Location = new Point(16, 275);
             dinnerPanel.Name = "dinnerPanel";
+            dinnerPanel.PanelColor = Color.Silver;
             dinnerPanel.Size = new Size(750, 200);
             dinnerPanel.TabIndex = 22;
             // 
@@ -723,7 +729,7 @@ namespace MenuWF.Forms
             dinnerDecreaseBtn.endColorBorderBtn = Color.SkyBlue;
             dinnerDecreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             dinnerDecreaseBtn.ForeColor = Color.Indigo;
-            dinnerDecreaseBtn.Location = new Point(315, 52);
+            dinnerDecreaseBtn.Location = new Point(322, 59);
             dinnerDecreaseBtn.middleColorBtn = Color.CornflowerBlue;
             dinnerDecreaseBtn.Name = "dinnerDecreaseBtn";
             dinnerDecreaseBtn.Rounding = 33;
@@ -741,7 +747,7 @@ namespace MenuWF.Forms
             dinnerIncreaseBtn.endColorBorderBtn = Color.SkyBlue;
             dinnerIncreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             dinnerIncreaseBtn.ForeColor = Color.Indigo;
-            dinnerIncreaseBtn.Location = new Point(416, 52);
+            dinnerIncreaseBtn.Location = new Point(423, 59);
             dinnerIncreaseBtn.middleColorBtn = Color.CornflowerBlue;
             dinnerIncreaseBtn.Name = "dinnerIncreaseBtn";
             dinnerIncreaseBtn.Rounding = 33;
@@ -758,7 +764,7 @@ namespace MenuWF.Forms
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.DarkRed;
-            label6.Location = new Point(497, 0);
+            label6.Location = new Point(493, 7);
             label6.Name = "label6";
             label6.Size = new Size(230, 23);
             label6.TabIndex = 20;
@@ -767,7 +773,9 @@ namespace MenuWF.Forms
             // 
             // supperPanel
             // 
-            supperPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            supperPanel.BackColor = Color.Transparent;
+            supperPanel.BorderColor = Color.FromArgb(70, 121, 121, 156);
+            supperPanel.BorderWidth = 9;
             supperPanel.Controls.Add(supperDecreaseBtn);
             supperPanel.Controls.Add(supperSumWeightDishesLabel);
             supperPanel.Controls.Add(label3);
@@ -779,8 +787,10 @@ namespace MenuWF.Forms
             supperPanel.Controls.Add(supperDishCB);
             supperPanel.Controls.Add(addSupperDishBtn);
             supperPanel.Controls.Add(deleteSupperDishBtn);
-            supperPanel.Location = new Point(12, 476);
+            supperPanel.CornerRadius = 12;
+            supperPanel.Location = new Point(16, 483);
             supperPanel.Name = "supperPanel";
+            supperPanel.PanelColor = Color.Silver;
             supperPanel.Size = new Size(750, 200);
             supperPanel.TabIndex = 23;
             // 
@@ -790,7 +800,7 @@ namespace MenuWF.Forms
             supperDecreaseBtn.endColorBorderBtn = Color.SkyBlue;
             supperDecreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             supperDecreaseBtn.ForeColor = Color.Indigo;
-            supperDecreaseBtn.Location = new Point(315, 52);
+            supperDecreaseBtn.Location = new Point(322, 59);
             supperDecreaseBtn.middleColorBtn = Color.CornflowerBlue;
             supperDecreaseBtn.Name = "supperDecreaseBtn";
             supperDecreaseBtn.Rounding = 33;
@@ -808,7 +818,7 @@ namespace MenuWF.Forms
             supperIncreaseBtn.endColorBorderBtn = Color.SkyBlue;
             supperIncreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             supperIncreaseBtn.ForeColor = Color.Indigo;
-            supperIncreaseBtn.Location = new Point(416, 52);
+            supperIncreaseBtn.Location = new Point(423, 59);
             supperIncreaseBtn.middleColorBtn = Color.CornflowerBlue;
             supperIncreaseBtn.Name = "supperIncreaseBtn";
             supperIncreaseBtn.Rounding = 33;
@@ -825,7 +835,7 @@ namespace MenuWF.Forms
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.DarkRed;
-            label7.Location = new Point(497, 0);
+            label7.Location = new Point(495, 7);
             label7.Name = "label7";
             label7.Size = new Size(230, 23);
             label7.TabIndex = 20;
@@ -834,7 +844,9 @@ namespace MenuWF.Forms
             // 
             // resultsPanel
             // 
-            resultsPanel.BackColor = Color.FromArgb(30, 250, 150, 0);
+            resultsPanel.BackColor = Color.Transparent;
+            resultsPanel.BorderColor = Color.FromArgb(70, 121, 121, 156);
+            resultsPanel.BorderWidth = 9;
             resultsPanel.Controls.Add(protsPercentLabel);
             resultsPanel.Controls.Add(protsProgressBar);
             resultsPanel.Controls.Add(label10);
@@ -860,14 +872,16 @@ namespace MenuWF.Forms
             resultsPanel.Controls.Add(fatsProgressBar);
             resultsPanel.Controls.Add(carbsProgressBar);
             resultsPanel.Controls.Add(caloriesProgressBar);
-            resultsPanel.Location = new Point(776, 53);
+            resultsPanel.CornerRadius = 12;
+            resultsPanel.Location = new Point(781, 65);
             resultsPanel.Name = "resultsPanel";
-            resultsPanel.Size = new Size(241, 623);
+            resultsPanel.PanelColor = Color.Silver;
+            resultsPanel.Size = new Size(249, 618);
             resultsPanel.TabIndex = 24;
             // 
             // protsProgressBar
             // 
-            protsProgressBar.Location = new Point(159, 506);
+            protsProgressBar.Location = new Point(166, 513);
             protsProgressBar.Name = "protsProgressBar";
             protsProgressBar.Size = new Size(67, 22);
             protsProgressBar.TabIndex = 24;
@@ -878,7 +892,7 @@ namespace MenuWF.Forms
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label10.ForeColor = Color.DarkRed;
-            label10.Location = new Point(35, 409);
+            label10.Location = new Point(42, 416);
             label10.Name = "label10";
             label10.Size = new Size(126, 25);
             label10.TabIndex = 23;
@@ -890,7 +904,7 @@ namespace MenuWF.Forms
             prodPerPersonLabel.BorderStyle = BorderStyle.Fixed3D;
             prodPerPersonLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             prodPerPersonLabel.ForeColor = Color.DarkRed;
-            prodPerPersonLabel.Location = new Point(173, 411);
+            prodPerPersonLabel.Location = new Point(180, 418);
             prodPerPersonLabel.Name = "prodPerPersonLabel";
             prodPerPersonLabel.Size = new Size(53, 23);
             prodPerPersonLabel.TabIndex = 22;
@@ -900,7 +914,7 @@ namespace MenuWF.Forms
             prodWeightSumLabel.BorderStyle = BorderStyle.Fixed3D;
             prodWeightSumLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             prodWeightSumLabel.ForeColor = Color.DarkRed;
-            prodWeightSumLabel.Location = new Point(173, 388);
+            prodWeightSumLabel.Location = new Point(180, 395);
             prodWeightSumLabel.Name = "prodWeightSumLabel";
             prodWeightSumLabel.Size = new Size(53, 23);
             prodWeightSumLabel.TabIndex = 22;
@@ -910,7 +924,7 @@ namespace MenuWF.Forms
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = Color.DarkRed;
-            label8.Location = new Point(35, 390);
+            label8.Location = new Point(42, 397);
             label8.Name = "label8";
             label8.Size = new Size(126, 25);
             label8.TabIndex = 21;
@@ -922,7 +936,7 @@ namespace MenuWF.Forms
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.DarkRed;
-            label4.Location = new Point(49, 5);
+            label4.Location = new Point(56, 12);
             label4.Name = "label4";
             label4.Size = new Size(154, 23);
             label4.TabIndex = 20;
@@ -931,7 +945,7 @@ namespace MenuWF.Forms
             // 
             // fatsProgressBar
             // 
-            fatsProgressBar.Location = new Point(159, 531);
+            fatsProgressBar.Location = new Point(166, 538);
             fatsProgressBar.Name = "fatsProgressBar";
             fatsProgressBar.Size = new Size(67, 22);
             fatsProgressBar.TabIndex = 24;
@@ -939,7 +953,7 @@ namespace MenuWF.Forms
             // 
             // carbsProgressBar
             // 
-            carbsProgressBar.Location = new Point(159, 556);
+            carbsProgressBar.Location = new Point(166, 563);
             carbsProgressBar.Name = "carbsProgressBar";
             carbsProgressBar.Size = new Size(67, 22);
             carbsProgressBar.TabIndex = 24;
@@ -947,24 +961,33 @@ namespace MenuWF.Forms
             // 
             // caloriesProgressBar
             // 
-            caloriesProgressBar.Location = new Point(159, 581);
+            caloriesProgressBar.Location = new Point(166, 588);
             caloriesProgressBar.Name = "caloriesProgressBar";
             caloriesProgressBar.Size = new Size(67, 22);
             caloriesProgressBar.TabIndex = 24;
             caloriesProgressBar.Value = 50;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Linen;
+            panel1.Controls.Add(dateOfJournal);
+            panel1.Controls.Add(resultsPanel);
+            panel1.Controls.Add(breakfastPanel);
+            panel1.Controls.Add(supperPanel);
+            panel1.Controls.Add(dinnerPanel);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1052, 715);
+            panel1.TabIndex = 25;
             // 
             // MenusForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(1026, 686);
-            Controls.Add(resultsPanel);
-            Controls.Add(supperPanel);
-            Controls.Add(dinnerPanel);
-            Controls.Add(breakfastPanel);
-            Controls.Add(dateOfJournal);
+            ClientSize = new Size(1044, 709);
             Controls.Add(backBtn);
+            Controls.Add(panel1);
             Name = "MenusForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Меню на день";
@@ -977,6 +1000,7 @@ namespace MenuWF.Forms
             supperPanel.PerformLayout();
             resultsPanel.ResumeLayout(false);
             resultsPanel.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1025,9 +1049,6 @@ namespace MenuWF.Forms
         private Label carbsPercentLabel;
         private Label fatsPercentLabel;
         private Label protsPercentLabel;
-        private Panel resultsPanel;
-        private Panel supperPanel;
-        private Panel dinnerPanel;
         private RoundedPanel breakfastPanel;
         private Label label4;
         private Label label7;
@@ -1048,5 +1069,9 @@ namespace MenuWF.Forms
         private ProgressBar caloriesProgressBar;
         private ProgressBar carbsProgressBar;
         private ProgressBar fatsProgressBar;
+        private RoundedPanel resultsPanel;
+        private RoundedPanel supperPanel;
+        private RoundedPanel dinnerPanel;
+        private Panel panel1;
     }
 }
