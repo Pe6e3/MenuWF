@@ -80,12 +80,14 @@ public partial class DishesForm : ShadowedForm
     {
         productsComboBox.Items.Clear();
         productsComboBox.DisplayMember = "Name";
-
+        IEnumerable<Product> products;
         using (var uow = new UnitOfWork())
         {
-            var products = await uow.ProductsRepository.GetAll();
-            productsComboBox.DataSource = products;
+            products = await uow.ProductsRepository.GetAll();
         }
+        foreach(var product in products)
+            productsComboBox.Items.Add(product);
+
     }
 
 
@@ -153,5 +155,10 @@ public partial class DishesForm : ShadowedForm
         FormHelper.ButtonEnableByField(addDishBtn, newDishField);
         FormHelper.CheckTextFieldLength(newDishField, 25);
 
+    }
+
+    private void productsComboBox_TextUpdate(object sender, EventArgs e)
+    {
+        FormHelper.FilterProductComboBox(sender: sender);
     }
 }

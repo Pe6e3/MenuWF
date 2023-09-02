@@ -101,6 +101,7 @@
             // 
             // addDishBtn
             // 
+            addDishBtn.BackColor = Color.Transparent;
             addDishBtn.Enabled = false;
             addDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -124,6 +125,7 @@
             productsComboBox.Name = "productsComboBox";
             productsComboBox.Size = new Size(188, 23);
             productsComboBox.TabIndex = 14;
+            productsComboBox.TextUpdate += productsComboBox_TextUpdate;
             // 
             // prodWeightField
             // 
@@ -137,6 +139,7 @@
             // 
             // addProdToDishBtn
             // 
+            addProdToDishBtn.BackColor = Color.Transparent;
             addProdToDishBtn.Enabled = false;
             addProdToDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProdToDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -155,6 +158,7 @@
             // 
             // backBtn
             // 
+            backBtn.BackColor = Color.Transparent;
             backBtn.endColorBorderBtn = Color.LightSkyBlue;
             backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.ForeColor = Color.LightCyan;
@@ -172,6 +176,7 @@
             // 
             // deleteProdFromDishBtn
             // 
+            deleteProdFromDishBtn.BackColor = Color.Transparent;
             deleteProdFromDishBtn.endColorBorderBtn = Color.DarkOrange;
             deleteProdFromDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteProdFromDishBtn.ForeColor = Color.Sienna;

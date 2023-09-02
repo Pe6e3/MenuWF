@@ -499,42 +499,25 @@ namespace MenuWF.Forms
             FormHelper.IncreaseField(supperDishWeightField, 50);
         }
 
-  
 
-        
+
+
 
         private void breakfastDishCB_TextUpdate(object sender, EventArgs e)
         {
-            FilterComboBox(breakfastDishCB);
+            FormHelper.FilterDishComboBox(sender: sender);
         }
 
-        private async void FilterComboBox(ComboBox comboBox)
+
+
+        private void dinnerDishCB_TextUpdate(object sender, EventArgs e)
         {
-            comboBox.Items.Clear();
-            IEnumerable<Dish> filteredDishes;
-            string filteredText = comboBox.Text;
-            using (var uow = new UnitOfWork())
-            {
-                filteredDishes = await uow.DishesRepository.FilterDishes(filteredText);
-            }
-            foreach (var filteredDish in filteredDishes)
-                comboBox.Items.Add(filteredDish);
-            comboBox.DroppedDown = true;
-
-            if (filteredDishes.Count() == 1)
-            {
-                comboBox.DroppedDown = false;
-                comboBox.SelectedItem = filteredDishes.FirstOrDefault();
-            }
-            else
-            {
-                comboBox.SelectedIndex = -1;
-                comboBox.Text = filteredText;
-                comboBox.SelectionStart = filteredText.Length;
-                comboBox.SelectionLength = 0;
-            }
-
+            FormHelper.FilterDishComboBox(sender: sender);
         }
 
+        private void supperDishCB_TextUpdate(object sender, EventArgs e)
+        {
+            FormHelper.FilterDishComboBox(sender: sender);
+        }
     }
 }

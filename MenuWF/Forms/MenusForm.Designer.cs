@@ -178,6 +178,7 @@ namespace MenuWF.Forms
             dinnerDishCB.Name = "dinnerDishCB";
             dinnerDishCB.Size = new Size(188, 23);
             dinnerDishCB.TabIndex = 16;
+            dinnerDishCB.TextUpdate += dinnerDishCB_TextUpdate;
             // 
             // supperDishCB
             // 
@@ -187,6 +188,7 @@ namespace MenuWF.Forms
             supperDishCB.Name = "supperDishCB";
             supperDishCB.Size = new Size(188, 23);
             supperDishCB.TabIndex = 16;
+            supperDishCB.TextUpdate += supperDishCB_TextUpdate;
             // 
             // addDinnerDishBtn
             // 

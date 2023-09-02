@@ -24,9 +24,7 @@ namespace MenuWF.MenuWF.Repository.Repositories
                         .ToListAsync();
             }
             else
-            {
                 dishes = await db.Dishes.ToListAsync();
-            }
 
             return dishes;
         }

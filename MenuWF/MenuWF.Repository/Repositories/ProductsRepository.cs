@@ -7,16 +7,16 @@ namespace MenuWF.MenuWF.Repository.Repositories
 {
     public class ProductsRepository : GenericRepository<Product>, IProductsRepository
     {
-        private readonly AppDbContext _db;
+        private readonly AppDbContext db;
 
         public ProductsRepository(AppDbContext db) : base(db)
         {
-            _db = db;
+            this.db = db;
         }
 
         public async Task<IEnumerable<Recipe>> GetProductsOfDish(int dishId)
         {
-            IEnumerable<Recipe> nutrients = await _db.Recipes
+            IEnumerable<Recipe> nutrients = await db.Recipes
                 .Include(x => x.Product)
                 .Include(x => x.Dish)
                 .Where(dish => dish.Dish.Id == dishId)
@@ -25,7 +25,22 @@ namespace MenuWF.MenuWF.Repository.Repositories
             return nutrients;
         }
 
+        internal async Task<IEnumerable<Product>> FilterProducts(string productFilter)
+        {
+            IEnumerable<Product> products;
+            if (productFilter != "")
+            {
+                products = await db.Products
+                        .Where(x => x.Name.ToLower().Contains(productFilter.ToLower()) || x.Name == productFilter)
+                        .ToListAsync();
+            }
+            else
+                products = await db.Products.ToListAsync();
+
+            return products;
+        }
+
         internal async Task<Product> GetByProdName(string prodName) =>
-         await _db.Products.FirstOrDefaultAsync(x => x.Name == prodName);
+         await db.Products.FirstOrDefaultAsync(x => x.Name == prodName);
     }
 }

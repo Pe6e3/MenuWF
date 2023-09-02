@@ -1,4 +1,5 @@
-﻿using MenuWF.Repository;
+﻿using MenuWF.Entities;
+using MenuWF.Repository;
 using MenuWF.UXElements;
 using System.ComponentModel;
 
@@ -93,5 +94,71 @@ public static class FormHelper
     {
         if (field.Text.Length > 0 && Convert.ToDecimal(field.Text) > 0)
             field.Text = (Convert.ToDecimal(field.Text) - value).ToString("0");
+    }
+
+   
+
+    internal async static void FilterDishComboBox(object sender)
+    {
+        if (sender is ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            IEnumerable<Dish> filteredDishes;
+            string filteredText = comboBox.Text;
+            using (var uow = new UnitOfWork())
+            {
+                filteredDishes = await uow.DishesRepository.FilterDishes(filteredText);
+            }
+            foreach (var filteredDish in filteredDishes)
+                comboBox.Items.Add(filteredDish);
+            comboBox.DroppedDown = true;
+            comboBox.IntegralHeight = true;
+
+            if (filteredDishes.Count() == 1)
+            {
+                comboBox.DroppedDown = false;
+                comboBox.SelectedItem = filteredDishes.FirstOrDefault();
+            }
+            else
+            {
+                comboBox.SelectedIndex = -1;
+                comboBox.Text = filteredText;
+                comboBox.SelectionStart = filteredText.Length;
+                comboBox.SelectionLength = 0;
+            }
+        }
+
+    }
+
+    internal async static void FilterProductComboBox(object sender)
+    {
+        if (sender is ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            IEnumerable<Product> filteredProducts;
+            string filteredText = comboBox.Text;
+            using (var uow = new UnitOfWork())
+            {
+                filteredProducts = await uow.ProductsRepository.FilterProducts(filteredText);
+            }
+            foreach (var filteredProduct in filteredProducts)
+                comboBox.Items.Add(filteredProduct);
+
+            comboBox.DroppedDown = true;
+            comboBox.IntegralHeight = true;
+
+            if (filteredProducts.Count() == 1)
+            {
+                comboBox.DroppedDown = false;
+                comboBox.SelectedItem = filteredProducts.FirstOrDefault();
+            }
+            else
+            {
+                comboBox.SelectedIndex = -1;
+                comboBox.Text = filteredText;
+                comboBox.SelectionStart = filteredText.Length;
+                comboBox.SelectionLength = 0;
+            }
+        }
     }
 }
