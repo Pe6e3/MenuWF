@@ -150,7 +150,7 @@ namespace MenuWF.Forms
             backBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.ForeColor = Color.LightCyan;
-            backBtn.Location = new Point(23, 19);
+            backBtn.Location = new Point(25, 19);
             backBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             backBtn.Name = "backBtn";
             backBtn.Rounding = 33;
@@ -316,7 +316,7 @@ namespace MenuWF.Forms
             // 
             dateOfJournal.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             dateOfJournal.Format = DateTimePickerFormat.Short;
-            dateOfJournal.Location = new Point(841, 19);
+            dateOfJournal.Location = new Point(857, 19);
             dateOfJournal.Name = "dateOfJournal";
             dateOfJournal.Size = new Size(130, 33);
             dateOfJournal.TabIndex = 18;
@@ -646,7 +646,7 @@ namespace MenuWF.Forms
             breakfastPanel.Controls.Add(deleteBreakfastDishBtn);
             breakfastPanel.Controls.Add(addBreakfastDishBtn);
             breakfastPanel.CornerRadius = 12;
-            breakfastPanel.Location = new Point(16, 65);
+            breakfastPanel.Location = new Point(25, 65);
             breakfastPanel.Name = "breakfastPanel";
             breakfastPanel.PanelColor = Color.Silver;
             breakfastPanel.Size = new Size(750, 200);
@@ -717,7 +717,7 @@ namespace MenuWF.Forms
             dinnerPanel.Controls.Add(deleteDinnerDishBtn);
             dinnerPanel.Controls.Add(addDinnerDishBtn);
             dinnerPanel.CornerRadius = 12;
-            dinnerPanel.Location = new Point(16, 275);
+            dinnerPanel.Location = new Point(25, 275);
             dinnerPanel.Name = "dinnerPanel";
             dinnerPanel.PanelColor = Color.Silver;
             dinnerPanel.Size = new Size(750, 200);
@@ -788,7 +788,7 @@ namespace MenuWF.Forms
             supperPanel.Controls.Add(addSupperDishBtn);
             supperPanel.Controls.Add(deleteSupperDishBtn);
             supperPanel.CornerRadius = 12;
-            supperPanel.Location = new Point(16, 483);
+            supperPanel.Location = new Point(25, 483);
             supperPanel.Name = "supperPanel";
             supperPanel.PanelColor = Color.Silver;
             supperPanel.Size = new Size(750, 200);
@@ -873,7 +873,7 @@ namespace MenuWF.Forms
             resultsPanel.Controls.Add(carbsProgressBar);
             resultsPanel.Controls.Add(caloriesProgressBar);
             resultsPanel.CornerRadius = 12;
-            resultsPanel.Location = new Point(781, 65);
+            resultsPanel.Location = new Point(790, 65);
             resultsPanel.Name = "resultsPanel";
             resultsPanel.PanelColor = Color.Silver;
             resultsPanel.Size = new Size(249, 618);
@@ -969,7 +969,8 @@ namespace MenuWF.Forms
             // 
             // panel1
             // 
-            panel1.BackColor = Color.Linen;
+            panel1.BackColor = Color.AntiqueWhite;
+            panel1.Controls.Add(backBtn);
             panel1.Controls.Add(dateOfJournal);
             panel1.Controls.Add(resultsPanel);
             panel1.Controls.Add(breakfastPanel);
@@ -977,7 +978,7 @@ namespace MenuWF.Forms
             panel1.Controls.Add(dinnerPanel);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1052, 715);
+            panel1.Size = new Size(1068, 715);
             panel1.TabIndex = 25;
             // 
             // MenusForm
@@ -985,8 +986,7 @@ namespace MenuWF.Forms
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGray;
-            ClientSize = new Size(1044, 709);
-            Controls.Add(backBtn);
+            ClientSize = new Size(1066, 709);
             Controls.Add(panel1);
             Name = "MenusForm";
             StartPosition = FormStartPosition.CenterScreen;
