@@ -81,4 +81,17 @@ public static class FormHelper
         else
             button.Enabled = true;
     }
+
+    internal static void IncreaseField(TextBox field, int value)
+    {
+        if (field.Text.Length > 0)
+            field.Text = (Convert.ToDecimal(field.Text) + value).ToString("0");
+        else
+            field.Text = value.ToString("0");
+    }
+    internal static void DecreaseField(TextBox field, int value)
+    {
+        if (field.Text.Length > 0 && Convert.ToDecimal(field.Text) > 0)
+            field.Text = (Convert.ToDecimal(field.Text) - value).ToString("0");
+    }
 }

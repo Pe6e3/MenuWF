@@ -14,6 +14,11 @@ namespace MenuWF.Forms
         IEnumerable<ProductsInMenuDTO> supperDTOs;
         IEnumerable<ProductsInMenuDTO> allProductsDTO;
 
+        private const int PROT_NORM = 54;
+        private const int FAT_NORM = 60;
+        private const int CARB_NORM = 261;
+        private const int CAL_NORM = 1800;
+
         public MenusForm()
         {
             InitializeComponent();
@@ -194,6 +199,7 @@ namespace MenuWF.Forms
             decimal fats = 0;
             decimal carbs = 0;
             decimal calories = 0;
+            decimal weight = 0;
 
             foreach (var productDTO in allProductsDTO)
             {
@@ -206,17 +212,32 @@ namespace MenuWF.Forms
                 fats += product.Fats * productDTO.ProdWeight / 100;
                 carbs += product.Carbs * productDTO.ProdWeight / 100;
                 calories += product.Calories * productDTO.ProdWeight / 100;
+                weight += productDTO.ProdWeight;
             }
             decimal coeff = 0;  // Если в поле Количество персон есть текст (а там только число по валидации) то ниже будем на него делить. Если нет - умножим на 0
             if (personCountField.Text.Length > 0 && personCountField.Text != "0")
+            {
                 coeff = 1 / decimal.Parse(personCountField.Text);
+                prodPerPersonLabel.Text = (weight / decimal.Parse(personCountField.Text)).ToString("0г");
+            }
             else
+            {
                 coeff = 0;
+                prodPerPersonLabel.Text = "";
+            }
 
             protsLabel.Text = (prots * coeff).ToString("0.0");
             fatsLabel.Text = (fats * coeff).ToString("0.0");
             carbsLabel.Text = (carbs * coeff).ToString("0.0");
             caloriesLabel.Text = (calories * coeff).ToString("0.0");
+
+            protsPercentLabel.Text = (prots * coeff / PROT_NORM).ToString("0%");
+            fatsPercentLabel.Text = (fats * coeff / FAT_NORM).ToString("0%");
+            carbsPercentLabel.Text = (carbs * coeff / CARB_NORM).ToString("0%");
+            caloriesPercentLabel.Text = (calories * coeff / CAL_NORM).ToString("0%");
+
+            prodWeightSumLabel.Text = weight.ToString("0г");
+
         }
 
         private void RefreshDayProdsLV(IEnumerable<ProductsInMenuDTO> allProductsDTO)
@@ -419,5 +440,36 @@ namespace MenuWF.Forms
             FormHelper.ValidateDecimal(personCountField, maxValue: 100);
             RefreshCPFC(allProductsDTO);
         }
+
+        private void bfDecreaseBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.DecreaseField(breakfastDishWeightField, 50);
+        }
+
+        private void bfIncreaseBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.IncreaseField(breakfastDishWeightField, 50);
+        }
+
+
+        private void dinnerDecreaseBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.DecreaseField(dinnerDishWeightField, 50);
+        }
+        private void dinnerIncreaseBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.IncreaseField(dinnerDishWeightField, 50);
+        }
+
+        private void supperDecreaseBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.DecreaseField(supperDishWeightField, 50);
+        }
+
+        private void supperIncreaseBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.IncreaseField(supperDishWeightField, 50);
+        }
+
     }
 }

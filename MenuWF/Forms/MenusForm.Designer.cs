@@ -74,13 +74,24 @@
             carbsPercentLabel = new Label();
             caloriesPercentLabel = new Label();
             panel1 = new Panel();
+            bfDecreaseBtn = new UXElements.buttonUI();
+            bfIncreaseBtn = new UXElements.buttonUI();
             label5 = new Label();
             panel2 = new Panel();
+            dinnerDecreaseBtn = new UXElements.buttonUI();
+            dinnerIncreaseBtn = new UXElements.buttonUI();
             label6 = new Label();
             panel3 = new Panel();
+            supperDecreaseBtn = new UXElements.buttonUI();
+            supperIncreaseBtn = new UXElements.buttonUI();
             label7 = new Label();
             panel4 = new Panel();
+            label10 = new Label();
+            prodPerPersonLabel = new Label();
+            prodWeightSumLabel = new Label();
+            label8 = new Label();
             label4 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -211,26 +222,29 @@
             // 
             // breakfastDishWeightField
             // 
-            breakfastDishWeightField.Location = new Point(277, 53);
+            breakfastDishWeightField.Location = new Point(341, 53);
             breakfastDishWeightField.Name = "breakfastDishWeightField";
-            breakfastDishWeightField.Size = new Size(100, 23);
+            breakfastDishWeightField.Size = new Size(69, 23);
             breakfastDishWeightField.TabIndex = 17;
+            breakfastDishWeightField.TextAlign = HorizontalAlignment.Center;
             breakfastDishWeightField.TextChanged += breakfastDishWeightField_TextChanged;
             // 
             // dinnerDishWeightField
             // 
-            dinnerDishWeightField.Location = new Point(277, 52);
+            dinnerDishWeightField.Location = new Point(341, 52);
             dinnerDishWeightField.Name = "dinnerDishWeightField";
-            dinnerDishWeightField.Size = new Size(100, 23);
+            dinnerDishWeightField.Size = new Size(69, 23);
             dinnerDishWeightField.TabIndex = 17;
+            dinnerDishWeightField.TextAlign = HorizontalAlignment.Center;
             dinnerDishWeightField.TextChanged += dinnerDishWeightField_TextChanged;
             // 
             // supperDishWeightField
             // 
-            supperDishWeightField.Location = new Point(277, 52);
+            supperDishWeightField.Location = new Point(341, 52);
             supperDishWeightField.Name = "supperDishWeightField";
-            supperDishWeightField.Size = new Size(100, 23);
+            supperDishWeightField.Size = new Size(69, 23);
             supperDishWeightField.TabIndex = 17;
+            supperDishWeightField.TextAlign = HorizontalAlignment.Center;
             supperDishWeightField.TextChanged += supperDishWeightField_TextChanged;
             // 
             // deleteDinnerDishBtn
@@ -363,7 +377,7 @@
             dayProdsLV.BackColor = Color.WhiteSmoke;
             dayProdsLV.Location = new Point(11, 34);
             dayProdsLV.Name = "dayProdsLV";
-            dayProdsLV.Size = new Size(215, 384);
+            dayProdsLV.Size = new Size(215, 351);
             dayProdsLV.TabIndex = 19;
             dayProdsLV.UseCompatibleStateImageBehavior = false;
             // 
@@ -405,7 +419,7 @@
             protsLabel.BorderStyle = BorderStyle.Fixed3D;
             protsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             protsLabel.ForeColor = Color.DarkRed;
-            protsLabel.Location = new Point(89, 497);
+            protsLabel.Location = new Point(90, 506);
             protsLabel.Name = "protsLabel";
             protsLabel.Size = new Size(53, 23);
             protsLabel.TabIndex = 20;
@@ -413,7 +427,7 @@
             // personCountField
             // 
             personCountField.BackColor = Color.WhiteSmoke;
-            personCountField.Location = new Point(173, 424);
+            personCountField.Location = new Point(173, 437);
             personCountField.Name = "personCountField";
             personCountField.Size = new Size(53, 23);
             personCountField.TabIndex = 17;
@@ -426,9 +440,9 @@
             infoLabelTite.BackColor = Color.Transparent;
             infoLabelTite.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelTite.ForeColor = Color.DarkRed;
-            infoLabelTite.Location = new Point(-2, 454);
+            infoLabelTite.Location = new Point(-1, 475);
             infoLabelTite.Name = "infoLabelTite";
-            infoLabelTite.Size = new Size(241, 41);
+            infoLabelTite.Size = new Size(241, 31);
             infoLabelTite.TabIndex = 20;
             infoLabelTite.Text = "Итого КБЖУ на человека:";
             infoLabelTite.TextAlign = ContentAlignment.MiddleCenter;
@@ -438,7 +452,7 @@
             fatsLabel.BorderStyle = BorderStyle.Fixed3D;
             fatsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             fatsLabel.ForeColor = Color.DarkRed;
-            fatsLabel.Location = new Point(89, 522);
+            fatsLabel.Location = new Point(90, 531);
             fatsLabel.Name = "fatsLabel";
             fatsLabel.Size = new Size(53, 23);
             fatsLabel.TabIndex = 20;
@@ -448,7 +462,7 @@
             carbsLabel.BorderStyle = BorderStyle.Fixed3D;
             carbsLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             carbsLabel.ForeColor = Color.DarkRed;
-            carbsLabel.Location = new Point(89, 547);
+            carbsLabel.Location = new Point(90, 556);
             carbsLabel.Name = "carbsLabel";
             carbsLabel.Size = new Size(53, 23);
             carbsLabel.TabIndex = 20;
@@ -458,7 +472,7 @@
             caloriesLabel.BorderStyle = BorderStyle.Fixed3D;
             caloriesLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             caloriesLabel.ForeColor = Color.DarkRed;
-            caloriesLabel.Location = new Point(89, 572);
+            caloriesLabel.Location = new Point(90, 581);
             caloriesLabel.Name = "caloriesLabel";
             caloriesLabel.Size = new Size(53, 23);
             caloriesLabel.TabIndex = 20;
@@ -504,7 +518,7 @@
             infoLabelProts.BackColor = Color.Transparent;
             infoLabelProts.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelProts.ForeColor = Color.DarkRed;
-            infoLabelProts.Location = new Point(11, 498);
+            infoLabelProts.Location = new Point(12, 507);
             infoLabelProts.Name = "infoLabelProts";
             infoLabelProts.Size = new Size(77, 21);
             infoLabelProts.TabIndex = 20;
@@ -516,7 +530,7 @@
             infoLabelFats.BackColor = Color.Transparent;
             infoLabelFats.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelFats.ForeColor = Color.DarkRed;
-            infoLabelFats.Location = new Point(11, 523);
+            infoLabelFats.Location = new Point(12, 532);
             infoLabelFats.Name = "infoLabelFats";
             infoLabelFats.Size = new Size(77, 21);
             infoLabelFats.TabIndex = 20;
@@ -528,7 +542,7 @@
             infoLabelCarbs.BackColor = Color.Transparent;
             infoLabelCarbs.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCarbs.ForeColor = Color.DarkRed;
-            infoLabelCarbs.Location = new Point(11, 548);
+            infoLabelCarbs.Location = new Point(12, 557);
             infoLabelCarbs.Name = "infoLabelCarbs";
             infoLabelCarbs.Size = new Size(77, 21);
             infoLabelCarbs.TabIndex = 20;
@@ -540,7 +554,7 @@
             infoLabelCalories.BackColor = Color.Transparent;
             infoLabelCalories.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCalories.ForeColor = Color.DarkRed;
-            infoLabelCalories.Location = new Point(11, 572);
+            infoLabelCalories.Location = new Point(12, 581);
             infoLabelCalories.Name = "infoLabelCalories";
             infoLabelCalories.Size = new Size(77, 21);
             infoLabelCalories.TabIndex = 20;
@@ -550,11 +564,11 @@
             // infoLabelCountPerson
             // 
             infoLabelCountPerson.BackColor = Color.Transparent;
-            infoLabelCountPerson.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            infoLabelCountPerson.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
             infoLabelCountPerson.ForeColor = Color.DarkRed;
-            infoLabelCountPerson.Location = new Point(14, 425);
+            infoLabelCountPerson.Location = new Point(35, 435);
             infoLabelCountPerson.Name = "infoLabelCountPerson";
-            infoLabelCountPerson.Size = new Size(154, 23);
+            infoLabelCountPerson.Size = new Size(127, 25);
             infoLabelCountPerson.TabIndex = 20;
             infoLabelCountPerson.Text = "Количество персон:";
             infoLabelCountPerson.TextAlign = ContentAlignment.MiddleRight;
@@ -564,7 +578,7 @@
             protsPercentLabel.BackColor = Color.Transparent;
             protsPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             protsPercentLabel.ForeColor = Color.DarkRed;
-            protsPercentLabel.Location = new Point(148, 498);
+            protsPercentLabel.Location = new Point(149, 507);
             protsPercentLabel.Name = "protsPercentLabel";
             protsPercentLabel.Size = new Size(77, 21);
             protsPercentLabel.TabIndex = 20;
@@ -575,7 +589,7 @@
             fatsPercentLabel.BackColor = Color.Transparent;
             fatsPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             fatsPercentLabel.ForeColor = Color.DarkRed;
-            fatsPercentLabel.Location = new Point(148, 522);
+            fatsPercentLabel.Location = new Point(149, 531);
             fatsPercentLabel.Name = "fatsPercentLabel";
             fatsPercentLabel.Size = new Size(77, 21);
             fatsPercentLabel.TabIndex = 20;
@@ -586,7 +600,7 @@
             carbsPercentLabel.BackColor = Color.Transparent;
             carbsPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             carbsPercentLabel.ForeColor = Color.DarkRed;
-            carbsPercentLabel.Location = new Point(148, 548);
+            carbsPercentLabel.Location = new Point(149, 557);
             carbsPercentLabel.Name = "carbsPercentLabel";
             carbsPercentLabel.Size = new Size(77, 21);
             carbsPercentLabel.TabIndex = 20;
@@ -597,7 +611,7 @@
             caloriesPercentLabel.BackColor = Color.Transparent;
             caloriesPercentLabel.Font = new Font("Palatino Linotype", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             caloriesPercentLabel.ForeColor = Color.DarkRed;
-            caloriesPercentLabel.Location = new Point(148, 573);
+            caloriesPercentLabel.Location = new Point(149, 582);
             caloriesPercentLabel.Name = "caloriesPercentLabel";
             caloriesPercentLabel.Size = new Size(77, 21);
             caloriesPercentLabel.TabIndex = 20;
@@ -607,6 +621,8 @@
             // 
             panel1.BackColor = Color.FromArgb(30, 250, 150, 0);
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(bfDecreaseBtn);
+            panel1.Controls.Add(bfIncreaseBtn);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(breakfastSumWeightDishesLabel);
             panel1.Controls.Add(breakfastProductsLV);
@@ -620,6 +636,42 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(750, 200);
             panel1.TabIndex = 21;
+            // 
+            // bfDecreaseBtn
+            // 
+            bfDecreaseBtn.BackColor = Color.Transparent;
+            bfDecreaseBtn.endColorBorderBtn = Color.SkyBlue;
+            bfDecreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            bfDecreaseBtn.ForeColor = Color.Indigo;
+            bfDecreaseBtn.Location = new Point(315, 53);
+            bfDecreaseBtn.middleColorBtn = Color.CornflowerBlue;
+            bfDecreaseBtn.Name = "bfDecreaseBtn";
+            bfDecreaseBtn.Rounding = 33;
+            bfDecreaseBtn.RoundingEnable = true;
+            bfDecreaseBtn.Size = new Size(20, 20);
+            bfDecreaseBtn.startColorBtn = Color.DeepSkyBlue;
+            bfDecreaseBtn.TabIndex = 22;
+            bfDecreaseBtn.Text = "-";
+            bfDecreaseBtn.TextHover = "";
+            bfDecreaseBtn.Click += bfDecreaseBtn_Click;
+            // 
+            // bfIncreaseBtn
+            // 
+            bfIncreaseBtn.BackColor = Color.Transparent;
+            bfIncreaseBtn.endColorBorderBtn = Color.SkyBlue;
+            bfIncreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            bfIncreaseBtn.ForeColor = Color.Indigo;
+            bfIncreaseBtn.Location = new Point(416, 53);
+            bfIncreaseBtn.middleColorBtn = Color.CornflowerBlue;
+            bfIncreaseBtn.Name = "bfIncreaseBtn";
+            bfIncreaseBtn.Rounding = 33;
+            bfIncreaseBtn.RoundingEnable = true;
+            bfIncreaseBtn.Size = new Size(20, 20);
+            bfIncreaseBtn.startColorBtn = Color.DeepSkyBlue;
+            bfIncreaseBtn.TabIndex = 21;
+            bfIncreaseBtn.Text = "+";
+            bfIncreaseBtn.TextHover = "";
+            bfIncreaseBtn.Click += bfIncreaseBtn_Click;
             // 
             // label5
             // 
@@ -637,7 +689,9 @@
             // 
             panel2.BackColor = Color.FromArgb(30, 250, 150, 0);
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(dinnerDecreaseBtn);
             panel2.Controls.Add(dinnerSumWeightDishesLabel);
+            panel2.Controls.Add(dinnerIncreaseBtn);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(dinnerProductsLV);
             panel2.Controls.Add(dinnerDishesLV);
@@ -650,6 +704,42 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(750, 200);
             panel2.TabIndex = 22;
+            // 
+            // dinnerDecreaseBtn
+            // 
+            dinnerDecreaseBtn.BackColor = Color.Transparent;
+            dinnerDecreaseBtn.endColorBorderBtn = Color.SkyBlue;
+            dinnerDecreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dinnerDecreaseBtn.ForeColor = Color.Indigo;
+            dinnerDecreaseBtn.Location = new Point(315, 52);
+            dinnerDecreaseBtn.middleColorBtn = Color.CornflowerBlue;
+            dinnerDecreaseBtn.Name = "dinnerDecreaseBtn";
+            dinnerDecreaseBtn.Rounding = 33;
+            dinnerDecreaseBtn.RoundingEnable = true;
+            dinnerDecreaseBtn.Size = new Size(20, 20);
+            dinnerDecreaseBtn.startColorBtn = Color.DeepSkyBlue;
+            dinnerDecreaseBtn.TabIndex = 22;
+            dinnerDecreaseBtn.Text = "-";
+            dinnerDecreaseBtn.TextHover = "";
+            dinnerDecreaseBtn.Click += dinnerDecreaseBtn_Click;
+            // 
+            // dinnerIncreaseBtn
+            // 
+            dinnerIncreaseBtn.BackColor = Color.Transparent;
+            dinnerIncreaseBtn.endColorBorderBtn = Color.SkyBlue;
+            dinnerIncreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            dinnerIncreaseBtn.ForeColor = Color.Indigo;
+            dinnerIncreaseBtn.Location = new Point(416, 52);
+            dinnerIncreaseBtn.middleColorBtn = Color.CornflowerBlue;
+            dinnerIncreaseBtn.Name = "dinnerIncreaseBtn";
+            dinnerIncreaseBtn.Rounding = 33;
+            dinnerIncreaseBtn.RoundingEnable = true;
+            dinnerIncreaseBtn.Size = new Size(20, 20);
+            dinnerIncreaseBtn.startColorBtn = Color.DeepSkyBlue;
+            dinnerIncreaseBtn.TabIndex = 21;
+            dinnerIncreaseBtn.Text = "+";
+            dinnerIncreaseBtn.TextHover = "";
+            dinnerIncreaseBtn.Click += dinnerIncreaseBtn_Click;
             // 
             // label6
             // 
@@ -667,8 +757,10 @@
             // 
             panel3.BackColor = Color.FromArgb(30, 250, 150, 0);
             panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(supperDecreaseBtn);
             panel3.Controls.Add(supperSumWeightDishesLabel);
             panel3.Controls.Add(label3);
+            panel3.Controls.Add(supperIncreaseBtn);
             panel3.Controls.Add(supperProductsLV);
             panel3.Controls.Add(supperDishesLV);
             panel3.Controls.Add(supperDishWeightField);
@@ -680,6 +772,42 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(750, 200);
             panel3.TabIndex = 23;
+            // 
+            // supperDecreaseBtn
+            // 
+            supperDecreaseBtn.BackColor = Color.Transparent;
+            supperDecreaseBtn.endColorBorderBtn = Color.SkyBlue;
+            supperDecreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            supperDecreaseBtn.ForeColor = Color.Indigo;
+            supperDecreaseBtn.Location = new Point(315, 52);
+            supperDecreaseBtn.middleColorBtn = Color.CornflowerBlue;
+            supperDecreaseBtn.Name = "supperDecreaseBtn";
+            supperDecreaseBtn.Rounding = 33;
+            supperDecreaseBtn.RoundingEnable = true;
+            supperDecreaseBtn.Size = new Size(20, 20);
+            supperDecreaseBtn.startColorBtn = Color.DeepSkyBlue;
+            supperDecreaseBtn.TabIndex = 22;
+            supperDecreaseBtn.Text = "-";
+            supperDecreaseBtn.TextHover = "";
+            supperDecreaseBtn.Click += supperDecreaseBtn_Click;
+            // 
+            // supperIncreaseBtn
+            // 
+            supperIncreaseBtn.BackColor = Color.Transparent;
+            supperIncreaseBtn.endColorBorderBtn = Color.SkyBlue;
+            supperIncreaseBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            supperIncreaseBtn.ForeColor = Color.Indigo;
+            supperIncreaseBtn.Location = new Point(416, 52);
+            supperIncreaseBtn.middleColorBtn = Color.CornflowerBlue;
+            supperIncreaseBtn.Name = "supperIncreaseBtn";
+            supperIncreaseBtn.Rounding = 33;
+            supperIncreaseBtn.RoundingEnable = true;
+            supperIncreaseBtn.Size = new Size(20, 20);
+            supperIncreaseBtn.startColorBtn = Color.DeepSkyBlue;
+            supperIncreaseBtn.TabIndex = 21;
+            supperIncreaseBtn.Text = "+";
+            supperIncreaseBtn.TextHover = "";
+            supperIncreaseBtn.Click += supperIncreaseBtn_Click;
             // 
             // label7
             // 
@@ -697,6 +825,10 @@
             // 
             panel4.BackColor = Color.FromArgb(30, 250, 150, 0);
             panel4.BorderStyle = BorderStyle.Fixed3D;
+            panel4.Controls.Add(label10);
+            panel4.Controls.Add(prodPerPersonLabel);
+            panel4.Controls.Add(prodWeightSumLabel);
+            panel4.Controls.Add(label8);
             panel4.Controls.Add(caloriesPercentLabel);
             panel4.Controls.Add(infoLabelCalories);
             panel4.Controls.Add(carbsPercentLabel);
@@ -712,12 +844,56 @@
             panel4.Controls.Add(fatsLabel);
             panel4.Controls.Add(caloriesLabel);
             panel4.Controls.Add(protsLabel);
-            panel4.Controls.Add(dayProdsLV);
             panel4.Controls.Add(personCountField);
+            panel4.Controls.Add(dayProdsLV);
             panel4.Location = new Point(776, 53);
             panel4.Name = "panel4";
             panel4.Size = new Size(241, 623);
             panel4.TabIndex = 24;
+            // 
+            // label10
+            // 
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = Color.DarkRed;
+            label10.Location = new Point(35, 409);
+            label10.Name = "label10";
+            label10.Size = new Size(126, 25);
+            label10.TabIndex = 23;
+            label10.Text = "На человека";
+            label10.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // prodPerPersonLabel
+            // 
+            prodPerPersonLabel.BorderStyle = BorderStyle.Fixed3D;
+            prodPerPersonLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            prodPerPersonLabel.ForeColor = Color.DarkRed;
+            prodPerPersonLabel.Location = new Point(173, 411);
+            prodPerPersonLabel.Name = "prodPerPersonLabel";
+            prodPerPersonLabel.Size = new Size(53, 23);
+            prodPerPersonLabel.TabIndex = 22;
+            // 
+            // prodWeightSumLabel
+            // 
+            prodWeightSumLabel.BorderStyle = BorderStyle.Fixed3D;
+            prodWeightSumLabel.Font = new Font("Palatino Linotype", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            prodWeightSumLabel.ForeColor = Color.DarkRed;
+            prodWeightSumLabel.Location = new Point(173, 388);
+            prodWeightSumLabel.Name = "prodWeightSumLabel";
+            prodWeightSumLabel.Size = new Size(53, 23);
+            prodWeightSumLabel.TabIndex = 22;
+            // 
+            // label8
+            // 
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Palatino Linotype", 7F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.DarkRed;
+            label8.Location = new Point(35, 390);
+            label8.Name = "label8";
+            label8.Size = new Size(126, 25);
+            label8.TabIndex = 21;
+            label8.Text = "Всего продуктов";
+            label8.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 
@@ -811,5 +987,16 @@
         private Label label7;
         private Label label6;
         private Label label5;
+        private UXElements.buttonUI bfDecreaseBtn;
+        private UXElements.buttonUI bfIncreaseBtn;
+        private UXElements.buttonUI supperDecreaseBtn;
+        private UXElements.buttonUI supperIncreaseBtn;
+        private UXElements.buttonUI dinnerDecreaseBtn;
+        private UXElements.buttonUI dinnerIncreaseBtn;
+        private System.Windows.Forms.Timer timer1;
+        private Label label8;
+        private Label label10;
+        private Label prodPerPersonLabel;
+        private Label prodWeightSumLabel;
     }
 }
