@@ -103,7 +103,7 @@ public class buttonUI : Control
         base.OnPaint(e);
         Graphics graph = e.Graphics;
         graph.SmoothingMode = SmoothingMode.HighQuality;
-        graph.Clear(Parent.BackColor);
+        //graph.Clear(Parent.BackColor);
 
         Rectangle rect = new Rectangle(0, 0, Width, Height);
         Rectangle rectCurtain = new Rectangle(0, 0, (int)CurtainButtonAnim.Value, Height);
@@ -143,6 +143,7 @@ public class buttonUI : Control
         colorBlend.Positions = new float[] { 0.0f, 0.4f, 1.0f };
         buttonGradient.InterpolationColors = colorBlend;
 
+        BackColor = Color.Transparent;
         graph.DrawPath(new Pen(Color.LightGray), rectPath);
         graph.FillPath(buttonGradient, rectPath);
 

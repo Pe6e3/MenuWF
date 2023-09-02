@@ -21,7 +21,10 @@ namespace MenuWF.Forms
 
         private void MenusForm_Load(object sender, EventArgs e)
         {
+            dateOfJournal.CustomFormat = " d.MM.yyyy"; // Задаю отступ даты от левого края поля
+            dateOfJournal.Format = DateTimePickerFormat.Custom; // Применяю этот формат
             dateOfJournal.Value = DateTime.Now;
+
             RefreshDishesComboBoxes();
             RefreshAllProdsLV();
         }
