@@ -99,6 +99,7 @@ namespace MenuWF.Forms
             caloriesProgressBar = new ProgressBar();
             timer1 = new System.Windows.Forms.Timer(components);
             panel1 = new Panel();
+            printBtn = new Button();
             breakfastPanel.SuspendLayout();
             dinnerPanel.SuspendLayout();
             supperPanel.SuspendLayout();
@@ -970,6 +971,7 @@ namespace MenuWF.Forms
             // panel1
             // 
             panel1.BackColor = Color.AntiqueWhite;
+            panel1.Controls.Add(printBtn);
             panel1.Controls.Add(backBtn);
             panel1.Controls.Add(dateOfJournal);
             panel1.Controls.Add(resultsPanel);
@@ -980,6 +982,18 @@ namespace MenuWF.Forms
             panel1.Name = "panel1";
             panel1.Size = new Size(1068, 715);
             panel1.TabIndex = 25;
+            // 
+            // printBtn
+            // 
+            printBtn.BackColor = Color.AntiqueWhite;
+            printBtn.BackgroundImage = Properties.Resources.icons8_печать_48;
+            printBtn.BackgroundImageLayout = ImageLayout.Zoom;
+            printBtn.Location = new Point(808, 19);
+            printBtn.Name = "printBtn";
+            printBtn.Size = new Size(35, 33);
+            printBtn.TabIndex = 25;
+            printBtn.UseVisualStyleBackColor = false;
+            printBtn.Click += printBtn_Click;
             // 
             // MenusForm
             // 
@@ -1073,5 +1087,6 @@ namespace MenuWF.Forms
         private RoundedPanel supperPanel;
         private RoundedPanel dinnerPanel;
         private Panel panel1;
+        private Button printBtn;
     }
 }

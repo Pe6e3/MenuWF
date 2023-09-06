@@ -210,7 +210,7 @@ public class buttonUI : Control
 
     protected override void OnMouseLeave(EventArgs e)
     {
-        FormHelper.PlaySound(Resources.hover_);
+        //FormHelper.PlaySound(Resources.hover_);
         base.OnMouseLeave(e);
         MouseEntered = false;
         ButtonCurtainAction();

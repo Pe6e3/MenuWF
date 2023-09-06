@@ -28,6 +28,7 @@ namespace MenuWF.Forms
         public MenusForm()
         {
             InitializeComponent();
+            printBtn.MouseEnter += (s, e) => FormHelper.PlaySound(Resources.hover_);
 
         }
 
@@ -533,6 +534,15 @@ namespace MenuWF.Forms
         private void supperDishCB_TextUpdate(object sender, EventArgs e)
         {
             FormHelper.FilterDishComboBox(sender: sender);
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            FormHelper.PlaySound(Resources.click);
+            PrintHelper printHelper = new PrintHelper(this);
+
+            printHelper.printDocument.DefaultPageSettings.Landscape = true; // Задаем альбомный формат
+            printHelper.Print();
         }
     }
 }
