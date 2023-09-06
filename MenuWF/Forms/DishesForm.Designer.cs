@@ -41,6 +41,8 @@
             addProdToDishBtn = new UXElements.buttonUI();
             backBtn = new UXElements.buttonUI();
             deleteProdFromDishBtn = new UXElements.buttonUI();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -66,7 +68,7 @@
             // 
             allDishesListbox.FormattingEnabled = true;
             allDishesListbox.ItemHeight = 15;
-            allDishesListbox.Location = new Point(38, 68);
+            allDishesListbox.Location = new Point(32, 64);
             allDishesListbox.Name = "allDishesListbox";
             allDishesListbox.Size = new Size(233, 304);
             allDishesListbox.TabIndex = 8;
@@ -75,7 +77,7 @@
             // selectedDishLabel
             // 
             selectedDishLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            selectedDishLabel.Location = new Point(359, 68);
+            selectedDishLabel.Location = new Point(353, 64);
             selectedDishLabel.Name = "selectedDishLabel";
             selectedDishLabel.Size = new Size(204, 25);
             selectedDishLabel.TabIndex = 9;
@@ -84,7 +86,7 @@
             // nutritionList
             // 
             nutritionList.ImeMode = ImeMode.NoControl;
-            nutritionList.Location = new Point(359, 112);
+            nutritionList.Location = new Point(353, 108);
             nutritionList.Name = "nutritionList";
             nutritionList.Size = new Size(204, 260);
             nutritionList.TabIndex = 11;
@@ -92,7 +94,7 @@
             // 
             // newDishField
             // 
-            newDishField.Location = new Point(40, 393);
+            newDishField.Location = new Point(34, 389);
             newDishField.Name = "newDishField";
             newDishField.PlaceholderText = "Новое блюдо";
             newDishField.Size = new Size(231, 23);
@@ -106,7 +108,7 @@
             addDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addDishBtn.ForeColor = Color.White;
-            addDishBtn.Location = new Point(36, 422);
+            addDishBtn.Location = new Point(30, 418);
             addDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addDishBtn.Name = "addDishBtn";
             addDishBtn.Rounding = 33;
@@ -121,7 +123,7 @@
             // productsComboBox
             // 
             productsComboBox.FormattingEnabled = true;
-            productsComboBox.Location = new Point(614, 112);
+            productsComboBox.Location = new Point(608, 108);
             productsComboBox.Name = "productsComboBox";
             productsComboBox.Size = new Size(188, 23);
             productsComboBox.TabIndex = 14;
@@ -130,7 +132,7 @@
             // prodWeightField
             // 
             prodWeightField.AccessibleRole = AccessibleRole.Text;
-            prodWeightField.Location = new Point(614, 141);
+            prodWeightField.Location = new Point(608, 137);
             prodWeightField.Name = "prodWeightField";
             prodWeightField.PlaceholderText = "вес продукта";
             prodWeightField.Size = new Size(141, 23);
@@ -144,7 +146,7 @@
             addProdToDishBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProdToDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addProdToDishBtn.ForeColor = Color.White;
-            addProdToDishBtn.Location = new Point(614, 188);
+            addProdToDishBtn.Location = new Point(608, 184);
             addProdToDishBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addProdToDishBtn.Name = "addProdToDishBtn";
             addProdToDishBtn.Rounding = 33;
@@ -162,7 +164,7 @@
             backBtn.endColorBorderBtn = Color.LightSkyBlue;
             backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.ForeColor = Color.LightCyan;
-            backBtn.Location = new Point(12, 471);
+            backBtn.Location = new Point(30, 12);
             backBtn.middleColorBtn = Color.DeepSkyBlue;
             backBtn.Name = "backBtn";
             backBtn.Rounding = 33;
@@ -180,7 +182,7 @@
             deleteProdFromDishBtn.endColorBorderBtn = Color.DarkOrange;
             deleteProdFromDishBtn.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
             deleteProdFromDishBtn.ForeColor = Color.Sienna;
-            deleteProdFromDishBtn.Location = new Point(359, 393);
+            deleteProdFromDishBtn.Location = new Point(353, 407);
             deleteProdFromDishBtn.middleColorBtn = Color.NavajoWhite;
             deleteProdFromDishBtn.Name = "deleteProdFromDishBtn";
             deleteProdFromDishBtn.Rounding = 33;
@@ -192,27 +194,37 @@
             deleteProdFromDishBtn.TextHover = "продукт будет удален из блюда";
             deleteProdFromDishBtn.Click += deleteProdFromDishBtn_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.AntiqueWhite;
+            panel1.Controls.Add(deleteProdFromDishBtn);
+            panel1.Controls.Add(backBtn);
+            panel1.Controls.Add(prodWeightField);
+            panel1.Controls.Add(productsComboBox);
+            panel1.Controls.Add(addProdToDishBtn);
+            panel1.Controls.Add(addDishBtn);
+            panel1.Controls.Add(newDishField);
+            panel1.Controls.Add(nutritionList);
+            panel1.Controls.Add(selectedDishLabel);
+            panel1.Controls.Add(allDishesListbox);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(913, 520);
+            panel1.TabIndex = 33;
+            // 
             // DishesForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(916, 519);
-            Controls.Add(deleteProdFromDishBtn);
-            Controls.Add(backBtn);
-            Controls.Add(prodWeightField);
-            Controls.Add(productsComboBox);
-            Controls.Add(addProdToDishBtn);
-            Controls.Add(addDishBtn);
-            Controls.Add(newDishField);
-            Controls.Add(nutritionList);
-            Controls.Add(selectedDishLabel);
-            Controls.Add(allDishesListbox);
+            ClientSize = new Size(875, 519);
+            Controls.Add(panel1);
             Name = "DishesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Блюда";
             Load += DishesForm_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -228,5 +240,6 @@
         private TextBox prodWeightField;
         private UXElements.buttonUI addProdToDishBtn;
         private UXElements.buttonUI deleteProdFromDishBtn;
+        private Panel panel1;
     }
 }

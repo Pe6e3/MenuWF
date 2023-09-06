@@ -36,17 +36,18 @@ namespace MenuWF
             DishesBtn = new buttonUI();
             addMenuBtn = new buttonUI();
             egoldsFormStyle1 = new UIElements.EgoldsFormStyle(components);
-            cardui1 = new cardUI();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // ProductsBtn
             // 
-            ProductsBtn.BackColor = Color.Tomato;
+            ProductsBtn.BackColor = Color.Transparent;
             ProductsBtn.Cursor = Cursors.Hand;
             ProductsBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             ProductsBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ProductsBtn.ForeColor = Color.White;
-            ProductsBtn.Location = new Point(145, 421);
+            ProductsBtn.Location = new Point(186, 90);
             ProductsBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             ProductsBtn.Name = "ProductsBtn";
             ProductsBtn.Rounding = 33;
@@ -60,10 +61,11 @@ namespace MenuWF
             // 
             // DishesBtn
             // 
+            DishesBtn.BackColor = Color.Transparent;
             DishesBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             DishesBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             DishesBtn.ForeColor = Color.White;
-            DishesBtn.Location = new Point(381, 421);
+            DishesBtn.Location = new Point(186, 222);
             DishesBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             DishesBtn.Name = "DishesBtn";
             DishesBtn.Rounding = 33;
@@ -77,10 +79,11 @@ namespace MenuWF
             // 
             // addMenuBtn
             // 
+            addMenuBtn.BackColor = Color.Transparent;
             addMenuBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addMenuBtn.Font = new Font("Intro ", 12F, FontStyle.Bold, GraphicsUnit.Point);
             addMenuBtn.ForeColor = Color.White;
-            addMenuBtn.Location = new Point(617, 421);
+            addMenuBtn.Location = new Point(185, 353);
             addMenuBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addMenuBtn.Name = "addMenuBtn";
             addMenuBtn.Rounding = 33;
@@ -112,35 +115,27 @@ namespace MenuWF
             egoldsFormStyle1.HeaderTextColor = Color.White;
             egoldsFormStyle1.HeaderTextFont = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             // 
-            // cardui1
+            // panel1
             // 
-            cardui1.BackColor = Color.White;
-            cardui1.BackColorCurtain = Color.FromArgb(231, 76, 60);
-            cardui1.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            cardui1.FontDescrition = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            cardui1.FontHeader = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            cardui1.ForeColorDescrition = Color.Black;
-            cardui1.ForeColorHeader = Color.White;
-            cardui1.Location = new Point(334, 107);
-            cardui1.Name = "cardui1";
-            cardui1.Size = new Size(250, 200);
-            cardui1.TabIndex = 3;
-            cardui1.Text = "cardui1";
-            cardui1.TextDescrition = "Your description text for this control";
-            cardui1.TextHeader = "Header";
+            panel1.BackColor = Color.AntiqueWhite;
+            panel1.Controls.Add(addMenuBtn);
+            panel1.Controls.Add(ProductsBtn);
+            panel1.Controls.Add(DishesBtn);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(972, 555);
+            panel1.TabIndex = 4;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(971, 685);
-            Controls.Add(cardui1);
-            Controls.Add(addMenuBtn);
-            Controls.Add(DishesBtn);
-            Controls.Add(ProductsBtn);
+            ClientSize = new Size(549, 536);
+            Controls.Add(panel1);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Стартовое окно";
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -149,6 +144,6 @@ namespace MenuWF
         private buttonUI DishesBtn;
         private buttonUI addMenuBtn;
         private UIElements.EgoldsFormStyle egoldsFormStyle1;
-        private cardUI cardui1;
+        private Panel panel1;
     }
 }

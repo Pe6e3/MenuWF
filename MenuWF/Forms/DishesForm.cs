@@ -85,7 +85,7 @@ public partial class DishesForm : ShadowedForm
         {
             products = await uow.ProductsRepository.GetAll();
         }
-        foreach(var product in products)
+        foreach (var product in products)
             productsComboBox.Items.Add(product);
 
     }

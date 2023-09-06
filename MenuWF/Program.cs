@@ -8,8 +8,6 @@ namespace MenuWF
         [STAThread]
         static void Main()
         {
-            // Создание консоли для вывода ошибок
-            AllocConsole();
 
             ApplicationConfiguration.Initialize();
 
@@ -20,8 +18,6 @@ namespace MenuWF
             }
  
         }
-        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
-        private static extern bool AllocConsole();
 
     }
 }

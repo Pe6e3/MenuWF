@@ -60,7 +60,6 @@ public static class Animator
         if (AnimatorThread == null || IsWork == false)
             Start();
 
-        Debug.WriteLine("Запуск анимации: " + Anim.ID + "| TargetValue: " + Anim.TargetValue);
         Anim.Status = Animation.AnimationStatus.Requested;
 
         try

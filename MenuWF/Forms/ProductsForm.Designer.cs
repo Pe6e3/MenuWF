@@ -48,6 +48,8 @@
             caloriesInfo = new TextBox();
             selectedProductLabel = new Label();
             backBtn = new UXElements.buttonUI();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // egoldsFormStyle1
@@ -73,16 +75,16 @@
             // 
             allProductsListbox.FormattingEnabled = true;
             allProductsListbox.ItemHeight = 15;
-            allProductsListbox.Location = new Point(325, 34);
+            allProductsListbox.Location = new Point(322, 69);
             allProductsListbox.Name = "allProductsListbox";
-            allProductsListbox.Size = new Size(120, 274);
+            allProductsListbox.Size = new Size(137, 244);
             allProductsListbox.TabIndex = 7;
             allProductsListbox.SelectedIndexChanged += allProductsListbox_SelectedIndexChanged;
             // 
             // productNameField
             // 
             productNameField.AccessibleRole = AccessibleRole.Text;
-            productNameField.Location = new Point(99, 34);
+            productNameField.Location = new Point(96, 69);
             productNameField.Name = "productNameField";
             productNameField.PlaceholderText = "Название продукта";
             productNameField.Size = new Size(141, 23);
@@ -92,7 +94,7 @@
             // protsField
             // 
             protsField.AccessibleRole = AccessibleRole.Text;
-            protsField.Location = new Point(99, 77);
+            protsField.Location = new Point(96, 112);
             protsField.Name = "protsField";
             protsField.PlaceholderText = "Белки";
             protsField.Size = new Size(141, 23);
@@ -102,7 +104,7 @@
             // fatsField
             // 
             fatsField.AccessibleRole = AccessibleRole.Text;
-            fatsField.Location = new Point(99, 118);
+            fatsField.Location = new Point(96, 153);
             fatsField.Name = "fatsField";
             fatsField.PlaceholderText = "Жиры";
             fatsField.Size = new Size(141, 23);
@@ -112,7 +114,7 @@
             // carbsField
             // 
             carbsField.AccessibleRole = AccessibleRole.Text;
-            carbsField.Location = new Point(99, 156);
+            carbsField.Location = new Point(96, 191);
             carbsField.Name = "carbsField";
             carbsField.PlaceholderText = "Углеводы";
             carbsField.Size = new Size(141, 23);
@@ -122,7 +124,7 @@
             // caloriesField
             // 
             caloriesField.AccessibleRole = AccessibleRole.Text;
-            caloriesField.Location = new Point(99, 196);
+            caloriesField.Location = new Point(96, 231);
             caloriesField.Name = "caloriesField";
             caloriesField.PlaceholderText = "Калории";
             caloriesField.Size = new Size(141, 23);
@@ -131,11 +133,12 @@
             // 
             // addProductBtn
             // 
+            addProductBtn.BackColor = Color.Transparent;
             addProductBtn.Enabled = false;
             addProductBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
             addProductBtn.Font = new Font("W3$iP", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             addProductBtn.ForeColor = Color.White;
-            addProductBtn.Location = new Point(89, 244);
+            addProductBtn.Location = new Point(86, 279);
             addProductBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             addProductBtn.Name = "addProductBtn";
             addProductBtn.Rounding = 33;
@@ -149,7 +152,7 @@
             // 
             // protsInfoLabel
             // 
-            protsInfoLabel.Location = new Point(468, 75);
+            protsInfoLabel.Location = new Point(465, 110);
             protsInfoLabel.Name = "protsInfoLabel";
             protsInfoLabel.Size = new Size(100, 25);
             protsInfoLabel.TabIndex = 8;
@@ -158,7 +161,7 @@
             // 
             // fatsInfoLabel
             // 
-            fatsInfoLabel.Location = new Point(468, 105);
+            fatsInfoLabel.Location = new Point(465, 140);
             fatsInfoLabel.Name = "fatsInfoLabel";
             fatsInfoLabel.Size = new Size(100, 25);
             fatsInfoLabel.TabIndex = 8;
@@ -167,7 +170,7 @@
             // 
             // carbsInfoLabel
             // 
-            carbsInfoLabel.Location = new Point(468, 135);
+            carbsInfoLabel.Location = new Point(465, 170);
             carbsInfoLabel.Name = "carbsInfoLabel";
             carbsInfoLabel.Size = new Size(100, 25);
             carbsInfoLabel.TabIndex = 8;
@@ -176,7 +179,7 @@
             // 
             // caloriesInfoLabel
             // 
-            caloriesInfoLabel.Location = new Point(468, 165);
+            caloriesInfoLabel.Location = new Point(465, 200);
             caloriesInfoLabel.Name = "caloriesInfoLabel";
             caloriesInfoLabel.Size = new Size(100, 25);
             caloriesInfoLabel.TabIndex = 8;
@@ -185,16 +188,17 @@
             // 
             // delProdBtn
             // 
+            delProdBtn.BackColor = Color.Transparent;
             delProdBtn.Enabled = false;
             delProdBtn.endColorBorderBtn = Color.FromArgb(26, 188, 156);
-            delProdBtn.Font = new Font("W3$iP", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            delProdBtn.Font = new Font("W3$iP", 9F, FontStyle.Regular, GraphicsUnit.Point);
             delProdBtn.ForeColor = Color.White;
-            delProdBtn.Location = new Point(526, 207);
+            delProdBtn.Location = new Point(571, 241);
             delProdBtn.middleColorBtn = Color.FromArgb(189, 195, 199);
             delProdBtn.Name = "delProdBtn";
             delProdBtn.Rounding = 33;
             delProdBtn.RoundingEnable = true;
-            delProdBtn.Size = new Size(165, 32);
+            delProdBtn.Size = new Size(141, 32);
             delProdBtn.startColorBtn = Color.FromArgb(127, 140, 141);
             delProdBtn.TabIndex = 12;
             delProdBtn.Text = "Удалить продукт";
@@ -204,7 +208,7 @@
             // protsInfo
             // 
             protsInfo.AccessibleRole = AccessibleRole.Text;
-            protsInfo.Location = new Point(574, 77);
+            protsInfo.Location = new Point(571, 112);
             protsInfo.Name = "protsInfo";
             protsInfo.Size = new Size(141, 23);
             protsInfo.TabIndex = 8;
@@ -213,7 +217,7 @@
             // fatsInfo
             // 
             fatsInfo.AccessibleRole = AccessibleRole.Text;
-            fatsInfo.Location = new Point(574, 107);
+            fatsInfo.Location = new Point(571, 142);
             fatsInfo.Name = "fatsInfo";
             fatsInfo.Size = new Size(141, 23);
             fatsInfo.TabIndex = 9;
@@ -222,7 +226,7 @@
             // carbsInfo
             // 
             carbsInfo.AccessibleRole = AccessibleRole.Text;
-            carbsInfo.Location = new Point(574, 137);
+            carbsInfo.Location = new Point(571, 172);
             carbsInfo.Name = "carbsInfo";
             carbsInfo.Size = new Size(141, 23);
             carbsInfo.TabIndex = 10;
@@ -231,7 +235,7 @@
             // caloriesInfo
             // 
             caloriesInfo.AccessibleRole = AccessibleRole.Text;
-            caloriesInfo.Location = new Point(574, 167);
+            caloriesInfo.Location = new Point(571, 202);
             caloriesInfo.Name = "caloriesInfo";
             caloriesInfo.Size = new Size(141, 23);
             caloriesInfo.TabIndex = 11;
@@ -240,7 +244,7 @@
             // selectedProductLabel
             // 
             selectedProductLabel.Font = new Font("Palatino Linotype", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            selectedProductLabel.Location = new Point(526, 45);
+            selectedProductLabel.Location = new Point(523, 69);
             selectedProductLabel.Name = "selectedProductLabel";
             selectedProductLabel.Size = new Size(189, 25);
             selectedProductLabel.TabIndex = 8;
@@ -248,10 +252,11 @@
             // 
             // backBtn
             // 
+            backBtn.BackColor = Color.Transparent;
             backBtn.endColorBorderBtn = Color.LightSkyBlue;
             backBtn.Font = new Font("Candara Light", 35F, FontStyle.Bold, GraphicsUnit.Point);
             backBtn.ForeColor = Color.LightCyan;
-            backBtn.Location = new Point(12, 402);
+            backBtn.Location = new Point(12, 12);
             backBtn.middleColorBtn = Color.DeepSkyBlue;
             backBtn.Name = "backBtn";
             backBtn.Rounding = 33;
@@ -263,34 +268,44 @@
             backBtn.TextHover = "назад";
             backBtn.Click += backBtn_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.AntiqueWhite;
+            panel1.Controls.Add(backBtn);
+            panel1.Controls.Add(caloriesInfoLabel);
+            panel1.Controls.Add(carbsInfoLabel);
+            panel1.Controls.Add(fatsInfoLabel);
+            panel1.Controls.Add(selectedProductLabel);
+            panel1.Controls.Add(protsInfoLabel);
+            panel1.Controls.Add(delProdBtn);
+            panel1.Controls.Add(addProductBtn);
+            panel1.Controls.Add(caloriesInfo);
+            panel1.Controls.Add(caloriesField);
+            panel1.Controls.Add(carbsInfo);
+            panel1.Controls.Add(carbsField);
+            panel1.Controls.Add(fatsInfo);
+            panel1.Controls.Add(fatsField);
+            panel1.Controls.Add(protsInfo);
+            panel1.Controls.Add(protsField);
+            panel1.Controls.Add(productNameField);
+            panel1.Controls.Add(allProductsListbox);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(801, 358);
+            panel1.TabIndex = 31;
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(backBtn);
-            Controls.Add(caloriesInfoLabel);
-            Controls.Add(carbsInfoLabel);
-            Controls.Add(fatsInfoLabel);
-            Controls.Add(selectedProductLabel);
-            Controls.Add(protsInfoLabel);
-            Controls.Add(delProdBtn);
-            Controls.Add(addProductBtn);
-            Controls.Add(caloriesInfo);
-            Controls.Add(caloriesField);
-            Controls.Add(carbsInfo);
-            Controls.Add(carbsField);
-            Controls.Add(fatsInfo);
-            Controls.Add(fatsField);
-            Controls.Add(protsInfo);
-            Controls.Add(protsField);
-            Controls.Add(productNameField);
-            Controls.Add(allProductsListbox);
+            ClientSize = new Size(800, 353);
+            Controls.Add(panel1);
             Name = "ProductsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ProductsForm";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -314,5 +329,6 @@
         private TextBox protsInfo;
         private Label selectedProductLabel;
         private UXElements.buttonUI backBtn;
+        private Panel panel1;
     }
 }
