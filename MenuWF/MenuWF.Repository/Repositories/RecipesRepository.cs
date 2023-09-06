@@ -18,7 +18,7 @@ namespace MenuWF.MenuWF.Repository.Repositories
         // Добавляем продукт в рецепт, если его там нет. Если есть - прибавляем вес к этому продукту
         internal async Task AddProductToRecipe(Recipe recipe)
         {
-            Recipe oldRecipe = await db.Recipes.FirstOrDefaultAsync(x => x.ProductId == recipe.ProductId);
+            Recipe oldRecipe = await db.Recipes.FirstOrDefaultAsync(x => x.ProductId == recipe.ProductId && x.DishId == recipe.DishId);
             if (oldRecipe != null)
             {
                 oldRecipe.ProductWeight += recipe.ProductWeight;
