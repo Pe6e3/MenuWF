@@ -1,6 +1,10 @@
-﻿using MenuWF.UIElements;
+﻿using MenuWF.Forms;
+using MenuWF.Properties;
+using MenuWF.UIElements;
 using System.ComponentModel;
 using System.Drawing.Drawing2D;
+using System.IO.Compression;
+using System.Media;
 using System.Windows.Forms.VisualStyles;
 
 namespace MenuWF.UXElements;
@@ -82,7 +86,6 @@ public class buttonUI : Control
     private Color _endColorBorderBtn;
     #endregion
 
-
     #region -- Конструктор --
     public buttonUI()
     {
@@ -95,6 +98,8 @@ public class buttonUI : Control
 
         SF.Alignment = StringAlignment.Center;
         SF.LineAlignment = StringAlignment.Center;
+
+
     }
     #endregion
 
@@ -103,7 +108,6 @@ public class buttonUI : Control
         base.OnPaint(e);
         Graphics graph = e.Graphics;
         graph.SmoothingMode = SmoothingMode.HighQuality;
-        //graph.Clear(Parent.BackColor);
 
         Rectangle rect = new Rectangle(0, 0, Width, Height);
         Rectangle rectCurtain = new Rectangle(0, 0, (int)CurtainButtonAnim.Value, Height);
@@ -121,7 +125,6 @@ public class buttonUI : Control
         // Скорость анимаций
         CurtainButtonAnim.StepDivider = TextSlideAnim.StepDivider = 14;
         RippleButtonAnim.StepDivider = 20;
-
 
 
         // Закругление
@@ -153,7 +156,7 @@ public class buttonUI : Control
         // шторка кнопки при наведении
         LinearGradientBrush buttonCurtainGradient = new LinearGradientBrush(startPoint, endPoint, Color.White, Color.Blue);
         ColorBlend colorCurtainBlend = new ColorBlend();
-       
+
 
         colorCurtainBlend.Colors = new Color[] {
                 CurtainColor(startColorBtn,addBlue: 40),
@@ -197,6 +200,8 @@ public class buttonUI : Control
     }
     protected override void OnMouseEnter(EventArgs e)
     {
+        FormHelper.PlaySound(Resources.hover_);
+
         base.OnMouseEnter(e);
         MouseEntered = true;
         ButtonCurtainAction();
@@ -205,11 +210,14 @@ public class buttonUI : Control
 
     protected override void OnMouseLeave(EventArgs e)
     {
+        FormHelper.PlaySound(Resources.hover_);
         base.OnMouseLeave(e);
         MouseEntered = false;
         ButtonCurtainAction();
         TextSlideAction();
     }
+
+
 
     private void TextSlideAction()
     {
@@ -235,6 +243,8 @@ public class buttonUI : Control
 
     protected override void OnMouseDown(MouseEventArgs e)
     {
+        FormHelper.PlaySound(Resources.click);
+
         base.OnMouseDown(e);
         MousePressed = true;
         CurtainButtonAnim.Value = CurtainButtonAnim.TargetValue;

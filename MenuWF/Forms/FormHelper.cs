@@ -2,6 +2,8 @@
 using MenuWF.Repository;
 using MenuWF.UXElements;
 using System.ComponentModel;
+using System.IO.Compression;
+using System.Media;
 
 namespace MenuWF.Forms;
 
@@ -96,7 +98,7 @@ public static class FormHelper
             field.Text = (Convert.ToDecimal(field.Text) - value).ToString("0");
     }
 
-   
+
 
     internal async static void FilterDishComboBox(object sender)
     {
@@ -161,4 +163,19 @@ public static class FormHelper
             }
         }
     }
+    public static void PlaySound(byte[] resource, byte[] resource2 = null)
+    {
+        if (resource2 != null)
+        {
+            Random random = new Random();
+            if (random.Next(1, 3) == 1)
+                resource = resource2;
+        }
+
+
+        using (MemoryStream fileOut = new MemoryStream(resource))
+        using (GZipStream sound = new GZipStream(fileOut, CompressionMode.Decompress))
+            new SoundPlayer(sound).Play();
+    }
+
 }

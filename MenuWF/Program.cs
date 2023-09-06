@@ -1,7 +1,5 @@
 using MenuWF.Data;
 using MenuWF.Repository;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace MenuWF
 {

@@ -1,7 +1,9 @@
 ﻿using MenuWF.DTO;
 using MenuWF.Entities;
+using MenuWF.Properties;
 using MenuWF.Repository;
 using MenuWF.UIElements;
+using System.Media;
 using static Azure.Core.HttpHeader;
 using static MenuWF.Entities.Journal;
 
@@ -21,9 +23,12 @@ namespace MenuWF.Forms
 
 
 
+
+
         public MenusForm()
         {
             InitializeComponent();
+
         }
 
         private void MenusForm_Load(object sender, EventArgs e)
@@ -285,7 +290,10 @@ namespace MenuWF.Forms
 
         private void addBreakfastDishBtn_Click(object sender, EventArgs e)
         {
+            FormHelper.PlaySound(Resources.done_2, Resources.done_1);
             AddDishToMenu(Meal.Breakfast);
+
+
         }
 
         private void addDinnerDishBtn_Click(object sender, EventArgs e)
@@ -425,14 +433,12 @@ namespace MenuWF.Forms
         {
             FormHelper.ValidateDecimal(breakfastDishWeightField, maxValue: 10000);
             FormHelper.ButtonEnableByField(addBreakfastDishBtn, breakfastDishWeightField);
-
         }
 
         private void dinnerDishWeightField_TextChanged(object sender, EventArgs e)
         {
             FormHelper.ValidateDecimal(dinnerDishWeightField, maxValue: 10000);
             FormHelper.ButtonEnableByField(addDinnerDishBtn, dinnerDishWeightField);
-
         }
 
         private void supperDishWeightField_TextChanged(object sender, EventArgs e)
@@ -472,31 +478,39 @@ namespace MenuWF.Forms
         private void bfDecreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.DecreaseField(breakfastDishWeightField, 50);
+            FormHelper.PlaySound(Resources.hover_);
         }
 
         private void bfIncreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.IncreaseField(breakfastDishWeightField, 50);
+            FormHelper.PlaySound(Resources.hover_);
+
         }
 
 
         private void dinnerDecreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.DecreaseField(dinnerDishWeightField, 50);
+            FormHelper.PlaySound(Resources.hover_);
+
         }
         private void dinnerIncreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.IncreaseField(dinnerDishWeightField, 50);
+            FormHelper.PlaySound(Resources.hover_);
         }
 
         private void supperDecreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.DecreaseField(supperDishWeightField, 50);
+            FormHelper.PlaySound(Resources.hover_);
         }
 
         private void supperIncreaseBtn_Click(object sender, EventArgs e)
         {
             FormHelper.IncreaseField(supperDishWeightField, 50);
+            FormHelper.PlaySound(Resources.hover_);
         }
 
 
@@ -506,6 +520,7 @@ namespace MenuWF.Forms
         private void breakfastDishCB_TextUpdate(object sender, EventArgs e)
         {
             FormHelper.FilterDishComboBox(sender: sender);
+
         }
 
 
